@@ -182,9 +182,7 @@ the `databricks` CLI — there is no `databricks auth login` step. Once the
 host AI platform has the required MCP connection configured and the user
 has authenticated to it, the following tools must be available:
 
-- `mcp__renovara-sql__execute_sql_read_only`
-- `mcp__renovara-sql__execute_sql`
-- `mcp__renovara-sql__poll_sql_result`
+- `renovara-mcp`
 
 Typical flow:
 

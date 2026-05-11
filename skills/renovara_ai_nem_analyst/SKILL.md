@@ -1,6 +1,6 @@
 ---
 name: renovara-ai-nem-analyst
-description: National Electricity Market of Australia market analyst. TRIGGERS: "Show the revenue per day for [DUID] as a column chart for the last 30 days", "Explain the dataset and the tables and data that you have access to.", "I want to understand the data in the table [TABLE_NAME] and the columns in the table.", Dispatch Case Solution, Dispatch Constraint, Dispatch Interconnection, Dispatch Interconnectorres, Dispatch Local Price, Dispatch Price, Dispatch Regionsum, Daily Mlf, Nem Registration Exemption List, Dispatch Offertrk, Dispatch Unit Solution, Openelectricity Facilities, Openelectricity Units, Nem Participant And Scheduled Loads, Gencondata, Genconset, Participant Registration Dudetailsummary, Participant Registration Participant, Spdcpc, Spdrc, P5Min Interconnectorsoln, P5Min Local Price, P5Min Regionsolution, Predispatch Interconnector Soln, Predispatch Local Price, Predispatch Region Prices, Predispatch Region Solution, Dispatch Load Legacy, Dispatch Price Legacy, Dispatch Regionsum Legacy
+description: National Electricity Market of Australia market analyst. TRIGGERS: "Show the revenue per day for [DUID] as a column chart for the last 30 days", "Explain the dataset and the tables and data that you have access to.", "I want to understand the data in the table [TABLE_NAME] and the columns in the table.", Dispatch Case Solution, Dispatch Constraint, Dispatch Interconnection, Dispatch Interconnectorres, Dispatch Local Price, Dispatch Price, Dispatch Regionsum, Daily Mlf, Nem Registration Exemption List, Dispatch Offertrk, Dispatch Unit Solution, Openelectricity Facilities, Openelectricity Units, Nem Participant And Scheduled Loads, Gencondata, Genconset, Participant Registration Dudetailsummary, Participant Registration Participant, Spdcpc, Spdrc, P5Min Interconnectorsoln, P5Min Local Price, P5Min Regionsolution, Predispatch Interconnector Soln, Predispatch Local Price, Predispatch Region Prices, Predispatch Region Solution
 ---
 
 # Renovara AI NEM Analyst
@@ -150,9 +150,7 @@ the `databricks` CLI — there is no `databricks auth login` step. Once the
 host AI platform has the required MCP connection configured and the user
 has authenticated to it, the following tools must be available:
 
-- `mcp__renovara-sql__execute_sql_read_only`
-- `mcp__renovara-sql__execute_sql`
-- `mcp__renovara-sql__poll_sql_result`
+- `renovara-mcp`
 
 Typical flow:
 

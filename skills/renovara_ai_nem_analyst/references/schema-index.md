@@ -36,10 +36,6 @@ If the YAML and live table differ after error-driven inspection:
   DISPATCHINTERCONNECTORRES sets out MW flow and losses on each interconnector for each dispatch period, including fields for the Frequency Controlled Ancillary Services export and import limits and extra reporting of the generic constraints that set the energy import and export limits.
   Expected live table: `external_data.nemweb.silver_dispatchis_reports_dispatch_interconnectorres`
 
-- [`knowledge/dispatch_load_legacy.yaml`](knowledge/dispatch_load_legacy.yaml)
-  Legacy unit-level dispatch load table (joe.bunton-owned, MANAGED).
-  Expected live table: `external_data.nemweb.silver_dispatch_load`
-
 - [`knowledge/dispatch_local_price.yaml`](knowledge/dispatch_local_price.yaml)
   Sets out local pricing offsets associated with each DUID connection point for each dispatch period.
   Expected live table: `external_data.nemweb.silver_dispatchis_reports_dispatch_local_price`
@@ -52,17 +48,9 @@ If the YAML and live table differ after error-driven inspection:
   DISPATCHPRICE records 5-minute dispatch prices for energy and FCAS, including whether an intervention has occurred, or price override (e.g.
   Expected live table: `external_data.nemweb.silver_dispatchis_reports_dispatch_price`
 
-- [`knowledge/dispatch_price_legacy.yaml`](knowledge/dispatch_price_legacy.yaml)
-  Legacy regional dispatch price table (joe.bunton-owned, MANAGED).
-  Expected live table: `external_data.nemweb.silver_dispatch_price`
-
 - [`knowledge/dispatch_regionsum.yaml`](knowledge/dispatch_regionsum.yaml)
   DISPATCHREGIONSUM sets out the 5-minute solution for each dispatch run for each region, including Frequency Control Ancillary Services (FCAS) data, demand, generation, and semi-scheduled forecasts.
   Expected live table: `external_data.nemweb.silver_dispatchis_reports_dispatch_regionsum`
-
-- [`knowledge/dispatch_regionsum_legacy.yaml`](knowledge/dispatch_regionsum_legacy.yaml)
-  Legacy regional dispatch summary table (joe.bunton-owned, MANAGED).
-  Expected live table: `external_data.nemweb.silver_dispatch_regionsum`
 
 - [`knowledge/dispatch_unit_solution.yaml`](knowledge/dispatch_unit_solution.yaml)
   DISPATCHLOAD set out the current SCADA MW and target MW for each dispatchable unit, including relevant Frequency Control Ancillary Services (FCAS) enabling targets for each five minutes and additional fields to handle the new Ancillary Services functionality.
