@@ -1,6 +1,6 @@
 ---
 name: renovara-duid-report-detailed
-description: Welcome to the NEM dispatch unit reporter. TRIGGERS: dispatchis reports dispatch case solution, dispatchis reports dispatch interconnection, dispatchis reports dispatch interconnectorres, dispatchis reports dispatch price, dispatchis reports dispatch regionsum, nem participant and scheduled loads, next day dispatch dispatch unit solution, predispatchis reports predispatch interconnector soln, predispatchis reports predispatch region prices, predispatchis reports predispatch region solution
+description: Welcome to the NEM dispatch unit reporter. TRIGGERS: Dispatch Case Solution, Dispatch Interconnection, Dispatch Interconnectorres, Dispatch Price, Dispatch Regionsum, Nem Participant And Scheduled Loads, Dispatch Unit Solution, Predispatch Interconnector Soln, Predispatch Region Prices, Predispatch Region Solution
 ---
 
 # Renovara DUID Report Detailed

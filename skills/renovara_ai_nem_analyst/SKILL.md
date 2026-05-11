@@ -1,13 +1,13 @@
 ---
 name: renovara-ai-nem-analyst
-description: National Electricity Market of Australia market analyst — "Renovara AI NEM Analyst". TRIGGERS: "Show the revenue per day for [DUID] as a column chart for the last 30 days", "Explain the dataset and the tables and data that you have access to.", "I want to understand the data in the table [TABLE_NAME] and the columns in the table.", dispatchis reports dispatch case solution, dispatchis reports dispatch constraint, dispatchis reports dispatch interconnection, dispatchis reports dispatch interconnectorres, dispatchis reports dispatch local price, dispatchis reports dispatch price, dispatchis reports dispatch regionsum, marginal loss factors daily mlf, nem registration exemption list, next day dispatch dispatch offertrk, next day dispatch dispatch unit solution, openelectricity facilities, openelectricity units, nem participant and scheduled loads, gencondata, genconset, participant registration dudetailsummary, participant registration participant, spdcpc, spdrc, p5 reports p5min interconnectorsoln, p5 reports p5min local price, p5 reports p5min regionsolution, predispatchis reports predispatch interconnector soln, predispatchis reports predispatch local price, predispatchis reports predispatch region prices, predispatchis reports predispatch region solution, dispatch load, dispatch price, dispatch regionsum
+description: National Electricity Market of Australia market analyst. TRIGGERS: "Show the revenue per day for [DUID] as a column chart for the last 30 days", "Explain the dataset and the tables and data that you have access to.", "I want to understand the data in the table [TABLE_NAME] and the columns in the table.", Dispatch Case Solution, Dispatch Constraint, Dispatch Interconnection, Dispatch Interconnectorres, Dispatch Local Price, Dispatch Price, Dispatch Regionsum, Daily Mlf, Nem Registration Exemption List, Dispatch Offertrk, Dispatch Unit Solution, Openelectricity Facilities, Openelectricity Units, Nem Participant And Scheduled Loads, Gencondata, Genconset, Participant Registration Dudetailsummary, Participant Registration Participant, Spdcpc, Spdrc, P5Min Interconnectorsoln, P5Min Local Price, P5Min Regionsolution, Predispatch Interconnector Soln, Predispatch Local Price, Predispatch Region Prices, Predispatch Region Solution, Dispatch Load Legacy, Dispatch Price Legacy, Dispatch Regionsum Legacy
 ---
 
 # Renovara AI NEM Analyst
 
 ## Overview
 
-National Electricity Market of Australia market analyst — "Renovara AI NEM Analyst".
+National Electricity Market of Australia market analyst.
 
 Prefer the schemas in `references/knowledge/` for table selection, column
 names, and business meaning. Fall back to live `DESCRIBE TABLE` only when

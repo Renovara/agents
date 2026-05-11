@@ -1,6 +1,6 @@
 ---
 name: renovara-fcas-analyst
-description: TRIGGERS: dispatchis reports dispatch price, nem participant and scheduled loads, next day dispatch dispatch unit solution
+description: TRIGGERS: Dispatch Price, Nem Participant And Scheduled Loads, Dispatch Unit Solution
 ---
 
 # Renovara FCAS Analyst
