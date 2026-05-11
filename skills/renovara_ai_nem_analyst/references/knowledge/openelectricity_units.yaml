@@ -1,0 +1,68 @@
+OPENELECTRICITY_UNITS:
+  table_name: silver_openelectricity_units
+  display_name: Openelectricity Units
+  table_comment: Unit-level metadata sourced from openelectricity.org.au. One row per generation/storage
+    unit, with capacity, fuel/technology, status, and the parent facility's location. Use for fuel type
+    and technology joins where DUID-level metadata is insufficient.
+  primary_keys:
+  - unit_code
+  visibility: Public
+  update_frequency: Daily
+  schema:
+  - column: ingest_ts
+    data_type: timestamp
+    comment: Timestamp the row was ingested into the silver table (UTC).
+  - column: source_file
+    data_type: string
+    comment: The source file the row was ingested from.
+  - column: facility_code
+    data_type: string
+    comment: Parent facility identifier (joins to OPENELECTRICITY_FACILITIES.facility_code).
+  - column: facility_name
+    data_type: string
+    comment: Parent facility name.
+  - column: facility_network_id
+    data_type: string
+    comment: Parent facility network identifier (e.g., NEM).
+  - column: facility_network_region
+    data_type: string
+    comment: Parent facility NEM region (e.g., NSW1, QLD1).
+  - column: facility_lat
+    data_type: double
+    comment: Parent facility latitude.
+  - column: facility_lng
+    data_type: double
+    comment: Parent facility longitude.
+  - column: unit_code
+    data_type: string
+    comment: Unique unit identifier used by openelectricity.org.au.
+  - column: unit_fueltech_id
+    data_type: string
+    comment: Fuel/technology classification (e.g., solar_utility, coal_black, battery_charging).
+  - column: unit_status_id
+    data_type: string
+    comment: Operational status of the unit (e.g., operating, retired, committed).
+  - column: unit_capacity_registered
+    data_type: double
+    comment: Registered capacity of the unit in MW.
+  - column: unit_capacity_maximum
+    data_type: double
+    comment: Maximum capacity of the unit in MW.
+  - column: unit_capacity_storage
+    data_type: double
+    comment: Storage capacity of the unit in MWh (for storage units).
+  - column: unit_dispatch_type
+    data_type: string
+    comment: Dispatch type for the unit (e.g., generator, load, bidirectional).
+  - column: unit_data_first_seen
+    data_type: string
+    comment: First date data was seen for this unit (as published).
+  - column: unit_data_last_seen
+    data_type: string
+    comment: Last date data was seen for this unit (as published).
+  - column: unit_created_at
+    data_type: string
+    comment: Unit record creation timestamp (as published).
+  - column: unit_updated_at
+    data_type: string
+    comment: Unit record last-update timestamp (as published).

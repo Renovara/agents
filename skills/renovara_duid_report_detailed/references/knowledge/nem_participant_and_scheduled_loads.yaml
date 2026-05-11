@@ -1,0 +1,87 @@
+NEM_PARTICIPANT_AND_SCHEDULED_LOADS:
+  table_name: silver_nem_participant_and_scheduled_loads
+  display_name: Nem Participant And Scheduled Loads
+  table_comment: Production Units (PU) and Scheduled Loads — all registered Production Units and Scheduled
+    Loads with their classifications and key metadata. REG_CAP generation/consumption values reflect unit
+    nameplate ratings. Use `_ingest_timestamp` to identify the latest records.
+  primary_keys:
+  - DUID
+  - _INGEST_TIMESTAMP
+  visibility: Public
+  update_frequency: As published by AEMO
+  schema:
+  - column: PARTICIPANT
+    data_type: string
+    comment: The registered participant in the NEM.
+  - column: STATION_NAME
+    data_type: string
+    comment: The name of the generation or load station.
+  - column: REGIONID
+    data_type: string
+    comment: The NEM region in which the asset is located.
+  - column: DISPATCH_TYPE
+    data_type: string
+    comment: Indicates if the asset is a Load, Generation Unit, or Bi-directional Unit.
+  - column: CATEGORY
+    data_type: string
+    comment: The category of the participant or asset.
+  - column: CLASSIFICATION
+    data_type: string
+    comment: The classification of the asset (e.g., scheduled, semi-scheduled, or non-scheduled).
+  - column: FUEL_SOURCE_PRIMARY
+    data_type: string
+    comment: The primary fuel source used by the asset.
+  - column: FUEL_SOURCE_DESCRIPTOR
+    data_type: string
+    comment: A descriptive identifier for the fuel source.
+  - column: TECHNOLOGY_TYPE_PRIMARY
+    data_type: string
+    comment: The primary technology type of the asset.
+  - column: TECHNOLOGY_TYPE_DESCRIPTOR
+    data_type: string
+    comment: A descriptive identifier for the technology type.
+  - column: UNITS
+    data_type: string
+    comment: The number of units associated with the asset.
+  - column: AGGREGATION
+    data_type: string
+    comment: Aggregation details for the participant or asset.
+  - column: DUID
+    data_type: string
+    comment: The Dispatchable Unit Identifier for the asset.
+  - column: REG_CAP_GENERATION_MW
+    data_type: double
+    comment: The registered capacity of the generator in MW.
+  - column: MAX_CAP_GENERATION_MW
+    data_type: double
+    comment: The maximum generation capacity of the asset in MW.
+  - column: MAX_ROC_MIN_GENERATION
+    data_type: double
+    comment: Maximum Rate of Change (MW/minute) for generation.
+  - column: REG_CAP_CONSUMPTION_MW
+    data_type: double
+    comment: The registered capacity of the consumer in MW.
+  - column: MAX_CAP_CONSUMPTION_MW
+    data_type: double
+    comment: The maximum consumption capacity of the asset in MW.
+  - column: MAX_ROC_MIN_CONSUMPTION
+    data_type: double
+    comment: Maximum Rate of Change (MW/minute) for consumption.
+  - column: MAXIMUM_STORAGE_CAPACITY
+    data_type: double
+    comment: Maximum storage capacity for the asset.
+  - column: COMMENTS
+    data_type: string
+    comment: Additional comments or notes about the participant or asset.
+  - column: DISPATCH_UNIT_TYPE
+    data_type: string
+    comment: Derived column combining fuel source fields to represent the dispatch unit generation type.
+  - column: GENERATOR_TYPE
+    data_type: string
+    comment: Derived column combining fuel source fields to represent the dispatch unit generation type.
+  - column: GENERATOR_FUEL_TYPE
+    data_type: string
+    comment: Derived column combining fuel source fields to represent the dispatch unit generation type.
+  - column: _ingest_timestamp
+    data_type: timestamp
+    comment: Timestamp at which the record was ingested into the bronze layer.

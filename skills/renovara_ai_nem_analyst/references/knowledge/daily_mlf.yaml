@@ -1,0 +1,42 @@
+DAILY_MLF:
+  table_name: silver_marginal_loss_factors_daily_mlf
+  display_name: Daily Mlf
+  table_comment: Marginal Loss Factors by connection point, versioned by effective date and version number.
+    Includes primary and secondary TLFs where dual TLFs apply.
+  visibility: Public
+  update_frequency: Daily
+  schema:
+  - column: EFFECTIVEDATE
+    data_type: STRING
+    comment: Effective date of record
+  - column: VERSIONNO
+    data_type: BIGINT
+    comment: Version no of record for given effective date
+  - column: REGIONID
+    data_type: STRING
+    comment: Region Identifier
+  - column: CONNECTIONPOINTID
+    data_type: STRING
+    comment: Connection Point ID
+  - column: CONNECTIONPOINTTYPE
+    data_type: STRING
+    comment: Type of connection point
+  - column: DUID
+    data_type: STRING
+    comment: Dispatchable unit identifier
+  - column: TRANSMISSIONLOSSFACTOR
+    data_type: DECIMAL(15,5)
+    comment: Used in Bidding, Dispatch and Settlements. For Bidding and Dispatch, where the DUID is a
+      BDU with DISPATCHTYPE of BIDIRECTIONAL, the TLF for the load component of the BDU. For Settlements,
+      where dual TLFs apply, the primary TLF is applied to all energy (load and generation) when the Net
+      Energy Flow of the ConnectionPointID in the interval is negative (net load).
+  - column: SECONDARY_TLF
+    data_type: DECIMAL(18,8)
+    comment: Used in Bidding, Dispatch and Settlements, only populated where Dual TLFs apply. For Bidding
+      and Dispatch, the TLF for the generation component of a BDU; when null the TRANSMISSIONLOSSFACTOR
+      is used for both the load and generation components. For Settlements, the secondary TLF is applied
+      to all energy (load and generation) when the Net Energy Flow of the ConnectionPointID in the interval
+      is positive (net generation).
+  - column: LASTCHANGED
+    data_type: STRING
+    comment: Record creation timestamp

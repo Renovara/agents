@@ -1,0 +1,372 @@
+P5MIN_REGIONSOLUTION:
+  table_name: silver_p5_reports_p5min_regionsolution
+  display_name: P5Min Regionsolution
+  table_comment: The five-minute predispatch (P5Min) system provides projected dispatch for 12 dispatch
+    cycles (one hour). This table shows regional capacity, maximum surplus reserve, and maximum spare
+    capacity evaluations for each period.
+  primary_keys:
+  - INTERVAL_DATETIME
+  - REGIONID
+  - RUN_DATETIME
+  indexes:
+  - LASTCHANGED
+  visibility: Public
+  update_frequency: Daily
+  schema:
+  - column: RUN_DATETIME
+    data_type: string
+    comment: Unique timestamp identifier for this study
+  - column: INTERVAL_DATETIME
+    data_type: string
+    comment: Unique identifier for the interval within this study
+  - column: REGIONID
+    data_type: string
+    comment: Region identifier
+  - column: RRP
+    data_type: decimal(15,5)
+    comment: Region Reference Price (Energy)
+  - column: ROP
+    data_type: decimal(15,5)
+    comment: Region Override Price (Energy)
+  - column: EXCESSGENERATION
+    data_type: decimal(15,5)
+    comment: Total energy imbalance (MW)
+  - column: RAISE6SECRRP
+    data_type: decimal(15,5)
+    comment: Region Reference Price (Raise 6 Sec)
+  - column: RAISE6SECROP
+    data_type: decimal(15,5)
+    comment: Original regional price (Raise 6 Sec)
+  - column: RAISE60SECRRP
+    data_type: decimal(15,5)
+    comment: Region Reference Price (Raise 60 Sec)
+  - column: RAISE60SECROP
+    data_type: decimal(15,5)
+    comment: Original regional price (Raise 60 Sec)
+  - column: RAISE5MINRRP
+    data_type: decimal(15,5)
+    comment: Region Reference Price (Raise 5 Min)
+  - column: RAISE5MINROP
+    data_type: decimal(15,5)
+    comment: Original regional price (Raise 5 Min)
+  - column: RAISEREGRRP
+    data_type: decimal(15,5)
+    comment: Region Reference Price (Raise Regulation)
+  - column: RAISEREGROP
+    data_type: decimal(15,5)
+    comment: Original regional price (Raise Regulation)
+  - column: LOWER6SECRRP
+    data_type: decimal(15,5)
+    comment: Region Reference Price (Lower 6 Sec)
+  - column: LOWER6SECROP
+    data_type: decimal(15,5)
+    comment: Original regional price (Lower 6 Sec)
+  - column: LOWER60SECRRP
+    data_type: decimal(15,5)
+    comment: Region Reference Price (Lower 60 Sec)
+  - column: LOWER60SECROP
+    data_type: decimal(15,5)
+    comment: Original regional price (Lower 60 Sec)
+  - column: LOWER5MINRRP
+    data_type: decimal(15,5)
+    comment: Region Reference Price (Lower 5 Min)
+  - column: LOWER5MINROP
+    data_type: decimal(15,5)
+    comment: Original regional price (Lower 5 Min)
+  - column: LOWERREGRRP
+    data_type: decimal(15,5)
+    comment: Region Reference Price (Lower Regulation)
+  - column: LOWERREGROP
+    data_type: decimal(15,5)
+    comment: Original regional price (Lower Regulation)
+  - column: TOTALDEMAND
+    data_type: decimal(15,5)
+    comment: Regional demand (not net of interconnector flows or loads)
+  - column: AVAILABLEGENERATION
+    data_type: decimal(15,5)
+    comment: Regional available generation
+  - column: AVAILABLELOAD
+    data_type: decimal(15,5)
+    comment: Regional available load
+  - column: DEMANDFORECAST
+    data_type: decimal(15,5)
+    comment: Predicted change in regional demand for this interval
+  - column: DISPATCHABLEGENERATION
+    data_type: decimal(15,5)
+    comment: Regional dispatched generation
+  - column: DISPATCHABLELOAD
+    data_type: decimal(15,5)
+    comment: Regional dispatched load
+  - column: NETINTERCHANGE
+    data_type: decimal(15,5)
+    comment: Net interconnector flows
+  - column: LOWER5MINDISPATCH
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWER5MINIMPORT
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWER5MINLOCALDISPATCH
+    data_type: decimal(15,5)
+    comment: Lower 5 minute local dispatch
+  - column: LOWER5MINLOCALREQ
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWER5MINREQ
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWER60SECDISPATCH
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWER60SECIMPORT
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWER60SECLOCALDISPATCH
+    data_type: decimal(15,5)
+    comment: Lower 60 sec local dispatch
+  - column: LOWER60SECLOCALREQ
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWER60SECREQ
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWER6SECDISPATCH
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWER6SECIMPORT
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWER6SECLOCALDISPATCH
+    data_type: decimal(15,5)
+    comment: Lower 6 sec local dispatch
+  - column: LOWER6SECLOCALREQ
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWER6SECREQ
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISE5MINDISPATCH
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISE5MINIMPORT
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISE5MINLOCALDISPATCH
+    data_type: decimal(15,5)
+    comment: Raise 5 min local dispatch
+  - column: RAISE5MINLOCALREQ
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISE5MINREQ
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISE60SECDISPATCH
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISE60SECIMPORT
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISE60SECLOCALDISPATCH
+    data_type: decimal(15,5)
+    comment: Raise 60 sec local dispatch
+  - column: RAISE60SECLOCALREQ
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISE60SECREQ
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISE6SECDISPATCH
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISE6SECIMPORT
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISE6SECLOCALDISPATCH
+    data_type: decimal(15,5)
+    comment: Raise 6 sec local dispatch
+  - column: RAISE6SECLOCALREQ
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISE6SECREQ
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: AGGREGATEDISPATCHERROR
+    data_type: decimal(15,5)
+    comment: Aggregate dispatch error
+  - column: INITIALSUPPLY
+    data_type: decimal(15,5)
+    comment: Initial generation + import
+  - column: CLEAREDSUPPLY
+    data_type: decimal(15,5)
+    comment: Cleared generation + import
+  - column: LOWERREGIMPORT
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWERREGDISPATCH
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWERREGLOCALDISPATCH
+    data_type: decimal(15,5)
+    comment: Lower Regulation local dispatch
+  - column: LOWERREGLOCALREQ
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWERREGREQ
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISEREGIMPORT
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISEREGDISPATCH
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISEREGLOCALDISPATCH
+    data_type: decimal(15,5)
+    comment: Raise Regulation local dispatch
+  - column: RAISEREGLOCALREQ
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISEREGREQ
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISE5MINLOCALVIOLATION
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISEREGLOCALVIOLATION
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISE60SECLOCALVIOLATION
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISE6SECLOCALVIOLATION
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWER5MINLOCALVIOLATION
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWERREGLOCALVIOLATION
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWER60SECLOCALVIOLATION
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWER6SECLOCALVIOLATION
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISE5MINVIOLATION
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISEREGVIOLATION
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISE60SECVIOLATION
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: RAISE6SECVIOLATION
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWER5MINVIOLATION
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWERREGVIOLATION
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWER60SECVIOLATION
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LOWER6SECVIOLATION
+    data_type: decimal(15,5)
+    comment: Not used since Dec 2003
+  - column: LASTCHANGED
+    data_type: string
+    comment: Last date/time record changed
+  - column: TOTALINTERMITTENTGENERATION
+    data_type: decimal(15,5)
+    comment: Allowance for non-scheduled generation (MW)
+  - column: DEMAND_AND_NONSCHEDGEN
+    data_type: decimal(15,5)
+    comment: Cleared scheduled + imported + nonsched generation
+  - column: UIGF
+    data_type: decimal(15,5)
+    comment: Unconstrained Intermittent Generation Forecast
+  - column: SEMISCHEDULE_CLEAREDMW
+    data_type: decimal(15,5)
+    comment: Semi-Scheduled cleared MW
+  - column: SEMISCHEDULE_COMPLIANCEMW
+    data_type: decimal(15,5)
+    comment: Semi-Scheduled cleared MW under dispatch cap
+  - column: INTERVENTION
+    data_type: tinyint
+    comment: 0 = pricing run, 1 = physical run
+  - column: SS_SOLAR_UIGF
+    data_type: decimal(15,5)
+    comment: Solar UIGF
+  - column: SS_WIND_UIGF
+    data_type: decimal(15,5)
+    comment: Wind UIGF
+  - column: SS_SOLAR_CLEAREDMW
+    data_type: decimal(15,5)
+    comment: Solar cleared MW
+  - column: SS_WIND_CLEAREDMW
+    data_type: decimal(15,5)
+    comment: Wind cleared MW
+  - column: SS_SOLAR_COMPLIANCEMW
+    data_type: decimal(15,5)
+    comment: Solar cleared MW under dispatch cap
+  - column: SS_WIND_COMPLIANCEMW
+    data_type: decimal(15,5)
+    comment: Wind cleared MW under dispatch cap
+  - column: WDR_INITIALMW
+    data_type: decimal(15,5)
+    comment: Initial MW for WDR units
+  - column: WDR_AVAILABLE
+    data_type: decimal(15,5)
+    comment: Available MW for WDR units
+  - column: WDR_DISPATCHED
+    data_type: decimal(15,5)
+    comment: Dispatched MW for WDR units
+  - column: SS_SOLAR_AVAILABILITY
+    data_type: decimal(15,5)
+    comment: Solar semi-scheduled availability
+  - column: SS_WIND_AVAILABILITY
+    data_type: decimal(15,5)
+    comment: Wind semi-scheduled availability
+  - column: RAISE1SECRRP
+    data_type: decimal(15,5)
+    comment: Raise 1-Sec RRP
+  - column: RAISE1SECROP
+    data_type: decimal(15,5)
+    comment: Raise 1-Sec unscaled original price
+  - column: LOWER1SECRRP
+    data_type: decimal(15,5)
+    comment: Lower 1-Sec RRP
+  - column: LOWER1SECROP
+    data_type: decimal(15,5)
+    comment: Lower 1-Sec unscaled original price
+  - column: RAISE1SECLOCALDISPATCH
+    data_type: decimal(15,5)
+    comment: Raise 1-Sec dispatched MW
+  - column: LOWER1SECLOCALDISPATCH
+    data_type: decimal(15,5)
+    comment: Lower 1-Sec dispatched MW
+  - column: BDU_ENERGY_STORAGE
+    data_type: decimal(15,5)
+    comment: BDU energy storage (MWh)
+  - column: BDU_MIN_AVAIL
+    data_type: decimal(15,5)
+    comment: BDU load-side available MW
+  - column: BDU_MAX_AVAIL
+    data_type: decimal(15,5)
+    comment: BDU generation-side available MW
+  - column: BDU_CLEAREDMW_GEN
+    data_type: decimal(15,5)
+    comment: Cleared MW as generation for BDU
+  - column: BDU_CLEAREDMW_LOAD
+    data_type: decimal(15,5)
+    comment: Cleared MW as load for BDU
+  - column: BDU_INITIAL_ENERGY_STORAGE
+    data_type: decimal(15,5)
+    comment: Initial BDU energy storage (MWh)
+  - column: DECGEN_INITIAL_ENERGY_STORAGE
+    data_type: decimal(15,5)
+    comment: Initial DEC-generator energy storage (MWh)

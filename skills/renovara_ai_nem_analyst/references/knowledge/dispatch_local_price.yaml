@@ -1,0 +1,29 @@
+DISPATCH_LOCAL_PRICE:
+  table_name: silver_dispatchis_reports_dispatch_local_price
+  display_name: Dispatch Local Price
+  table_comment: Sets out local pricing offsets associated with each DUID connection point for each dispatch
+    period. Note that from 2014 mid-year release, only records with non-zero Local_Price_Adjustment values
+    are issued.
+  primary_keys:
+  - DUID
+  - SETTLEMENTDATE
+  indexes:
+  - SETTLEMENTDATE
+  - DUID
+  visibility: Public
+  update_frequency: Every 5 minutes
+  schema:
+  - column: SETTLEMENTDATE
+    data_type: string
+    comment: Market date time (parsed to timestamp in silver)
+  - column: DUID
+    data_type: string
+    comment: Dispatchable unit identifier
+  - column: LOCAL_PRICE_ADJUSTMENT
+    data_type: decimal(10,2)
+    comment: 'Aggregate Constraint contribution cost of this unit: Sum(MarginalValue x Factor) for all
+      relevant Constraints'
+  - column: LOCALLY_CONSTRAINED
+    data_type: tinyint
+    comment: 'Key for Local_Price_Adjustment: 2 = at least one Outage Constraint; 1 = at least 1 System
+      Normal Constraint (and no Outage Constraint); 0 = No System Normal or Outage Constraints'

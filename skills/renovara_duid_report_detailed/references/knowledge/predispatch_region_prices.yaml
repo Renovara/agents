@@ -1,0 +1,122 @@
+PREDISPATCH_REGION_PRICES:
+  table_name: silver_predispatchis_reports_predispatch_region_prices
+  display_name: Predispatch Region Prices
+  table_comment: PREDISPATCHPRICE records predispatch prices for each region by period for each predispatch
+    run, including fields to handle the Ancillary Services functionality.
+  primary_keys:
+  - DATETIME
+  - REGIONID
+  indexes:
+  - LASTCHANGED
+  - PREDISPATCHSEQNO
+  visibility: Public
+  update_frequency: Daily
+  schema:
+  - column: PREDISPATCHSEQNO
+    data_type: string
+    comment: Unique identifier of predispatch run in the form YYYYMMDDPP with 01 at 04:30
+  - column: RUNNO
+    data_type: smallint
+    comment: LP Solver Predispatch run no, typically 1. It increments if the case is re-run.
+  - column: REGIONID
+    data_type: string
+    comment: Unique region identifier
+  - column: PERIODID
+    data_type: string
+    comment: PERIODID is just a period count, starting from 1 for each predispatch run. Use DATETIME to
+      determine half hour period.
+  - column: INTERVENTION
+    data_type: tinyint
+    comment: Flag to indicate if this result set was sourced from the pricing run (INTERVENTION=0) or
+      the physical run (INTERVENTION=1). In the event that there is not intervention in the market, both
+      pricing and physical runs correspond to INTERVENTION=0.
+  - column: RRP
+    data_type: decimal(15,5)
+    comment: Regional Reference Price
+  - column: EEP
+    data_type: decimal(15,5)
+    comment: Excess energy price
+  - column: RRP1
+    data_type: decimal(15,5)
+    comment: Not used
+  - column: EEP1
+    data_type: decimal(15,5)
+    comment: Not used
+  - column: RRP2
+    data_type: decimal(15,5)
+    comment: Not used
+  - column: EEP2
+    data_type: decimal(15,5)
+    comment: Not used
+  - column: RRP3
+    data_type: decimal(15,5)
+    comment: Not used
+  - column: EEP3
+    data_type: decimal(15,5)
+    comment: Not used
+  - column: RRP4
+    data_type: decimal(15,5)
+    comment: Not used
+  - column: EEP4
+    data_type: decimal(15,5)
+    comment: Not used
+  - column: RRP5
+    data_type: decimal(15,5)
+    comment: Not used
+  - column: EEP5
+    data_type: decimal(15,5)
+    comment: Not used
+  - column: RRP6
+    data_type: decimal(15,5)
+    comment: Not used
+  - column: EEP6
+    data_type: decimal(15,5)
+    comment: Not used
+  - column: RRP7
+    data_type: decimal(15,5)
+    comment: Not used
+  - column: EEP7
+    data_type: decimal(15,5)
+    comment: Not used
+  - column: RRP8
+    data_type: decimal(15,5)
+    comment: Not used
+  - column: EEP8
+    data_type: decimal(15,5)
+    comment: Not used
+  - column: LASTCHANGED
+    data_type: string
+    comment: Last date and time record changed (parsed to timestamp in silver)
+  - column: DATETIME
+    data_type: string
+    comment: Period date and time (parsed to timestamp in silver)
+  - column: RAISE6SECRRP
+    data_type: decimal(15,5)
+    comment: Regional reference price for this dispatch period
+  - column: RAISE60SECRRP
+    data_type: decimal(15,5)
+    comment: Regional reference price for this dispatch period
+  - column: RAISE5MINRRP
+    data_type: decimal(15,5)
+    comment: Regional reference price for this dispatch period
+  - column: RAISEREGRRP
+    data_type: decimal(15,5)
+    comment: Regional reference price for this dispatch period
+  - column: LOWER6SECRRP
+    data_type: decimal(15,5)
+    comment: Regional reference price for this dispatch period
+  - column: LOWER60SECRRP
+    data_type: decimal(15,5)
+    comment: Regional reference price for this dispatch period
+  - column: LOWER5MINRRP
+    data_type: decimal(15,5)
+    comment: Regional reference price for this dispatch period
+  - column: LOWERREGRRP
+    data_type: decimal(15,5)
+    comment: Regional reference price for this dispatch period
+  - column: RAISE1SECRRP
+    data_type: decimal(15,5)
+    comment: Regional Raise 1Sec Price - R1Price attribute after capping / flooring
+  - column: LOWER1SECRRP
+    data_type: decimal(15,5)
+    comment: Regional Lower 1Sec Price - RegionSolution element L1Price attribute

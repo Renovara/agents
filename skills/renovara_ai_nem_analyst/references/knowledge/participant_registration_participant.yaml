@@ -1,0 +1,32 @@
+PARTICIPANT_REGISTRATION_PARTICIPANT:
+  table_name: silver___participant_registration_participant
+  display_name: Participant Registration Participant
+  table_comment: PARTICIPANT sets out Participant ID, name and class for all participants.
+  primary_keys:
+  - PARTICIPANTID
+  indexes:
+  - LASTCHANGED
+  visibility: Public
+  update_frequency: Monthly
+  schema:
+  - column: PARTICIPANTID
+    data_type: string
+    comment: Unique participant identifier.
+  - column: PARTICIPANTCLASSID
+    data_type: string
+    comment: Class of participant.
+  - column: NAME
+    data_type: string
+    comment: Full name of participant.
+  - column: DESCRIPTION
+    data_type: string
+    comment: Not used.
+  - column: ACN
+    data_type: string
+    comment: Australian Company Number; nine digits.
+  - column: PRIMARYBUSINESS
+    data_type: string
+    comment: Identifies primary business activity of participant.
+  - column: LASTCHANGED
+    data_type: string
+    comment: Last date and time record changed.

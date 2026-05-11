@@ -1,0 +1,426 @@
+DISPATCH_REGIONSUM:
+  table_name: silver_dispatchis_reports_dispatch_regionsum
+  display_name: Dispatch Regionsum
+  table_comment: DISPATCHREGIONSUM sets out the 5-minute solution for each dispatch run for each region,
+    including Frequency Control Ancillary Services (FCAS) data, demand, generation, and semi-scheduled
+    forecasts. Includes legacy FCAS requirement and price fields that are no longer used since December
+    2003 but retained for completeness.
+  primary_keys:
+  - DISPATCHINTERVAL
+  - INTERVENTION
+  - REGIONID
+  - RUNNO
+  - SETTLEMENTDATE
+  indexes:
+  - LASTCHANGED
+  visibility: Public
+  update_frequency: Every 5 minutes
+  schema:
+  - column: SETTLEMENTDATE
+    data_type: STRING
+    comment: Market date and time (parsed to timestamp in silver). Timestamp is in AEST or Australia/Brisbane.
+  - column: RUNNO
+    data_type: SMALLINT
+    comment: Dispatch run no; always 1
+  - column: REGIONID
+    data_type: STRING
+    comment: Region Identifier
+  - column: DISPATCHINTERVAL
+    data_type: BIGINT
+    comment: Dispatch period identifier, from 001 to 288 in format YYYYMMDDPPP.
+  - column: INTERVENTION
+    data_type: TINYINT
+    comment: Manual Intervention flag
+  - column: TOTALDEMAND
+    data_type: DECIMAL(15,5)
+    comment: Demand (less loads)
+  - column: AVAILABLEGENERATION
+    data_type: DECIMAL(15,5)
+    comment: Aggregate generation bid available in region
+  - column: AVAILABLELOAD
+    data_type: DECIMAL(15,5)
+    comment: Aggregate load bid available in region
+  - column: DEMANDFORECAST
+    data_type: DECIMAL(15,5)
+    comment: 5-minute demand forecast adjustment
+  - column: DISPATCHABLEGENERATION
+    data_type: DECIMAL(15,5)
+    comment: Dispatched Generation
+  - column: DISPATCHABLELOAD
+    data_type: DECIMAL(15,5)
+    comment: Dispatched Load (add to total demand to get inherent region demand)
+  - column: NETINTERCHANGE
+    data_type: DECIMAL(15,5)
+    comment: Net interconnector flow from the regional reference node
+  - column: EXCESSGENERATION
+    data_type: DECIMAL(15,5)
+    comment: MW quantity of excess generation
+  - column: LOWER6SECDISPATCH
+    data_type: DECIMAL(15,5)
+    comment: Lower 6SEC Dispatch (Not used since Dec 2003).
+  - column: LOWER6SECIMPORT
+    data_type: DECIMAL(15,5)
+    comment: Lower 6SEC Import (Not used since Dec 2003).
+  - column: LOWER6SECLOCALDISPATCH
+    data_type: DECIMAL(15,5)
+    comment: Lower 6SEC Localdispatch (Not used since Dec 2003).
+  - column: LOWER6SECLOCALPRICE
+    data_type: DECIMAL(15,5)
+    comment: Lower 6SEC Localprice (Not used since Dec 2003).
+  - column: LOWER6SECLOCALREQ
+    data_type: DECIMAL(15,5)
+    comment: Lower 6SEC Localreq (Not used since Dec 2003).
+  - column: LOWER6SECPRICE
+    data_type: DECIMAL(15,5)
+    comment: Lower 6SEC Price (Not used since Dec 2003).
+  - column: LOWER6SECREQ
+    data_type: DECIMAL(15,5)
+    comment: Lower 6SEC Req (Not used since Dec 2003).
+  - column: LOWER6SECSUPPLYPRICE
+    data_type: DECIMAL(15,5)
+    comment: Lower 6SEC Supplyprice (Not used since Dec 2003).
+  - column: LOWER6SECLOCALVIOLATION
+    data_type: DECIMAL(15,5)
+    comment: Lower 6SEC Localviolation (Not used since Dec 2003).
+  - column: LOWER6SECVIOLATION
+    data_type: DECIMAL(15,5)
+    comment: Lower 6SEC Violation (Not used since Dec 2003).
+  - column: LOWER6SECACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Lower 6SEC Actualavailability
+  - column: LOWER60SECDISPATCH
+    data_type: DECIMAL(15,5)
+    comment: Lower 60SEC Dispatch (Not used since Dec 2003).
+  - column: LOWER60SECIMPORT
+    data_type: DECIMAL(15,5)
+    comment: Lower 60SEC Import (Not used since Dec 2003).
+  - column: LOWER60SECLOCALDISPATCH
+    data_type: DECIMAL(15,5)
+    comment: Lower 60SEC Localdispatch (Not used since Dec 2003).
+  - column: LOWER60SECLOCALPRICE
+    data_type: DECIMAL(15,5)
+    comment: Lower 60SEC Localprice (Not used since Dec 2003).
+  - column: LOWER60SECLOCALREQ
+    data_type: DECIMAL(15,5)
+    comment: Lower 60SEC Localreq (Not used since Dec 2003).
+  - column: LOWER60SECPRICE
+    data_type: DECIMAL(15,5)
+    comment: Lower 60SEC Price (Not used since Dec 2003).
+  - column: LOWER60SECREQ
+    data_type: DECIMAL(15,5)
+    comment: Lower 60SEC Req (Not used since Dec 2003).
+  - column: LOWER60SECSUPPLYPRICE
+    data_type: DECIMAL(15,5)
+    comment: Lower 60SEC Supplyprice (Not used since Dec 2003).
+  - column: LOWER60SECLOCALVIOLATION
+    data_type: DECIMAL(15,5)
+    comment: Lower 60SEC Localviolation (Not used since Dec 2003).
+  - column: LOWER60SECVIOLATION
+    data_type: DECIMAL(15,5)
+    comment: Lower 60SEC Violation (Not used since Dec 2003).
+  - column: LOWER60SECACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Lower 60SEC Actualavailability
+  - column: LOWER5MINDISPATCH
+    data_type: DECIMAL(15,5)
+    comment: Lower 5MIN Dispatch (Not used since Dec 2003).
+  - column: LOWER5MINIMPORT
+    data_type: DECIMAL(15,5)
+    comment: Lower 5MIN Import (Not used since Dec 2003).
+  - column: LOWER5MINLOCALDISPATCH
+    data_type: DECIMAL(15,5)
+    comment: Lower 5MIN Localdispatch (Not used since Dec 2003).
+  - column: LOWER5MINLOCALPRICE
+    data_type: DECIMAL(15,5)
+    comment: Lower 5MIN Localprice (Not used since Dec 2003).
+  - column: LOWER5MINLOCALREQ
+    data_type: DECIMAL(15,5)
+    comment: Lower 5MIN Localreq (Not used since Dec 2003).
+  - column: LOWER5MINPRICE
+    data_type: DECIMAL(15,5)
+    comment: Lower 5MIN Price (Not used since Dec 2003).
+  - column: LOWER5MINREQ
+    data_type: DECIMAL(15,5)
+    comment: Lower 5MIN Req (Not used since Dec 2003).
+  - column: LOWER5MINSUPPLYPRICE
+    data_type: DECIMAL(15,5)
+    comment: Lower 5MIN Supplyprice (Not used since Dec 2003).
+  - column: LOWER5MINLOCALVIOLATION
+    data_type: DECIMAL(15,5)
+    comment: Lower 5MIN Localviolation (Not used since Dec 2003).
+  - column: LOWER5MINVIOLATION
+    data_type: DECIMAL(15,5)
+    comment: Lower 5MIN Violation (Not used since Dec 2003).
+  - column: LOWER5MINACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Lower 5MIN Actualavailability
+  - column: LOWERREGDISPATCH
+    data_type: DECIMAL(15,5)
+    comment: Lower REG Dispatch (Not used since Dec 2003).
+  - column: LOWERREGIMPORT
+    data_type: DECIMAL(15,5)
+    comment: Lower REG Import (Not used since Dec 2003).
+  - column: LOWERREGLOCALDISPATCH
+    data_type: DECIMAL(15,5)
+    comment: Lower REG Localdispatch (Not used since Dec 2003).
+  - column: LOWERREGLOCALPRICE
+    data_type: DECIMAL(15,5)
+    comment: Lower REG Localprice (Not used since Dec 2003).
+  - column: LOWERREGLOCALREQ
+    data_type: DECIMAL(15,5)
+    comment: Lower REG Localreq (Not used since Dec 2003).
+  - column: LOWERREGPRICE
+    data_type: DECIMAL(15,5)
+    comment: Lower REG Price (Not used since Dec 2003).
+  - column: LOWERREGREQ
+    data_type: DECIMAL(15,5)
+    comment: Lower REG Req (Not used since Dec 2003).
+  - column: LOWERREGSUPPLYPRICE
+    data_type: DECIMAL(15,5)
+    comment: Lower REG Supplyprice (Not used since Dec 2003).
+  - column: LOWERREGLOCALVIOLATION
+    data_type: DECIMAL(15,5)
+    comment: Lower REG Localviolation (Not used since Dec 2003).
+  - column: LOWERREGVIOLATION
+    data_type: DECIMAL(15,5)
+    comment: Lower REG Violation (Not used since Dec 2003).
+  - column: LOWERREGACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Lower REG Actualavailability
+  - column: RAISE6SECDISPATCH
+    data_type: DECIMAL(15,5)
+    comment: Raise 6SEC Dispatch (Not used since Dec 2003).
+  - column: RAISE6SECIMPORT
+    data_type: DECIMAL(15,5)
+    comment: Raise 6SEC Import (Not used since Dec 2003).
+  - column: RAISE6SECLOCALDISPATCH
+    data_type: DECIMAL(15,5)
+    comment: Raise 6SEC Localdispatch (Not used since Dec 2003).
+  - column: RAISE6SECLOCALPRICE
+    data_type: DECIMAL(15,5)
+    comment: Raise 6SEC Localprice (Not used since Dec 2003).
+  - column: RAISE6SECLOCALREQ
+    data_type: DECIMAL(15,5)
+    comment: Raise 6SEC Localreq (Not used since Dec 2003).
+  - column: RAISE6SECPRICE
+    data_type: DECIMAL(15,5)
+    comment: Raise 6SEC Price (Not used since Dec 2003).
+  - column: RAISE6SECREQ
+    data_type: DECIMAL(15,5)
+    comment: Raise 6SEC Req (Not used since Dec 2003).
+  - column: RAISE6SECSUPPLYPRICE
+    data_type: DECIMAL(15,5)
+    comment: Raise 6SEC Supplyprice (Not used since Dec 2003).
+  - column: RAISE6SECLOCALVIOLATION
+    data_type: DECIMAL(15,5)
+    comment: Raise 6SEC Localviolation (Not used since Dec 2003).
+  - column: RAISE6SECVIOLATION
+    data_type: DECIMAL(15,5)
+    comment: Raise 6SEC Violation (Not used since Dec 2003).
+  - column: RAISE6SECACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Raise 6SEC Actualavailability
+  - column: RAISE60SECDISPATCH
+    data_type: DECIMAL(15,5)
+    comment: Raise 60SEC Dispatch (Not used since Dec 2003).
+  - column: RAISE60SECIMPORT
+    data_type: DECIMAL(15,5)
+    comment: Raise 60SEC Import (Not used since Dec 2003).
+  - column: RAISE60SECLOCALDISPATCH
+    data_type: DECIMAL(15,5)
+    comment: Raise 60SEC Localdispatch (Not used since Dec 2003).
+  - column: RAISE60SECLOCALPRICE
+    data_type: DECIMAL(15,5)
+    comment: Raise 60SEC Localprice (Not used since Dec 2003).
+  - column: RAISE60SECLOCALREQ
+    data_type: DECIMAL(15,5)
+    comment: Raise 60SEC Localreq (Not used since Dec 2003).
+  - column: RAISE60SECPRICE
+    data_type: DECIMAL(15,5)
+    comment: Raise 60SEC Price (Not used since Dec 2003).
+  - column: RAISE60SECREQ
+    data_type: DECIMAL(15,5)
+    comment: Raise 60SEC Req (Not used since Dec 2003).
+  - column: RAISE60SECSUPPLYPRICE
+    data_type: DECIMAL(15,5)
+    comment: Raise 60SEC Supplyprice (Not used since Dec 2003).
+  - column: RAISE60SECLOCALVIOLATION
+    data_type: DECIMAL(15,5)
+    comment: Raise 60SEC Localviolation (Not used since Dec 2003).
+  - column: RAISE60SECVIOLATION
+    data_type: DECIMAL(15,5)
+    comment: Raise 60SEC Violation (Not used since Dec 2003).
+  - column: RAISE60SECACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Raise 60SEC Actualavailability
+  - column: RAISE5MINDISPATCH
+    data_type: DECIMAL(15,5)
+    comment: Raise 5MIN Dispatch (Not used since Dec 2003).
+  - column: RAISE5MINIMPORT
+    data_type: DECIMAL(15,5)
+    comment: Raise 5MIN Import (Not used since Dec 2003).
+  - column: RAISE5MINLOCALDISPATCH
+    data_type: DECIMAL(15,5)
+    comment: Raise 5MIN Localdispatch (Not used since Dec 2003).
+  - column: RAISE5MINLOCALPRICE
+    data_type: DECIMAL(15,5)
+    comment: Raise 5MIN Localprice (Not used since Dec 2003).
+  - column: RAISE5MINLOCALREQ
+    data_type: DECIMAL(15,5)
+    comment: Raise 5MIN Localreq (Not used since Dec 2003).
+  - column: RAISE5MINPRICE
+    data_type: DECIMAL(15,5)
+    comment: Raise 5MIN Price (Not used since Dec 2003).
+  - column: RAISE5MINREQ
+    data_type: DECIMAL(15,5)
+    comment: Raise 5MIN Req (Not used since Dec 2003).
+  - column: RAISE5MINSUPPLYPRICE
+    data_type: DECIMAL(15,5)
+    comment: Raise 5MIN Supplyprice (Not used since Dec 2003).
+  - column: RAISE5MINLOCALVIOLATION
+    data_type: DECIMAL(15,5)
+    comment: Raise 5MIN Localviolation (Not used since Dec 2003).
+  - column: RAISE5MINVIOLATION
+    data_type: DECIMAL(15,5)
+    comment: Raise 5MIN Violation (Not used since Dec 2003).
+  - column: RAISE5MINACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Raise 5MIN Actualavailability
+  - column: RAISEREGDISPATCH
+    data_type: DECIMAL(15,5)
+    comment: Raise REG Dispatch (Not used since Dec 2003).
+  - column: RAISEREGIMPORT
+    data_type: DECIMAL(15,5)
+    comment: Raise REG Import (Not used since Dec 2003).
+  - column: RAISEREGLOCALDISPATCH
+    data_type: DECIMAL(15,5)
+    comment: Raise REG Localdispatch (Not used since Dec 2003).
+  - column: RAISEREGLOCALPRICE
+    data_type: DECIMAL(15,5)
+    comment: Raise REG Localprice (Not used since Dec 2003).
+  - column: RAISEREGLOCALREQ
+    data_type: DECIMAL(15,5)
+    comment: Raise REG Localreq (Not used since Dec 2003).
+  - column: RAISEREGPRICE
+    data_type: DECIMAL(15,5)
+    comment: Raise REG Price (Not used since Dec 2003).
+  - column: RAISEREGREQ
+    data_type: DECIMAL(15,5)
+    comment: Raise REG Req (Not used since Dec 2003).
+  - column: RAISEREGSUPPLYPRICE
+    data_type: DECIMAL(15,5)
+    comment: Raise REG Supplyprice (Not used since Dec 2003).
+  - column: RAISEREGLOCALVIOLATION
+    data_type: DECIMAL(15,5)
+    comment: Raise REG Localviolation (Not used since Dec 2003).
+  - column: RAISEREGVIOLATION
+    data_type: DECIMAL(15,5)
+    comment: Raise REG Violation (Not used since Dec 2003).
+  - column: RAISEREGACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Raise REG Actualavailability
+  - column: TOTALINTERMITTENTGENERATION
+    data_type: DECIMAL(15,5)
+    comment: Allowance made for non-scheduled generation in the demand forecast (MW).
+  - column: DEMAND_AND_NONSCHEDGEN
+    data_type: DECIMAL(15,5)
+    comment: Sum of cleared scheduled generation, imports, and non-scheduled generation (MW).
+  - column: UIGF
+    data_type: DECIMAL(15,5)
+    comment: Regional aggregated Unconstrained Intermittent Generation Forecast (MW).
+  - column: SEMISCHEDULE_CLEAREDMW
+    data_type: DECIMAL(15,5)
+    comment: Regional aggregated Semi-Scheduled generator Cleared MW.
+  - column: SEMISCHEDULE_COMPLIANCEMW
+    data_type: DECIMAL(15,5)
+    comment: Semi-Scheduled generator Cleared MW under Semi-Dispatch cap.
+  - column: SS_SOLAR_UIGF
+    data_type: DECIMAL(15,5)
+    comment: Unconstrained Intermittent Generation Forecast for solar.
+  - column: SS_WIND_UIGF
+    data_type: DECIMAL(15,5)
+    comment: Unconstrained Intermittent Generation Forecast for wind.
+  - column: SS_SOLAR_CLEAREDMW
+    data_type: DECIMAL(15,5)
+    comment: Semi-Scheduled solar Cleared MW.
+  - column: SS_WIND_CLEAREDMW
+    data_type: DECIMAL(15,5)
+    comment: Semi-Scheduled wind Cleared MW.
+  - column: SS_SOLAR_COMPLIANCEMW
+    data_type: DECIMAL(15,5)
+    comment: Solar Cleared MW under Semi-Dispatch cap.
+  - column: SS_WIND_COMPLIANCEMW
+    data_type: DECIMAL(15,5)
+    comment: Wind Cleared MW under Semi-Dispatch cap.
+  - column: LORSURPLUS
+    data_type: DECIMAL(16,6)
+    comment: Not in use after 17 Feb 2006. Total short term generation capacity reserve used in assessing
+      lack of reserve condition.
+  - column: LRCSURPLUS
+    data_type: DECIMAL(16,6)
+    comment: Not in use after 17 Feb 2006. Total short term generation capacity reserve above the stated
+      low reserve condition requirement.
+  - column: AGGEGATEDISPATCHERROR
+    data_type: DECIMAL(15,5)
+    comment: Calculated dispatch error
+  - column: AGGREGATEDISPATCHERROR
+    data_type: DECIMAL(15,5)
+    comment: Calculated dispatch error
+  - column: LASTCHANGED
+    data_type: string
+    comment: Last date and time record changed
+  - column: INITIALSUPPLY
+    data_type: DECIMAL(15,5)
+    comment: Sum of initial generation and import for region
+  - column: CLEAREDSUPPLY
+    data_type: DECIMAL(15,5)
+    comment: Sum of cleared generation and import for region
+  - column: WDR_INITIALMW
+    data_type: DECIMAL(15,5)
+    comment: Regional aggregated MW value at start of interval for Wholesale Demand Response (WDR) units
+  - column: WDR_AVAILABLE
+    data_type: DECIMAL(15,5)
+    comment: Regional aggregated available MW for Wholesale Demand Response (WDR) units
+  - column: WDR_DISPATCHED
+    data_type: DECIMAL(15,5)
+    comment: Regional aggregated dispatched MW for Wholesale Demand Response (WDR) units
+  - column: RAISE1SECLOCALDISPATCH
+    data_type: DECIMAL(15,5)
+    comment: Total Raise1Sec Dispatched in Region - RegionSolution element R1Dispatch attribute
+  - column: LOWER1SECLOCALDISPATCH
+    data_type: DECIMAL(15,5)
+    comment: Total Lower1Sec Dispatched in Region - RegionSolution element L1Dispatch attribute
+  - column: RAISE1SECACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Trapezium adjusted Raise1Sec availability (summated from UnitSolution)
+  - column: LOWER1SECACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Trapezium adjusted Lower1Sec availability (summated from UnitSolution)
+  - column: SS_SOLAR_AVAILABILITY
+    data_type: DECIMAL(15,5)
+    comment: For Semi-Scheduled units. Aggregate Energy Availability from Solar units in that region
+  - column: SS_WIND_AVAILABILITY
+    data_type: DECIMAL(15,5)
+    comment: For Semi-Scheduled units. Aggregate Energy Availability from Wind units in that region
+  - column: BDU_ENERGY_STORAGE
+    data_type: DECIMAL(15,5)
+    comment: Regional aggregated energy storage where the DUID type is BDU (MWh)
+  - column: BDU_MIN_AVAIL
+    data_type: DECIMAL(15,5)
+    comment: Total available load side BDU summated for region (MW)
+  - column: BDU_MAX_AVAIL
+    data_type: DECIMAL(15,5)
+    comment: Total available generation side BDU summated for region (MW)
+  - column: BDU_CLEAREDMW_GEN
+    data_type: DECIMAL(15,5)
+    comment: Regional aggregated cleared MW where the DUID type is BDU. Net of export (Generation)
+  - column: BDU_CLEAREDMW_LOAD
+    data_type: DECIMAL(15,5)
+    comment: Regional aggregated cleared MW where the DUID type is BDU. Net of import (Load)
+  - column: BDU_INITIAL_ENERGY_STORAGE
+    data_type: DECIMAL(15,5)
+    comment: Energy Storage for BDU at the start of the interval(MWh) - Region Aggregated
+  - column: DECGEN_INITIAL_ENERGY_STORAGE
+    data_type: DECIMAL(15,5)
+    comment: Energy storage for Daily Energy Constrained Scheduled Generating Units at the start of the
+      interval(MWh) - Region Aggregated

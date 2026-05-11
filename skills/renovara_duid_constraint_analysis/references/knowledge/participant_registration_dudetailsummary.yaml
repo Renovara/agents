@@ -1,0 +1,106 @@
+PARTICIPANT_REGISTRATION_DUDETAILSUMMARY:
+  table_name: silver___participant_registration_dudetailsummary
+  display_name: Participant Registration Dudetailsummary
+  table_comment: DUDETAILSUMMARY sets out a single summary unit table so reducing the need for participants
+    to use the various dispatchable unit detail and owner tables to establish generating unit specific
+    details.
+  primary_keys:
+  - DUID
+  - START_DATE
+  indexes:
+  - LASTCHANGED
+  visibility: Public
+  update_frequency: Monthly
+  schema:
+  - column: DUID
+    data_type: string
+    comment: Dispatchable Unit Identifier
+  - column: START_DATE
+    data_type: string
+    comment: Start date for effective record
+  - column: END_DATE
+    data_type: string
+    comment: End date for effective record
+  - column: DISPATCHTYPE
+    data_type: string
+    comment: Either Generator or Load
+  - column: CONNECTIONPOINTID
+    data_type: string
+    comment: Country wide - Unique id of a connection point
+  - column: REGIONID
+    data_type: string
+    comment: Region identifier that unit is in
+  - column: STATIONID
+    data_type: string
+    comment: Station that unit is in
+  - column: PARTICIPANTID
+    data_type: string
+    comment: Participant that owns unit during effective record period
+  - column: LASTCHANGED
+    data_type: string
+    comment: Last date and time record changed
+  - column: TRANSMISSIONLOSSFACTOR
+    data_type: decimal(15,5)
+    comment: The transmission level loss factor for currently assigned connection point
+  - column: STARTTYPE
+    data_type: string
+    comment: Unit start type; typically Fast, Slow or Non Dispatched
+  - column: DISTRIBUTIONLOSSFACTOR
+    data_type: decimal(15,5)
+    comment: The distribution loss factor to the currently assigned connection point
+  - column: MINIMUM_ENERGY_PRICE
+    data_type: decimal(9,2)
+    comment: Floored Offer/Bid Energy Price adjusted for TLF, DLF and MPF
+  - column: MAXIMUM_ENERGY_PRICE
+    data_type: decimal(9,2)
+    comment: Capped Offer/Bid Energy Price adjusted for TLF, DLF and VoLL
+  - column: SCHEDULE_TYPE
+    data_type: string
+    comment: 'Scheduled status of the unit: ''SCHEDULED'', ''NON-SCHEDULED'', ''SEMI-SCHEDULED'''
+  - column: MIN_RAMP_RATE_UP
+    data_type: decimal(6,0)
+    comment: MW/Min. Calculated Minimum Ramp Rate Up value accepted for Energy Offers or Bids with explanation
+  - column: MIN_RAMP_RATE_DOWN
+    data_type: decimal(6,0)
+    comment: MW/Min. Calculated Minimum Ramp Rate Down value accepted for Energy Offers or Bids with explanation
+  - column: MAX_RAMP_RATE_UP
+    data_type: decimal(6,0)
+    comment: Maximum ramp up rate for Unit (MW/min) - from DUDetail table
+  - column: MAX_RAMP_RATE_DOWN
+    data_type: decimal(6,0)
+    comment: Maximum ramp down rate for Unit (MW/min) - from DUDetail table
+  - column: IS_AGGREGATED
+    data_type: tinyint
+    comment: Whether the DUID is classified as an "Aggregated Unit" under the rules. This impacts the
+      Minimum Ramp Rate calculation
+  - column: DISPATCHSUBTYPE
+    data_type: STRING
+    comment: Additional information for DISPATCHTYPE; for DISPATCHTYPE = LOAD, subtype value is WDR for
+      Wholesale Demand Response units
+  - column: ADG_ID
+    data_type: STRING
+    comment: Aggregate Dispatch Group; group into which the DUID is aggregated for Conformance, null if
+      not aggregated
+  - column: LOAD_MINIMUM_ENERGY_PRICE
+    data_type: DECIMAL(9,2)
+    comment: BDU only; floored Offer/Bid Energy Price adjusted for TLF, DLF and MPF for energy imports
+  - column: LOAD_MAXIMUM_ENERGY_PRICE
+    data_type: DECIMAL(9,2)
+    comment: BDU only; capped Offer/Bid Energy Price adjusted for TLF, DLF and VoLL for energy imports
+  - column: LOAD_MIN_RAMP_RATE_UP
+    data_type: INT
+    comment: BDU only; MW/Min calculated Minimum Ramp Rate Up for Energy Offers or Bids with explicit
+      ramp rates for energy imports
+  - column: LOAD_MIN_RAMP_RATE_DOWN
+    data_type: INT
+    comment: BDU only; MW/Min calculated Minimum Ramp Rate Down for Energy Offers or Bids with explicit
+      ramp rates for energy imports
+  - column: LOAD_MAX_RAMP_RATE_UP
+    data_type: INT
+    comment: BDU only; MW/Min registered Maximum Ramp Rate Up for Energy Offers or Bids for energy imports
+  - column: LOAD_MAX_RAMP_RATE_DOWN
+    data_type: INT
+    comment: BDU only; MW/Min registered Maximum Ramp Rate Down for Energy Offers or Bids for energy imports
+  - column: SECONDARY_TLF
+    data_type: DECIMAL(18,8)
+    comment: Used in Bidding, Dispatch and Settlements; only populated where Dual TLFs apply

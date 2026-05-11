@@ -1,0 +1,81 @@
+NEM_REGISTRATION_EXEMPTION_LIST:
+  table_name: silver_nem_registration_exemption_list
+  display_name: Nem Registration Exemption List
+  table_comment: Participant and asset registration list, including DUIDs, registered capacity, fuel source,
+    and technology type. Sourced from AEMO's registration and exemption list publication.
+  primary_keys:
+  - DUID
+  visibility: Public
+  update_frequency: As published by AEMO
+  schema:
+  - column: PARTICIPANT
+    data_type: string
+    comment: The registered participant in the NEM.
+  - column: STATION_NAME
+    data_type: string
+    comment: The name of the generation or load station.
+  - column: REGIONID
+    data_type: string
+    comment: The NEM region in which the asset is located.
+  - column: DISPATCH_TYPE
+    data_type: string
+    comment: Indicates if the asset is a Load, Generation Unit, or Bi-directional Unit.
+  - column: CATEGORY
+    data_type: string
+    comment: The category of the participant or asset.
+  - column: CLASSIFICATION
+    data_type: string
+    comment: The classification of the asset (e.g., scheduled, semi-scheduled, or non-scheduled).
+  - column: FUEL_SOURCE_PRIMARY
+    data_type: string
+    comment: The primary fuel source used by the asset.
+  - column: FUEL_SOURCE_DESCRIPTOR
+    data_type: string
+    comment: A descriptive identifier for the fuel source.
+  - column: TECHNOLOGY_TYPE_PRIMARY
+    data_type: string
+    comment: The primary technology type of the asset.
+  - column: TECHNOLOGY_TYPE_DESCRIPTOR
+    data_type: string
+    comment: A descriptive identifier for the technology type.
+  - column: UNITS
+    data_type: string
+    comment: The number of units associated with the asset.
+  - column: AGGREGATION
+    data_type: string
+    comment: Aggregation details for the participant or asset.
+  - column: DUID
+    data_type: string
+    comment: The Dispatchable Unit Identifier for the asset.
+  - column: REG_CAP_GENERATION_MW
+    data_type: double
+    comment: The registered capacity of the generator in MW.
+  - column: MAX_CAP_GENERATION_MW
+    data_type: double
+    comment: The maximum generation capacity of the asset in MW.
+  - column: MAX_ROC_MIN_GENERATION
+    data_type: double
+    comment: Maximum Rate of Change (MW/minute) for generation.
+  - column: REG_CAP_CONSUMPTION_MW
+    data_type: double
+    comment: The registered capacity of the consumer in MW.
+  - column: MAX_CAP_CONSUMPTION_MW
+    data_type: double
+    comment: The maximum consumption capacity of the asset in MW.
+  - column: MAX_ROC_MIN_CONSUMPTION
+    data_type: double
+    comment: Maximum Rate of Change (MW/minute) for consumption.
+  - column: COMMENTS
+    data_type: double
+    comment: Additional comments or notes about the participant or asset.
+  - column: DISPATCH_UNIT_TYPE
+    data_type: string
+    comment: Derived column combining FUEL_SOURCE_PRIMARY and FUEL_SOURCE_DESCRIPTOR. Represents the generation
+      type of the dispatch unit (e.g., solar, black coal, hydro, wind, gas). Use this column when identifying
+      the generation type.
+  - column: GENERATOR_TYPE
+    data_type: string
+    comment: Derived column combining FUEL_SOURCE_PRIMARY and FUEL_SOURCE_DESCRIPTOR. Alias of DISPATCH_UNIT_TYPE.
+  - column: GENERATOR_FUEL_TYPE
+    data_type: string
+    comment: Derived column combining FUEL_SOURCE_PRIMARY and FUEL_SOURCE_DESCRIPTOR. Alias of DISPATCH_UNIT_TYPE.

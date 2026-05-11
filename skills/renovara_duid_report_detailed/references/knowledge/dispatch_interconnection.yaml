@@ -1,0 +1,51 @@
+DISPATCH_INTERCONNECTION:
+  table_name: silver_dispatchis_reports_dispatch_interconnection
+  display_name: Dispatch Interconnection
+  table_comment: Inter-regional flow information common to or aggregated for regulated (i.e. not MNSP)
+    Interconnectors spanning the From-Region and To-Region. Only the physical run is calculated.
+  primary_keys:
+  - FROM_REGIONID
+  - INTERVENTION
+  - RUNNO
+  - SETTLEMENTDATE
+  - TO_REGIONID
+  visibility: Public
+  update_frequency: Every 5 minutes
+  schema:
+  - column: SETTLEMENTDATE
+    data_type: string
+    comment: Market date starting at 04:05 (parsed to timestamp in silver). Timestamp is in AEST or Australia/Brisbane.
+  - column: RUNNO
+    data_type: smallint
+    comment: Dispatch run no; always 1
+  - column: INTERVENTION
+    data_type: tinyint
+    comment: Intervention case or not
+  - column: FROM_REGIONID
+    data_type: string
+    comment: Nominated RegionID from which the energy flows
+  - column: TO_REGIONID
+    data_type: string
+    comment: Nominated RegionID to which the energy flows
+  - column: DISPATCHINTERVAL
+    data_type: bigint
+    comment: Dispatch period identifier, from 001 to 288 in format YYYYMMDDPPP
+  - column: IRLF
+    data_type: decimal(15,5)
+    comment: Inter-Regional Loss Factor. Calculated based on the MWFLOW and the nominal From and To Region
+      losses.
+  - column: MWFLOW
+    data_type: decimal(16,6)
+    comment: Summed MW flow of the parallel regulated Interconnectors
+  - column: METEREDMWFLOW
+    data_type: decimal(16,6)
+    comment: Summed Metered MW flow of the parallel regulated Interconnectors
+  - column: FROM_REGION_MW_LOSSES
+    data_type: decimal(16,6)
+    comment: Losses across the Interconnection attributable to the nominal From Region
+  - column: TO_REGION_MW_LOSSES
+    data_type: decimal(16,6)
+    comment: Losses across the Interconnection attributable to the nominal To Region
+  - column: LASTCHANGED
+    data_type: string
+    comment: The datetime that the record was last changed

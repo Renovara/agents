@@ -1,0 +1,42 @@
+SPDCPC:
+  table_name: silver___spdcpc
+  display_name: Spdcpc
+  table_comment: SPDCONNECTIONPOINTCONSTRAINT contains the LHS factor terms applied to connection points
+    by generic constraints in dispatch, predispatch, and STPASA. A non-zero FACTOR for a (CONSTRAINTID,
+    EFFECTIVEDATE, VERSIONNO, CONNECTIONPOINTID, BIDTYPE) tuple means that constraint directly limits
+    the named connection point's energy or FCAS bid. Joining DISPATCH_CONSTRAINT.CONSTRAINTID + GENCONID_EFFECTIVEDATE
+    + GENCONID_VERSIONNO to this table, then to DUDETAILSUMMARY on CONNECTIONPOINTID, gives causal DUID-level
+    attribution of binding constraints (i.e. which constraints actually constrain a specific unit).
+  primary_keys:
+  - BIDTYPE
+  - CONNECTIONPOINTID
+  - EFFECTIVEDATE
+  - GENCONID
+  - VERSIONNO
+  indexes:
+  - LASTCHANGED
+  visibility: Public
+  update_frequency: Monthly
+  schema:
+  - column: CONNECTIONPOINTID
+    data_type: string
+    comment: Connection Point Identifier (joins to DUDETAILSUMMARY.CONNECTIONPOINTID)
+  - column: EFFECTIVEDATE
+    data_type: string
+    comment: Effective date of this record
+  - column: VERSIONNO
+    data_type: smallint
+    comment: Version number for the effective date
+  - column: GENCONID
+    data_type: string
+    comment: Generic constraint identifier (synonymous with CONSTRAINTID in DISPATCH_CONSTRAINT)
+  - column: BIDTYPE
+    data_type: string
+    comment: 'Bid type the factor applies to: ENERGY, RAISE6SEC, RAISE60SEC, RAISE5MIN, LOWER6SEC, LOWER60SEC,
+      LOWER5MIN, RAISEREG, LOWERREG'
+  - column: FACTOR
+    data_type: decimal(16,6)
+    comment: Constraint factor on the connection point's contribution to the LHS
+  - column: LASTCHANGED
+    data_type: string
+    comment: Last date and time record changed

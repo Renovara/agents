@@ -1,0 +1,60 @@
+DISPATCH_CONSTRAINT:
+  table_name: silver_dispatchis_reports_dispatch_constraint
+  display_name: Dispatch Constraint
+  table_comment: DISPATCHCONSTRAINT sets out details of all binding and interregion constraints in each
+    dispatch run. Invoked constraints can be established from GENCONSETINVOKE. Binding constraints show
+    as marginal value > $0. Interconnector constraints are listed so RHS (SCADA calculated limits) can
+    be reported.
+  primary_keys:
+  - CONSTRAINTID
+  - DISPATCHINTERVAL
+  - INTERVENTION
+  - RUNNO
+  - SETTLEMENTDATE
+  indexes:
+  - LASTCHANGED
+  - SETTLEMENTDATE
+  visibility: Public
+  update_frequency: Every 5 minutes
+  schema:
+  - column: SETTLEMENTDATE
+    data_type: string
+    comment: Market date starting at 04:05 (parsed to timestamp in silver). Timestamp is in AEST or Australia/Brisbane.
+  - column: RUNNO
+    data_type: smallint
+    comment: Dispatch run no; always 1
+  - column: CONSTRAINTID
+    data_type: string
+    comment: Generic Constraint identifier (synonymous with GenConID)
+  - column: DISPATCHINTERVAL
+    data_type: bigint
+    comment: Dispatch period identifier, from 001 to 288 in format YYYYMMDDPPP.
+  - column: INTERVENTION
+    data_type: tinyint
+    comment: Manual Intervention flag, which, if set (1), causes predispatch to solve twice.
+  - column: RHS
+    data_type: decimal(15,5)
+    comment: Right hand Side value as used in dispatch.
+  - column: MARGINALVALUE
+    data_type: decimal(15,5)
+    comment: $ Value of binding constraint
+  - column: VIOLATIONDEGREE
+    data_type: decimal(15,5)
+    comment: Degree of violation in MW
+  - column: LASTCHANGED
+    data_type: string
+    comment: Last date and time record changed
+  - column: DUID
+    data_type: string
+    comment: DUID to which the Constraint is confidential. Null denotes non-confidential
+  - column: GENCONID_EFFECTIVEDATE
+    data_type: string
+    comment: Effective date of the Generic Constraint (ConstraintID). Used to track the version of this
+      constraint applied in this dispatch interval
+  - column: GENCONID_VERSIONNO
+    data_type: bigint
+    comment: Version number of the Generic Constraint (ConstraintID). Used to track the version of this
+      constraint applied in this dispatch interval
+  - column: LHS
+    data_type: decimal(15,5)
+    comment: Aggregation of the constraint’s LHS term solution values

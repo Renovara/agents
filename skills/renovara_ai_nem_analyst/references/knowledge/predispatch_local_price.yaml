@@ -1,0 +1,38 @@
+PREDISPATCH_LOCAL_PRICE:
+  table_name: silver_predispatchis_reports_predispatch_local_price
+  display_name: Predispatch Local Price
+  table_comment: Sets out local pricing offsets associated with each DUID connection point for each dispatch
+    period.
+  primary_keys:
+  - DATETIME
+  - DUID
+  indexes:
+  - DATETIME
+  - DUID
+  visibility: Public
+  update_frequency: Daily
+  schema:
+  - column: PREDISPATCHSEQNO
+    data_type: string
+    comment: Unique identifier of predispatch run in the form YYYYMMDDPP with 01 at 04:30
+  - column: DATETIME
+    data_type: string
+    comment: The unique identifier for the interval within this study (parsed to timestamp in silver)
+  - column: DUID
+    data_type: string
+    comment: Dispatchable unit identifier
+  - column: PERIODID
+    data_type: string
+    comment: A period count, starting from 1 for each predispatch run. Use DATETIME to determine half
+      hour period
+  - column: LOCAL_PRICE_ADJUSTMENT
+    data_type: decimal(10,2)
+    comment: 'Aggregate Constraint contribution cost of this unit: Sum(MarginalValue x Factor) for all
+      relevant Constraints'
+  - column: LOCALLY_CONSTRAINED
+    data_type: tinyint
+    comment: 'Key for LOCAL_PRICE_ADJUSTMENT: 2 = at least one Outage Constraint; 1 = at least 1 System
+      Normal Constraint (and no Outage Constraint); 0 = No System Normal or Outage Constraints'
+  - column: LASTCHANGED
+    data_type: string
+    comment: Last date and time record changed (parsed to timestamp in silver)

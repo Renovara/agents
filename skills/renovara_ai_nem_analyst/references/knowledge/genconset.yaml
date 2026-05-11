@@ -1,0 +1,38 @@
+GENCONSET:
+  table_name: silver___genconset
+  display_name: Genconset
+  table_comment: GENCONSET maps generic constraint sets (GENCONSETID) to the individual constraints (GENCONID)
+    they contain. Constraint sets are invoked or revoked together (see GENCONSETINVOKE), and a single
+    set may contain many constraints. Joining DISPATCH_CONSTRAINT.CONSTRAINTID = GENCONSET.GENCONID and
+    then to GENCONDATA gives the descriptive context of any binding constraint in dispatch.
+  primary_keys:
+  - EFFECTIVEDATE
+  - GENCONID
+  - GENCONSETID
+  - VERSIONNO
+  indexes:
+  - LASTCHANGED
+  visibility: Public
+  update_frequency: Monthly
+  schema:
+  - column: GENCONSETID
+    data_type: string
+    comment: Unique identifier for the constraint set
+  - column: EFFECTIVEDATE
+    data_type: string
+    comment: Date this record becomes effective
+  - column: VERSIONNO
+    data_type: smallint
+    comment: Version number of the record for the given effective date
+  - column: GENCONID
+    data_type: string
+    comment: Generic constraint ID belonging to this set (joins to GENCONDATA.GENCONID)
+  - column: GENCONEFFDATE
+    data_type: string
+    comment: Unused since market start in 1998; data should be ignored
+  - column: GENCONVERSIONNO
+    data_type: smallint
+    comment: Unused since market start in 1998; data should be ignored
+  - column: LASTCHANGED
+    data_type: string
+    comment: Last date and time record changed

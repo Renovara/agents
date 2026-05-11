@@ -1,0 +1,36 @@
+P5MIN_LOCAL_PRICE:
+  table_name: silver_p5_reports_p5min_local_price
+  display_name: P5Min Local Price
+  table_comment: Sets out local pricing offsets associated with each DUID connection point for each dispatch
+    period.
+  primary_keys:
+  - DUID
+  - INTERVAL_DATETIME
+  - RUN_DATETIME
+  indexes:
+  - RUN_DATETIME
+  - INTERVAL_DATETIME
+  - DUID
+  visibility: Public
+  update_frequency: Daily
+  schema:
+  - column: RUN_DATETIME
+    data_type: string
+    comment: Unique timestamp identifier for this study (parsed to timestamp in silver)
+  - column: INTERVAL_DATETIME
+    data_type: string
+    comment: Unique identifier for the interval within this study (parsed to timestamp in silver)
+  - column: DUID
+    data_type: string
+    comment: Dispatchable unit identifier
+  - column: LOCAL_PRICE_ADJUSTMENT
+    data_type: decimal(10,2)
+    comment: 'Aggregate Constraint contribution cost of this unit: Sum(MarginalValue x Factor) for all
+      relevant Constraints'
+  - column: LOCALLY_CONSTRAINED
+    data_type: tinyint
+    comment: 'Key for Local_Price_Adjustment: 2 = at least one Outage Constraint; 1 = at least 1 System
+      Normal Constraint (and no Outage Constraint); 0 = No System Normal or Outage Constraints'
+  - column: LASTCHANGED
+    data_type: string
+    comment: Last date and time record changed

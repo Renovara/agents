@@ -1,0 +1,92 @@
+PREDISPATCH_INTERCONNECTOR_SOLN:
+  table_name: silver_predispatchis_reports_predispatch_interconnector_soln
+  display_name: Predispatch Interconnector Soln
+  table_comment: PREDISPATCHINTERCONNECTORRES records interconnector flows and losses for the periods
+    calculated in each predispatch run. Only binding and interconnector constraints are reported, including
+    FCAS export/import limits and the generic constraints setting the energy import and export limits.
+    MW losses may be negative depending on flow. Positive flow is defined from FROMREGION in INTERCONNECTOR.
+  primary_keys:
+  - DATETIME
+  - INTERCONNECTORID
+  indexes:
+  - PREDISPATCHSEQNO
+  - LASTCHANGED
+  visibility: Public
+  update_frequency: Daily
+  schema:
+  - column: PREDISPATCHSEQNO
+    data_type: string
+    comment: Unique identifier of predispatch run in the form YYYYMMDDPP with 01 at 04:30
+  - column: RUNNO
+    data_type: smallint
+    comment: SPD Pre-Dispatch run number, typically 1; increments if the case is re-run
+  - column: INTERCONNECTORID
+    data_type: string
+    comment: Interconnector identifier
+  - column: PERIODID
+    data_type: string
+    comment: Period count starting from 1 for each Pre-Dispatch run. Use DATETIME to determine half hour
+      period.
+  - column: INTERVENTION
+    data_type: tinyint
+    comment: Flag indicating if result set was sourced from pricing or physical run. 0 = pricing run;
+      1 = physical run. If no intervention, both runs correspond to 0.
+  - column: METEREDMWFLOW
+    data_type: decimal(15,5)
+    comment: Metered MW flow from EMS. For periods after the first in a run, this is the cleared target
+      for the previous period of that Pre-Dispatch run.
+  - column: MWFLOW
+    data_type: decimal(15,5)
+    comment: Calculated MW flow
+  - column: MWLOSSES
+    data_type: decimal(15,5)
+    comment: Calculated MW losses (may be negative depending on flow)
+  - column: MARGINALVALUE
+    data_type: decimal(15,5)
+    comment: Dollar marginal value of interconnector constraint from SPD
+  - column: VIOLATIONDEGREE
+    data_type: decimal(15,5)
+    comment: Degree of violation of interconnector constraint in MW
+  - column: LASTCHANGED
+    data_type: string
+    comment: Last changed date and time (parsed to timestamp in silver)
+  - column: DATETIME
+    data_type: string
+    comment: Period date and time (parsed to timestamp in silver)
+  - column: EXPORTLIMIT
+    data_type: decimal(15,5)
+    comment: Calculated export limit
+  - column: IMPORTLIMIT
+    data_type: decimal(15,5)
+    comment: Calculated import limit
+  - column: MARGINALLOSS
+    data_type: decimal(15,5)
+    comment: Marginal loss factor, used to adjust bids between reports
+  - column: EXPORTGENCONID
+    data_type: string
+    comment: Generic constraint setting the export limit
+  - column: IMPORTGENCONID
+    data_type: string
+    comment: Generic constraint setting the import limit
+  - column: FCASEXPORTLIMIT
+    data_type: decimal(15,5)
+    comment: Calculated export limit applying to energy + FCAS
+  - column: FCASIMPORTLIMIT
+    data_type: decimal(15,5)
+    comment: Calculated import limit applying to energy + FCAS
+  - column: LOCAL_PRICE_ADJUSTMENT_EXPORT
+    data_type: decimal(10,2)
+    comment: 'Aggregate constraint contribution cost of this interconnector for export: Sum(MarginalValue
+      × Factor) for all relevant constraints where Factor ≥ 0.'
+  - column: LOCALLY_CONSTRAINED_EXPORT
+    data_type: tinyint
+    comment: 'Key for LOCAL_PRICE_ADJUSTMENT_EXPORT: 2 = at least one Outage Constraint; 1 = at least
+      one System Normal Constraint (and no Outage Constraint); 0 = no System Normal or Outage Constraints.'
+  - column: LOCAL_PRICE_ADJUSTMENT_IMPORT
+    data_type: decimal(10,2)
+    comment: 'Aggregate constraint contribution cost of this interconnector for import: Sum(MarginalValue
+      × Factor) for all relevant constraints where Factor ≥ 0.'
+  - column: LOCALLY_CONSTRAINED_IMPORT
+    data_type: tinyint
+    comment: 'Key for LOCAL_PRICE_ADJUSTMENT_IMPORT: 2 = at least one Outage Constraint; 1 = at least
+      one System Normal Constraint (and no Outage Constraint); 0 = no System Normal or Outage Constraints.'

@@ -1,0 +1,44 @@
+OPENELECTRICITY_FACILITIES:
+  table_name: silver_openelectricity_facilities
+  display_name: Openelectricity Facilities
+  table_comment: Facility-level metadata sourced from openelectricity.org.au. Covers generation and storage
+    facilities in the NEM with their location, network region, and descriptive metadata. Use for facility-level
+    joins and technology grouping.
+  primary_keys:
+  - facility_code
+  visibility: Public
+  update_frequency: Daily
+  schema:
+  - column: ingest_ts
+    data_type: timestamp
+    comment: Timestamp the row was ingested into the silver table (UTC).
+  - column: source_file
+    data_type: string
+    comment: The source file the row was ingested from.
+  - column: facility_code
+    data_type: string
+    comment: Unique facility identifier used by openelectricity.org.au.
+  - column: facility_name
+    data_type: string
+    comment: Human-readable facility name.
+  - column: network_id
+    data_type: string
+    comment: Network identifier (e.g., NEM, WEM).
+  - column: network_region
+    data_type: string
+    comment: NEM region code for the facility (e.g., NSW1, QLD1).
+  - column: description
+    data_type: string
+    comment: Free-text description of the facility.
+  - column: lat
+    data_type: double
+    comment: Facility latitude.
+  - column: lng
+    data_type: double
+    comment: Facility longitude.
+  - column: created_at
+    data_type: string
+    comment: Facility record creation timestamp (as published).
+  - column: updated_at
+    data_type: string
+    comment: Facility record last-update timestamp (as published).

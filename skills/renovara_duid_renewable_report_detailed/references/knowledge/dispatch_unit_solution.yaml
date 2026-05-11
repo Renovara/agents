@@ -1,0 +1,228 @@
+DISPATCH_UNIT_SOLUTION:
+  table_name: silver_next_day_dispatch_dispatch_unit_solution
+  display_name: Dispatch Unit Solution
+  table_comment: DISPATCHLOAD set out the current SCADA MW and target MW for each dispatchable unit, including
+    relevant Frequency Control Ancillary Services (FCAS) enabling targets for each five minutes and additional
+    fields to handle the new Ancillary Services functionality. Fast Start Plant status is indicated by
+    dispatch mode.
+  primary_keys:
+  - DUID
+  - INTERVENTION
+  - RUNNO
+  - SETTLEMENTDATE
+  indexes:
+  - SETTLEMENTDATE
+  - DUID
+  visibility: Public
+  update_frequency: Daily
+  schema:
+  - column: SETTLEMENTDATE
+    data_type: string
+    comment: Market date and time starting at 04:05. Timestamp is in AEST or Australia/Brisbane.
+  - column: RUNNO
+    data_type: SMALLINT
+    comment: Dispatch run number; always 1
+  - column: DUID
+    data_type: STRING
+    comment: Dispatchable unit identifier
+  - column: TRADETYPE
+    data_type: TINYINT
+    comment: Not used
+  - column: DISPATCHINTERVAL
+    data_type: BIGINT
+    comment: Dispatch period identifier, from 001 to 288 in format YYYYMMDDPPP
+  - column: INTERVENTION
+    data_type: TINYINT
+    comment: Intervention flag; 1 = intervention run, 0 = normal
+  - column: CONNECTIONPOINTID
+    data_type: STRING
+    comment: Connection point identifier for DUID
+  - column: DISPATCHMODE
+    data_type: TINYINT
+    comment: Dispatch mode for fast start plant (0–4)
+  - column: AGCSTATUS
+    data_type: TINYINT
+    comment: 'Automatic Generation Control status: 1 = on, 0 = off'
+  - column: INITIALMW
+    data_type: DECIMAL(15,5)
+    comment: Initial MW at start of period
+  - column: TOTALCLEARED
+    data_type: DECIMAL(15,5)
+    comment: Target MW for end of period
+  - column: RAMPDOWNRATE
+    data_type: DECIMAL(15,5)
+    comment: Ramp down rate used in dispatch (min of bid or telemetered rate)
+  - column: RAMPUPRATE
+    data_type: DECIMAL(15,5)
+    comment: Ramp up rate used in dispatch (min of bid or telemetered rate)
+  - column: LOWER5MIN
+    data_type: DECIMAL(15,5)
+    comment: Lower 5-minute reserve target
+  - column: LOWER60SEC
+    data_type: DECIMAL(15,5)
+    comment: Lower 60-second reserve target
+  - column: LOWER6SEC
+    data_type: DECIMAL(15,5)
+    comment: Lower 6-second reserve target
+  - column: RAISE5MIN
+    data_type: DECIMAL(15,5)
+    comment: Raise 5-minute reserve target
+  - column: RAISE60SEC
+    data_type: DECIMAL(15,5)
+    comment: Raise 60-second reserve target
+  - column: RAISE6SEC
+    data_type: DECIMAL(15,5)
+    comment: Raise 6-second reserve target
+  - column: MARGINALVALUE
+    data_type: DECIMAL(15,5)
+    comment: Marginal $ value for energy
+  - column: VIOLATIONDEGREE
+    data_type: DECIMAL(15,5)
+    comment: Violation MW energy
+  - column: LASTCHANGED
+    data_type: string
+    comment: Last date and time record changed
+  - column: LOWERREG
+    data_type: DECIMAL(15,5)
+    comment: Lower regulation reserve target
+  - column: RAISEREG
+    data_type: DECIMAL(15,5)
+    comment: Raise regulation reserve target
+  - column: AVAILABILITY
+    data_type: DECIMAL(15,5)
+    comment: Bid energy availability
+  - column: RAISE6SECFLAGS
+    data_type: TINYINT
+    comment: 'Raise 6s status flag (bitmask 0–4): 0=unavailable, 1=enabled, 3=trapped, 4=stranded'
+  - column: LOWER6SECFLAGS
+    data_type: TINYINT
+    comment: 'Lower 6s status flag (bitmask 0–4): 0=unavailable, 1=enabled, 3=trapped, 4=stranded'
+  - column: RAISE60SECFLAGS
+    data_type: TINYINT
+    comment: Raise 60s status flag (bitmask 0–4)
+  - column: LOWER60SECFLAGS
+    data_type: TINYINT
+    comment: Lower 60s status flag (bitmask 0–4)
+  - column: RAISE5MINFLAGS
+    data_type: TINYINT
+    comment: Raise 5m status flag (bitmask 0–4)
+  - column: LOWER5MINFLAGS
+    data_type: TINYINT
+    comment: Lower 5m status flag (bitmask 0–4)
+  - column: RAISEREGFLAGS
+    data_type: TINYINT
+    comment: Raise regulation flag (bitmask 0–4)
+  - column: LOWERREGFLAGS
+    data_type: TINYINT
+    comment: Lower regulation flag (bitmask 0–4)
+  - column: RAISEREGACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Trapezium-adjusted raise regulation availability
+  - column: LOWER6SECACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Trapezium-adjusted lower 6s availability
+  - column: LOWER60SECACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Trapezium-adjusted lower 60s availability
+  - column: LOWER5MINACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Trapezium-adjusted lower 5m availability
+  - column: LOWERREGACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Trapezium-adjusted lower regulation availability
+  - column: SEMIDISPATCHCAP
+    data_type: TINYINT
+    comment: Boolean flag (0/1) indicating if target is capped
+  - column: DOWNEPF
+    data_type: DECIMAL(15,5)
+    comment: Not used
+  - column: UPEPF
+    data_type: DECIMAL(15,5)
+    comment: Not used
+  - column: MARGINAL5MINVALUE
+    data_type: DECIMAL(15,5)
+    comment: Marginal $ value for 5 min
+  - column: MARGINAL60SECVALUE
+    data_type: DECIMAL(15,5)
+    comment: Marginal $ value for 60 seconds
+  - column: MARGINAL6SECVALUE
+    data_type: DECIMAL(15,5)
+    comment: Marginal $ value for 6 seconds
+  - column: VIOLATION5MINDEGREE
+    data_type: DECIMAL(15,5)
+    comment: Violation MW 5 min
+  - column: VIOLATION60SECDEGREE
+    data_type: DECIMAL(15,5)
+    comment: Violation MW 60 seconds
+  - column: VIOLATION6SECDEGREE
+    data_type: DECIMAL(15,5)
+    comment: Violation MW 6 seconds
+  - column: RAISEREGAVAILABILITY
+    data_type: DECIMAL(15,5)
+    comment: RaiseReg availability - minimum of bid and telemetered value
+  - column: RAISEREGENABLEMENTMAX
+    data_type: DECIMAL(15,5)
+    comment: RaiseReg enablement max point - minimum of bid and telemetered value
+  - column: RAISEREGENABLEMENTMIN
+    data_type: DECIMAL(15,5)
+    comment: RaiseReg Enablement Min point - maximum of bid and telemetered value
+  - column: LOWERREGAVAILABILITY
+    data_type: DECIMAL(15,5)
+    comment: Lower Reg availability - minimum of bid and telemetered value
+  - column: LOWERREGENABLEMENTMAX
+    data_type: DECIMAL(15,5)
+    comment: Lower Reg enablement Max point - minimum of bid and telemetered value
+  - column: LOWERREGENABLEMENTMIN
+    data_type: DECIMAL(15,5)
+    comment: Lower Reg Enablement Min point - maximum of bid and telemetered value
+  - column: RAISE6SECACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Trapezium adjusted raise 6sec availability
+  - column: RAISE60SECACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Trapezium adjusted raise 60sec availability
+  - column: RAISE5MINACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Trapezium adjusted raise 5min availability
+  - column: DISPATCHMODETIME
+    data_type: SMALLINT
+    comment: Minutes for which the unit has been in the current DISPATCHMODE. From NEMDE TRADERSOLUTION
+      element FSTARGETMODETIME attribute.
+  - column: LOWER1SEC
+    data_type: DECIMAL(15,5)
+    comment: Dispatched Lower1Sec - TraderSolution element L1Target attribute
+  - column: RAISE1SEC
+    data_type: DECIMAL(15,5)
+    comment: Dispatched Raise1Sec - TraderSolution element R1Target attribute
+  - column: RAISE1SECFLAGS
+    data_type: TINYINT
+    comment: TraderSolution element R1Flags attribute
+  - column: LOWER1SECFLAGS
+    data_type: TINYINT
+    comment: TraderSolution element L1Flags attribute
+  - column: RAISE1SECACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Trapezium adjusted Raise 1Sec Availability
+  - column: LOWER1SECACTUALAVAILABILITY
+    data_type: DECIMAL(16,6)
+    comment: Trapezium adjusted Lower 1Sec Availability
+  - column: CONFORMANCE_MODE
+    data_type: INT
+    comment: Mode specific to units within an aggregate. 0 - no monitoring, 1 - aggregate monitoring,
+      2 - individual monitoring due to constraint
+  - column: UIGF
+    data_type: DECIMAL(15,5)
+    comment: For Semi-Scheduled units. Unconstrained Intermittent Generation Forecast value provided to
+      NEMDE
+  - column: INITIAL_ENERGY_STORAGE
+    data_type: DECIMAL(15,5)
+    comment: The energy storage at the start of this dispatch interval(MWh)
+  - column: ENERGY_STORAGE
+    data_type: DECIMAL(15,5)
+    comment: The projected energy storage based on cleared energy and regulation FCAS dispatch(MWh)
+  - column: MIN_AVAILABILITY
+    data_type: DECIMAL(15,5)
+    comment: BDU only. Load side availability (BidOfferPeriod.MAXAVAIL where DIRECTION = LOAD)
+  - column: ELEMENT_CAP
+    data_type: INT
+    comment: Cap on the number of turbines or inverters at a DUID.

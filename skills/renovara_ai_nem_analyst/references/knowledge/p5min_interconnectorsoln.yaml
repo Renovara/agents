@@ -1,0 +1,90 @@
+P5MIN_INTERCONNECTORSOLN:
+  table_name: silver_p5_reports_p5min_interconnectorsoln
+  display_name: P5Min Interconnectorsoln
+  table_comment: The five-minute predispatch (P5Min) system provides projected dispatch for 12 dispatch
+    cycles (one hour). The P5Min cycle runs every 5 minutes to produce a dispatch and pricing schedule
+    to a 5-minute resolution covering the next hour. This table sets out the results of the capacity evaluation
+    for interconnectors, including calculated limits for each interval.
+  primary_keys:
+  - INTERCONNECTORID
+  - INTERVAL_DATETIME
+  - RUN_DATETIME
+  indexes:
+  - LASTCHANGED
+  visibility: Public
+  update_frequency: Daily
+  schema:
+  - column: RUN_DATETIME
+    data_type: string
+    comment: Unique timestamp identifier for this study
+  - column: INTERCONNECTORID
+    data_type: string
+    comment: Interconnector identifier
+  - column: INTERVAL_DATETIME
+    data_type: string
+    comment: Unique identifier for the interval within this study
+  - column: METEREDMWFLOW
+    data_type: decimal(15,5)
+    comment: SCADA MW flow measured at run start. For periods after the first in a P5MIN run, this is
+      the cleared target for the previous period of that run.
+  - column: MWFLOW
+    data_type: decimal(15,5)
+    comment: Cleared interconnector loading level (MW)
+  - column: MWLOSSES
+    data_type: decimal(15,5)
+    comment: Interconnector losses at cleared flow
+  - column: MARGINALVALUE
+    data_type: decimal(15,5)
+    comment: Marginal cost of interconnector standing data limits (if binding)
+  - column: VIOLATIONDEGREE
+    data_type: decimal(15,5)
+    comment: Violation of interconnector standing data limits (MW)
+  - column: MNSP
+    data_type: tinyint
+    comment: Flag indicating MNSP registration
+  - column: EXPORTLIMIT
+    data_type: decimal(15,5)
+    comment: Calculated interconnector export limit based on invoked constraints and static interconnector
+      export limit
+  - column: IMPORTLIMIT
+    data_type: decimal(15,5)
+    comment: Calculated interconnector import limit based on invoked constraints and static interconnector
+      import limit (directional quantity with respect to interconnector flow)
+  - column: MARGINALLOSS
+    data_type: decimal(15,5)
+    comment: Marginal loss factor at the cleared flow
+  - column: EXPORTGENCONID
+    data_type: string
+    comment: Generic constraint setting the export limit
+  - column: IMPORTGENCONID
+    data_type: string
+    comment: Generic constraint setting the import limit
+  - column: FCASEXPORTLIMIT
+    data_type: decimal(15,5)
+    comment: Calculated export limit applying to energy plus FCAS
+  - column: FCASIMPORTLIMIT
+    data_type: decimal(15,5)
+    comment: Calculated import limit applying to energy plus FCAS
+  - column: LASTCHANGED
+    data_type: string
+    comment: Last changed date of this record
+  - column: LOCAL_PRICE_ADJUSTMENT_EXPORT
+    data_type: decimal(10,2)
+    comment: 'Aggregate constraint contribution cost for this interconnector: Sum(MarginalValue × Factor)
+      over all relevant constraints, for Export (Factor ≥ 0)'
+  - column: LOCALLY_CONSTRAINED_EXPORT
+    data_type: tinyint
+    comment: 'Key for Local_Price_Adjustment_Export: 2 = at least one Outage Constraint; 1 = at least
+      one System Normal Constraint (and no Outage Constraint); 0 = no System Normal or Outage Constraints'
+  - column: LOCAL_PRICE_ADJUSTMENT_IMPORT
+    data_type: decimal(10,2)
+    comment: 'Aggregate constraint contribution cost for this interconnector: Sum(MarginalValue × Factor)
+      over all relevant constraints, for Import (Factor ≥ 0)'
+  - column: LOCALLY_CONSTRAINED_IMPORT
+    data_type: tinyint
+    comment: 'Key for Local_Price_Adjustment_Import: 2 = at least one Outage Constraint; 1 = at least
+      one System Normal Constraint (and no Outage Constraint); 0 = no System Normal or Outage Constraints'
+  - column: INTERVENTION
+    data_type: tinyint
+    comment: 0 = pricing run, 1 = physical run. If there is no intervention in the market, both pricing
+      and physical runs correspond to INTERVENTION = 0.

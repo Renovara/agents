@@ -1,0 +1,35 @@
+DISPATCH_OFFERTRK:
+  table_name: silver_next_day_dispatch_dispatch_offertrk
+  display_name: Dispatch Offertrk
+  table_comment: DISPATCHOFFERTRK is the energy and ancillary service bid tracking table for the Dispatch
+    process. It identifies which bids from BIDDAYOFFER and BIDPEROFFER were applied for a given unit and
+    bid type for each dispatch interval. Data is confidential until the next trading day, when it becomes
+    public.
+  primary_keys:
+  - BIDTYPE
+  - DUID
+  - SETTLEMENTDATE
+  indexes:
+  - LASTCHANGED
+  - DUID
+  visibility: Public
+  update_frequency: Every 5 minutes
+  schema:
+  - column: SETTLEMENTDATE
+    data_type: STRING
+    comment: Market date starting at 04:05 (parsed to timestamp in silver). Timestamp is in AEST or Australia/Brisbane.
+  - column: DUID
+    data_type: STRING
+    comment: Dispatchable unit identifier.
+  - column: BIDTYPE
+    data_type: STRING
+    comment: Bid type identifier – the ancillary service to which the bid applies.
+  - column: BIDSETTLEMENTDATE
+    data_type: string
+    comment: Settlement date of bid applied.
+  - column: BIDOFFERDATE
+    data_type: string
+    comment: Offer date of bid applied.
+  - column: LASTCHANGED
+    data_type: string
+    comment: Last date and time record changed.

@@ -1,0 +1,219 @@
+DISPATCH_PRICE_LEGACY:
+  table_name: silver_dispatch_price
+  display_name: Dispatch Price Legacy
+  table_comment: Legacy regional dispatch price table (joe.bunton-owned, MANAGED). Mostly equivalent to
+    DISPATCH_PRICE but loaded by a separate process; columns lack per-column comments. Prefer DISPATCH_PRICE
+    (silver_dispatchis_reports_dispatch_price) for new analysis.
+  visibility: Public
+  update_frequency: Unknown (legacy table)
+  schema:
+  - column: I
+    data_type: string
+    comment: TODO - column comment not available in legacy table
+  - column: REPORTNAME1
+    data_type: string
+    comment: TODO - column comment not available in legacy table
+  - column: REPORTNAME2
+    data_type: string
+    comment: TODO - column comment not available in legacy table
+  - column: REPORT
+    data_type: string
+    comment: TODO - column comment not available in legacy table
+  - column: SETTLEMENTDATE
+    data_type: timestamp
+    comment: TODO - column comment not available in legacy table
+  - column: RUNNO
+    data_type: int
+    comment: TODO - column comment not available in legacy table
+  - column: REGIONID
+    data_type: string
+    comment: TODO - column comment not available in legacy table
+  - column: DISPATCHINTERVAL
+    data_type: string
+    comment: TODO - column comment not available in legacy table
+  - column: INTERVENTION
+    data_type: int
+    comment: TODO - column comment not available in legacy table
+  - column: RRP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: EEP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: ROP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: APCFLAG
+    data_type: int
+    comment: TODO - column comment not available in legacy table
+  - column: MARKETSUSPENDEDFLAG
+    data_type: int
+    comment: TODO - column comment not available in legacy table
+  - column: LASTCHANGED
+    data_type: date
+    comment: TODO - column comment not available in legacy table
+  - column: RAISE6SECRRP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: RAISE6SECROP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: RAISE6SECAPCFLAG
+    data_type: int
+    comment: TODO - column comment not available in legacy table
+  - column: RAISE60SECRRP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: RAISE60SECROP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: RAISE60SECAPCFLAG
+    data_type: int
+    comment: TODO - column comment not available in legacy table
+  - column: RAISE5MINRRP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: RAISE5MINROP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: RAISE5MINAPCFLAG
+    data_type: int
+    comment: TODO - column comment not available in legacy table
+  - column: RAISEREGRRP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: RAISEREGROP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: RAISEREGAPCFLAG
+    data_type: int
+    comment: TODO - column comment not available in legacy table
+  - column: LOWER6SECRRP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: LOWER6SECROP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: LOWER6SECAPCFLAG
+    data_type: int
+    comment: TODO - column comment not available in legacy table
+  - column: LOWER60SECRRP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: LOWER60SECROP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: LOWER60SECAPCFLAG
+    data_type: int
+    comment: TODO - column comment not available in legacy table
+  - column: LOWER5MINRRP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: LOWER5MINROP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: LOWER5MINAPCFLAG
+    data_type: int
+    comment: TODO - column comment not available in legacy table
+  - column: LOWERREGRRP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: LOWERREGROP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: LOWERREGAPCFLAG
+    data_type: int
+    comment: TODO - column comment not available in legacy table
+  - column: PRICE_STATUS
+    data_type: string
+    comment: TODO - column comment not available in legacy table
+  - column: PRE_AP_ENERGY_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: PRE_AP_RAISE6_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: PRE_AP_RAISE60_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: PRE_AP_RAISE5MIN_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: PRE_AP_RAISEREG_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: PRE_AP_LOWER6_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: PRE_AP_LOWER60_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: PRE_AP_LOWER5MIN_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: PRE_AP_LOWERREG_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: RAISE1SECRRP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: RAISE1SECROP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: RAISE1SECAPCFLAG
+    data_type: int
+    comment: TODO - column comment not available in legacy table
+  - column: LOWER1SECRRP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: LOWER1SECROP
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: LOWER1SECAPCFLAG
+    data_type: int
+    comment: TODO - column comment not available in legacy table
+  - column: PRE_AP_RAISE1_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: PRE_AP_LOWER1_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: CUMUL_PRE_AP_ENERGY_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: CUMUL_PRE_AP_RAISE6_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: CUMUL_PRE_AP_RAISE60_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: CUMUL_PRE_AP_RAISE5MIN_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: CUMUL_PRE_AP_RAISEREG_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: CUMUL_PRE_AP_LOWER6_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: CUMUL_PRE_AP_LOWER60_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: CUMUL_PRE_AP_LOWER5MIN_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: CUMUL_PRE_AP_LOWERREG_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: CUMUL_PRE_AP_RAISE1_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: CUMUL_PRE_AP_LOWER1_PRICE
+    data_type: double
+    comment: TODO - column comment not available in legacy table
+  - column: OCD_STATUS
+    data_type: string
+    comment: TODO - column comment not available in legacy table
+  - column: MII_STATUS
+    data_type: string
+    comment: TODO - column comment not available in legacy table

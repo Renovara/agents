@@ -1,0 +1,89 @@
+DISPATCH_CASE_SOLUTION:
+  table_name: silver_dispatchis_reports_dispatch_case_solution
+  display_name: Dispatch Case Solution
+  table_comment: DISPATCHCASESOLUTION shows information relating to the complete dispatch run. The fields
+    in DISPATCHCASESOLUTION provide an overview of the dispatch run results, allowing immediate identification
+    of conditions such as energy or FCAS deficiencies.
+  primary_keys:
+  - RUNNO
+  - SETTLEMENTDATE
+  indexes:
+  - LASTCHANGED
+  visibility: Public
+  update_frequency: Every 5 minutes
+  schema:
+  - column: SETTLEMENTDATE
+    data_type: string
+    comment: Dispatch interval end (parsed to timestamp in silver). Timestamp is in AEST or Australia/Brisbane.
+  - column: RUNNO
+    data_type: smallint
+    comment: Dispatch run no; always 1
+  - column: INTERVENTION
+    data_type: tinyint
+    comment: Intervention flag - refer to package documentation for definition and practical query examples
+  - column: CASESUBTYPE
+    data_type: string
+    comment: 'Overconstrained dispatch indicator: OCD = detecting over-constrained dispatch; null = no
+      special condition'
+  - column: SOLUTIONSTATUS
+    data_type: tinyint
+    comment: 'If non-zero indicated one of the following conditions: 1 = Supply Scarcity, Excess generation
+      or constraint violations; X = Model failure'
+  - column: SPDVERSION
+    data_type: string
+    comment: Current version of SPD
+  - column: NONPHYSICALLOSSES
+    data_type: tinyint
+    comment: Non-Physical Losses algorithm invoked occurred during this run
+  - column: TOTALOBJECTIVE
+    data_type: decimal(27,10)
+    comment: The Objective function from the LP
+  - column: TOTALAREAGENVIOLATION
+    data_type: decimal(15,5)
+    comment: Total Region Demand violations
+  - column: TOTALINTERCONNECTORVIOLATION
+    data_type: decimal(15,5)
+    comment: Total interconnector violations
+  - column: TOTALGENERICVIOLATION
+    data_type: decimal(15,5)
+    comment: Total generic constraint violations
+  - column: TOTALRAMPRATEVIOLATION
+    data_type: decimal(15,5)
+    comment: Total ramp rate violations
+  - column: TOTALUNITMWCAPACITYVIOLATION
+    data_type: decimal(15,5)
+    comment: Total unit capacity violations
+  - column: TOTAL5MINVIOLATION
+    data_type: decimal(15,5)
+    comment: Total of 5 minute ancillary service region violations
+  - column: TOTALREGVIOLATION
+    data_type: decimal(15,5)
+    comment: Total of Regulation ancillary service region violations
+  - column: TOTAL6SECVIOLATION
+    data_type: decimal(15,5)
+    comment: Total of 6 second ancillary service region violations
+  - column: TOTAL60SECVIOLATION
+    data_type: decimal(15,5)
+    comment: Total of 60 second ancillary service region violations
+  - column: TOTALASPROFILEVIOLATION
+    data_type: decimal(15,5)
+    comment: Total of ancillary service trader profile violations
+  - column: TOTALFASTSTARTVIOLATION
+    data_type: decimal(15,5)
+    comment: Total of fast start trader profile violations
+  - column: TOTALENERGYOFFERVIOLATION
+    data_type: decimal(15,5)
+    comment: Total of unit summated offer band violations
+  - column: LASTCHANGED
+    data_type: string
+    comment: Last date and time record changed
+  - column: SWITCHRUNINITIALSTATUS
+    data_type: tinyint
+    comment: Flag indicating the SCADA status for FCAS Interconnector dead-band. "0" if SCADA Status or
+      requesting Constraint not invoked. "1" if SCADA Status AND requesting Constraint is invoked
+  - column: SWITCHRUNBESTSTATUS
+    data_type: tinyint
+    comment: Flag indicating which Switch run was used for the Solution – from PeriodSolution
+  - column: SWITCHRUNBESTSTATUS_INT
+    data_type: tinyint
+    comment: Flag indicating which Switch run was used for the Intervention Physical Solution - from PeriodSolution
