@@ -119,29 +119,32 @@ https://www.aemo.com.au/energy-systems/electricity/national-electricity-market-n
 
 ## How to query
 
-This skill describes a Databricks SQL warehouse dataset. To execute a query:
+This skill executes SQL through the **Renovara SQL MCP server**. It does not
+use the `databricks` CLI — there is no `databricks auth login` step. Once the
+host AI platform has the `renovara-sql` MCP connection configured and the
+user has authenticated to it, the following tools are available:
 
-1. **Authenticate** (one-time, opens a browser):
-   ```bash
-   databricks auth login --host <your-databricks-host>
-   ```
-2. **Find your warehouse ID**:
-   ```bash
-   databricks warehouses list
-   ```
-3. **Run a query** via the SQL Statement Execution API:
-   ```bash
-   databricks api post /api/2.0/sql/statements --json '{
-     "statement": "SELECT ...",
-     "warehouse_id": "<warehouse_id>",
-     "wait_timeout": "50s"
-   }'
-   ```
+- `mcp__renovara-sql__execute_sql_read_only` — preferred for `SELECT`
+  queries; returns rows directly or a statement id to poll.
+- `mcp__renovara-sql__execute_sql` — for the rare case a non-read statement
+  is genuinely required.
+- `mcp__renovara-sql__poll_sql_result` — fetch results for a statement id
+  returned asynchronously by either of the above.
 
-Quote strings inside the JSON `statement` value carefully — single quotes
-inside SQL must be escaped for the surrounding shell quoting (`'\''`).
+Typical flow:
 
-Default warehouse for this dataset: `013c82a1b401ca7e`.
+1. Draft the SQL using the schema in `references/knowledge/` and the
+   examples in `references/examples/`.
+2. Call `mcp__renovara-sql__execute_sql_read_only` with the statement.
+3. If the response carries a `statement_id` rather than rows, poll with
+   `mcp__renovara-sql__poll_sql_result` until the statement completes.
+
+If the `mcp__renovara-sql__*` tools are not available in the current
+environment, surface that to the user — they need to connect and
+authenticate the `renovara-sql` MCP server before queries can run. Until
+then this skill can still return schema guidance and SQL drafts.
+
+Pass `warehouse_id=013c82a1b401ca7e` to the MCP tool if the server requires it (some configurations infer it).
 
 Tables in this skill live in the catalog/schema implied by their fully
 qualified `identifier` (e.g. `external_data.nemweb.silver_...`).
