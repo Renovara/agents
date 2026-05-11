@@ -9,101 +9,147 @@ description: Network constraint and curtailment analysis for semi-scheduled NEM 
 
 Network constraint and curtailment analysis for semi-scheduled NEM renewable generators (wind/solar). Quantifies forced vs economic curtailment, identifies time-of-day patterns, and attributes capped intervals to specific binding constraints with descriptive context from GENCONDATA.
 
-Prefer the schemas in `references/knowledge/` for table selection, column
-names, and business meaning. Fall back to live `DESCRIBE TABLE` only when
-a query errors, the table is live-only, or the bundled references do not
-cover the object.
+# Renewable Generator Constraint & Curtailment Analysis (for LLM use)
 
-## Workflow
+## Required Inputs
 
-1. Classify the request. Decide the grain first: region, unit,
-   interconnector, constraint, daily MLF, registration metadata, etc.
-2. Load only the relevant reference. Start at
-   [`references/schema-index.md`](references/schema-index.md), then open
-   the matching YAML files under `references/knowledge/`.
-3. Write the first query from the bundled schema. Use fully qualified
-   Unity Catalog names such as
-   `external_data.nemweb.silver_dispatchis_reports_dispatch_price`. Do
-   not start with `DESCRIBE TABLE` when the YAML already covers the
-   table.
-4. Match identifier casing exactly, especially in string filters. Use
-   the YAML as the default source of truth for intended schema and
-   business meaning. If a query fails with an unresolved column,
-   missing object, or type error, inspect the live table with
-   `DESCRIBE TABLE external_data.nemweb.<table>` and correct the query.
-   If the bundled YAML and the live table disagree, trust Databricks
-   for physical type and column list, and trust the YAML for table
-   purpose, `display_name`, and business meaning.
-5. Execute and iterate (see "How to query"). Run the query; if a
-   long-running statement returns `pending`, poll for completion using
-   the statement ID.
-6. Answer with analysis, not raw rows. State the time basis as AEST.
-   Explain aggregation choices, especially when converting power to
-   energy. If a chart is useful, provide chart-ready output and briefly
-   justify the chart type.
+* **DUID:** semi-scheduled renewable unit, e.g., BODWF1, HDWF1, LGAPV1
+* **Start Date / End Date** (AEST)
 
-## Query Rules
+## Global Rules
+
+* **Always run the named example query exactly as provided.** Do not regenerate or modify SQL.
+* **Timestamps:** AEST (Australia/Brisbane, UTC+10). **Power:** MW. **Energy:** MWh.
+* **Renewable generators only** (wind/solar) — relies on `UIGF` and `SEMIDISPATCHCAP` which are populated for semi-scheduled units.
+* **INTERVENTION handling** is pre-applied: prices/constraints from `INTERVENTION = 0`, power from max INTERVENTION per interval.
+* **Curtailment cause buckets:**
+  * **Forced curtailment** = AEMO actively capped the unit (`SEMIDISPATCHCAP = 1`) — caused by network/system constraints. This is the actionable one for asset owners (storage, network upgrades, MLF advocacy).
+  * **Economic curtailment** = unit voluntarily backed off when `RRP ≤ 0` and `SEMIDISPATCHCAP = 0` — market-driven, not constraint-driven.
+  * Offer-based curtailment (`SEMIDISPATCHCAP = 0`, `RRP > 0`, but cleared < UIGF) is not counted in either bucket — it reflects the unit's own bid behaviour.
+
+---
+
+## Report 1: Curtailment Summary
+
+Query: `report_1_curtailment_summary.sql` → single-row table summarising the period.
+
+Headline metrics: total/capped/curtailed interval counts, forced vs economic MWh and %, available MWh, foregone revenue from forced caps (only counted when RRP > 0), and worst single-interval cap MW.
+
+Present as a key-value table. Lead the summary with `forced_curtailed_mwh` and `forced_foregone_revenue_aud` — those are the numbers an asset owner cares about.
+
+---
+
+## Report 2: Curtailment by Hour of Day
+
+Query: `report_2_curtailment_by_hour.sql`
+
+Bar/line chart:
+
+* **X-axis:** `hour_of_day` (0-23)
+* **Y-axis:** MW
+* **Series 1:** `avg_forced_curtailment_mw` (AEMO caps)
+* **Series 2:** `avg_economic_curtailment_mw` (negative-price backoff)
+
+Reveals the time-of-day pattern. Forced curtailment clustered midday for solar suggests a tight network at peak generation (storage / upgrade case). Forced curtailment overnight for wind suggests voltage / system strength limits.
+
+---
+
+## Report 3: Top Binding Constraints During Caps
+
+Query: `report_3_top_binding_constraints.sql` → table.
+
+Lists the constraint equations that were binding (`MARGINALVALUE > 0`) during this DUID's capped intervals, with **causal attribution** via the SPD constraint factor tables and descriptive context from GENCONDATA.
+
+Columns:
+* `attribution_type` — strength of link to this DUID (see below)
+* `constraint_id` — AEMO constraint ID (e.g. `N>>NIL_75`)
+* `description` — what the constraint is doing (from GENCONDATA)
+* `reason` — trigger condition (e.g. "Trip of Wellington to Mt Piper line")
+* `limit_type` — Thermal / Voltage / Stability / FCAS
+* `impact` — affected generation/region group (e.g. "NSW Generation")
+* `intervals_binding_during_cap` — count
+* `pct_of_duid_caps` — % of this DUID's capped intervals where this constraint was binding
+* `avg_marginal_value_aud` — shadow price ($ tightness indicator)
+
+**Attribution types** (sorted from most to least specific):
+
+1. **`Direct (CP)`** — the constraint has a non-zero factor on this DUID's connection point in `SPDCONNECTIONPOINTCONSTRAINT`. This is **causal**: the constraint formulation explicitly names this unit. These are the rows the asset owner can act on (storage, repowering, MLF advocacy, network upgrades).
+2. **`Region (NSW1/etc)`** — the constraint has a non-zero factor on the DUID's region aggregate in `SPDREGIONCONSTRAINT`. The constraint targets a peer group the unit belongs to (e.g. "all NSW semi-scheduled generation ≤ X MW"). Indirect but meaningful.
+3. **`System (associative)`** — the constraint was binding while this DUID was capped, but it does not target the unit's connection point or region. Most often these are FCAS service procurement constraints (`F_*`) where co-optimisation between energy and FCAS markets caused the cap. Read the description to interpret.
+
+**How to interpret for the asset owner:**
+* If most rows are `Direct (CP)` or `Region` — your caps are network-driven; engage with the TNSP / NSP about constraint formulation and upgrades.
+* If most rows are `System (associative)` and primarily `F_*` IDs — your caps are FCAS-driven (co-optimisation chose to back off your energy to free FCAS capacity elsewhere). Different remediation: check FCAS market participation, look at battery hybrid options.
+
+---
+
+## Report 4: Daily Curtailment Timeline
+
+Query: `report_4_daily_curtailment_timeline.sql`
+
+Bar chart:
+
+* **X-axis:** `date`
+* **Y-axis:** MWh
+* **Series 1:** `daily_forced_curtailed_mwh`
+* **Series 2:** `daily_economic_curtailed_mwh`
+
+Useful for spotting specific events — outages, weather, equipment trips — that drove unusual curtailment on a given day. Cross-reference with Report 3 to investigate the constraints binding on those days.
+
+---
+
+## General Skill Conventions
+
+These conventions are used in two contexts. Apply whichever matches:
+
+- **Databricks (Genie space):** Refer to the tables attached to this Genie Space for schema. Execute SQL **directly against the warehouse** — do not use MCP tools. Ignore references below to `references/knowledge/*.yaml`, `references/schema-index.md`, or `references/examples/`.
+- **Skill (outside Databricks):** Refer to the bundled YAML files under `references/knowledge/` for schema. Execute SQL via the MCP tools listed under "How to query".
+
+The bundled YAML knowledge files under `references/knowledge/` are the source of truth for table selection, column names, business meaning, and `display_name`. The schema entry point is [`references/schema-index.md`](references/schema-index.md). Fall back to live `DESCRIBE TABLE` only when a query errors, the table is live-only, or the bundled references do not cover the object.
+
+### Workflow
+
+1. **Classify the request** — region, unit, interconnector, constraint, etc.
+2. **Load only the relevant reference** from `references/knowledge/`.
+3. **Write the first query from the bundled schema** using fully qualified Unity Catalog names such as `external_data.nemweb.silver_dispatchis_reports_dispatch_price`.
+4. **Match identifier casing exactly.** If a query fails with an unresolved column or type error, run `DESCRIBE TABLE external_data.nemweb.<table>` and correct it. Trust the live table for physical type, trust the YAML for purpose and `display_name`.
+5. **Execute the query.** In **Databricks (Genie)** run it directly against the warehouse. In **Skill** context use the MCP tool (see "How to query"); if a long-running statement returns `pending`, poll for completion using the statement ID.
+6. **Answer with analysis, not raw rows.** State the time basis as AEST.
+
+### Query Rules
 
 - Default to read-only SQL.
-- Always use fully qualified Unity Catalog names: `catalog.schema.table`.
-- Prefer the table and column definitions in `references/knowledge/*.yaml`
-  before doing live schema inspection.
+- Fully qualified Unity Catalog names: `catalog.schema.table`.
+- Prefer `references/knowledge/*.yaml` before live schema inspection.
 - Use `display_name` from the YAML when referring to a table in prose.
-- Match identifier casing exactly in `WHERE` clauses — column and string
-  comparisons in Databricks SQL are case-sensitive.
-- Relevant regional IDs are `NSW1`, `QLD1`, `VIC1`, `SA1`, and `TAS1`.
+- Match identifier casing exactly in `WHERE` clauses — Databricks SQL is case-sensitive.
+- Regional IDs: `NSW1`, `QLD1`, `VIC1`, `SA1`, `TAS1`.
 
-## Time Handling
+### Time Handling
 
 - Treat user-facing results as AEST.
-- Convert relative "today", "last 7 days", and similar filters using
-  `Australia/Brisbane`.
-- `SETTLEMENTDATE` in NEM datasets is already aligned to AEST market
-  time. Do not shift it again.
-- Some silver tables also expose `SETTLEMENTDATE_UTC`; use it only when
-  UTC is explicitly required.
-- A safe AEST "now" expression:
+- Convert relative dates using `Australia/Brisbane`.
+- `SETTLEMENTDATE` is already aligned to AEST — do not shift it again. `SETTLEMENTDATE_UTC` exists if UTC is explicitly required.
+- AEST "now": `from_utc_timestamp(current_timestamp(), 'Australia/Brisbane')`.
+- AEST "today": `date(from_utc_timestamp(current_timestamp(), 'Australia/Brisbane'))`.
 
-```sql
-from_utc_timestamp(current_timestamp(), 'Australia/Brisbane')
-```
+### Power And Energy Rules
 
-- A safe AEST "today" expression:
+- `TOTALCLEARED`, `TOTALDEMAND`, `AVAILABILITY` are power in MW. `AVAILABILITY` is dispatch-cycle available capacity, not rated capacity.
+- Interval-based power summaries: use `AVG(...)`.
+- Convert 5-minute MW to MWh with `MW / 12.0` before summing.
+- Be explicit in the answer about whether a metric is average MW, interval MWh, or total MWh.
 
-```sql
-date(from_utc_timestamp(current_timestamp(), 'Australia/Brisbane'))
-```
+### Access Tiers
 
-## Power And Energy Rules
+The Renovara platform distinguishes two tiers: **Free** (last 7 days) and **Pro** (full history). Several silver tables have `_free` variants that enforce the 7-day window. For free-tier behaviour, prefer the `_free` table or constrain the query to the last 7 days; otherwise use the full historical silver table.
 
-- `TOTALCLEARED`, `TOTALDEMAND`, `AVAILABILITY`, and similar fields are
-  power in MW. `AVAILABILITY` refers to dispatch-cycle available
-  capacity, not rated capacity.
-- For interval-based power summaries, use `AVG(...)`.
-- Convert 5-minute MW observations to MWh with `MW / 12.0` before
-  summing.
-- Be explicit in the answer about whether a metric is average MW,
-  interval MWh, or total MWh.
+### Response Style
 
-## Access Tiers
-
-The Renovara platform distinguishes two access tiers:
-
-- **Free** — limited to the previous 7 days.
-- **Pro** — full historical access.
-
-Several silver tables have `_free` variants that enforce the 7-day
-window. If the user asks for free-tier behaviour, prefer the `_free`
-table or constrain the query to the last 7 days. Otherwise use the full
-historical silver table.
-
-## Response Style
-
-- Use British/Australian English.
-- Keep explanations professional and concise.
-- State assumptions when the request is ambiguous.
-- When preparing a chart in code, add brief comments that explain the
-  chart type, the transformation applied, and why both fit the data.
+- British/Australian English.
+- Professional and concise; state assumptions when the request is ambiguous.
+- Report results in AEST.
+- When preparing a chart in code, add brief comments that explain the chart type, the transformation applied, and why both fit the data.
 
 ## Reference Files
 
@@ -131,30 +177,27 @@ https://www.aemo.com.au/energy-systems/electricity/national-electricity-market-n
 
 ## How to query
 
-This skill executes SQL through the **Renovara SQL MCP server**. It does not
-use the `databricks` CLI — there is no `databricks auth login` step. Once the
-host AI platform has the `renovara-sql` MCP connection configured and the
-user has authenticated to it, the following tools are available:
+This skill executes SQL through an MCP server connection. It does not use
+the `databricks` CLI — there is no `databricks auth login` step. Once the
+host AI platform has the required MCP connection configured and the user
+has authenticated to it, the following tools must be available:
 
-- `mcp__renovara-sql__execute_sql_read_only` — preferred for `SELECT`
-  queries; returns rows directly or a statement id to poll.
-- `mcp__renovara-sql__execute_sql` — for the rare case a non-read statement
-  is genuinely required.
-- `mcp__renovara-sql__poll_sql_result` — fetch results for a statement id
-  returned asynchronously by either of the above.
+- `mcp__renovara-sql__execute_sql_read_only`
+- `mcp__renovara-sql__execute_sql`
+- `mcp__renovara-sql__poll_sql_result`
 
 Typical flow:
 
 1. Draft the SQL using the schema in `references/knowledge/` and the
    examples in `references/examples/`.
-2. Call `mcp__renovara-sql__execute_sql_read_only` with the statement.
-3. If the response carries a `statement_id` rather than rows, poll with
-   `mcp__renovara-sql__poll_sql_result` until the statement completes.
+2. Call the read-only execute tool with the statement.
+3. If the response carries a `statement_id` rather than rows, poll the
+   result tool until the statement completes.
 
-If the `mcp__renovara-sql__*` tools are not available in the current
+If the MCP tools listed above are not available in the current
 environment, surface that to the user — they need to connect and
-authenticate the `renovara-sql` MCP server before queries can run. Until
-then this skill can still return schema guidance and SQL drafts.
+authenticate the MCP server before queries can run. Until then this skill
+can still return schema guidance and SQL drafts.
 
 Pass `warehouse_id=013c82a1b401ca7e` to the MCP tool if the server requires it (some configurations infer it).
 
