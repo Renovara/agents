@@ -1,0 +1,650 @@
+{
+  "meta": {
+    "title": "Australian Default Market Offer (DMO) \u2014 residential reference prices",
+    "unit": "AUD per year, GST inclusive",
+    "updated": "DMO 8 (2026-27), 26 May 2026",
+    "source": "AER final determinations 2019-20 to 2026-27 (aer.gov.au)",
+    "headline_series": "Residential flat rate, no controlled load (comparable across all years)",
+    "caveats": [
+      "Small-business benchmark changed from 20,000 to 10,000 kWh at DMO 4: not comparable across that break.",
+      "Per-component dollar splits live in the AER cost-assessment Excel models; proportions below are AER published ranges."
+    ],
+    "sources_line": "AER determinations & network revenue determinations; ABS CPI; AEMO 2024 system plan; Clean Energy Regulator."
+  },
+  "determinations": [
+    [
+      "DMO 1",
+      "2019-20"
+    ],
+    [
+      "DMO 2",
+      "2020-21"
+    ],
+    [
+      "DMO 3",
+      "2021-22"
+    ],
+    [
+      "DMO 4",
+      "2022-23"
+    ],
+    [
+      "DMO 5",
+      "2023-24"
+    ],
+    [
+      "DMO 6",
+      "2024-25"
+    ],
+    [
+      "DMO 7",
+      "2025-26"
+    ],
+    [
+      "DMO 8",
+      "2026-27"
+    ]
+  ],
+  "zones": [
+    {
+      "id": "ausgrid",
+      "label": "Ausgrid (NSW metro)",
+      "region": "NSW",
+      "color": "0A1F44"
+    },
+    {
+      "id": "endeavour",
+      "label": "Endeavour (NSW)",
+      "region": "NSW",
+      "color": "5B9BD5"
+    },
+    {
+      "id": "essential",
+      "label": "Essential (regional NSW)",
+      "region": "NSW",
+      "color": "5B6378"
+    },
+    {
+      "id": "energex",
+      "label": "Energex (SE QLD)",
+      "region": "SE QLD",
+      "color": "00C2A8"
+    },
+    {
+      "id": "sapn",
+      "label": "SA Power Networks",
+      "region": "SA",
+      "color": "F5C518"
+    }
+  ],
+  "residential_flat_aud": {
+    "ausgrid": [
+      1467,
+      1462,
+      1393,
+      1512,
+      1827,
+      1810,
+      1965,
+      1899
+    ],
+    "endeavour": [
+      1720,
+      1711,
+      1609,
+      1836,
+      2228,
+      2223,
+      2411,
+      2328
+    ],
+    "essential": [
+      1957,
+      1960,
+      1907,
+      2092,
+      2527,
+      2513,
+      2741,
+      2604
+    ],
+    "energex": [
+      1570,
+      1508,
+      1455,
+      1620,
+      1969,
+      2066,
+      2143,
+      1988
+    ],
+    "sapn": [
+      1941,
+      1832,
+      1716,
+      1840,
+      2279,
+      2230,
+      2301,
+      2334
+    ]
+  },
+  "cost_stack_proportions": {
+    "Network": 47,
+    "Wholesale": 31,
+    "Retail + margin": 14,
+    "Environmental": 8
+  },
+  "cost_stack_colors": {
+    "Network": "0A1F44",
+    "Wholesale": "00C2A8",
+    "Retail + margin": "5B6378",
+    "Environmental": "F5C518"
+  },
+  "cost_stack_notes": {
+    "Network": "Poles, wires & transmission. The biggest slice \u2014 and it never stops rising.",
+    "Wholesale": "Buying the actual electricity. The volatile one that drove the spike.",
+    "Retail + margin": "Running the retailer, plus profit.",
+    "Environmental": "Renewable & rooftop-solar schemes. Falling lately."
+  },
+  "drivers": [
+    [
+      "2019\u201321",
+      "Renewables push wholesale down ~20%. Bills drift lower.",
+      "6E8B3D"
+    ],
+    [
+      "2022\u201324",
+      "Global energy crisis \u2014 coal, gas & plant outages spike wholesale. Bills jump 30\u201350%.",
+      "DD7A2F"
+    ],
+    [
+      "2024\u201326",
+      "Wholesale eases, but network & retail costs keep bills high.",
+      "8A93A0"
+    ],
+    [
+      "2026\u201327",
+      "Wind + evening batteries calm wholesale. Most bills fall.",
+      "0F6E56"
+    ]
+  ],
+  "regional_change_pct": [
+    [
+      "Energex \u00b7 SE QLD",
+      -7.2
+    ],
+    [
+      "Essential \u00b7 regional NSW",
+      -5.0
+    ],
+    [
+      "Endeavour \u00b7 NSW",
+      -3.4
+    ],
+    [
+      "Ausgrid \u00b7 NSW metro",
+      -3.4
+    ],
+    [
+      "SA Power Networks",
+      1.4
+    ]
+  ],
+  "reforms": [
+    [
+      "Competition allowance removed",
+      "A retail-margin line stripped out to ease cost-of-living pressure."
+    ],
+    [
+      "Tariff caps introduced",
+      "Caps daily supply & usage rates now \u2014 not just the annual bill total."
+    ],
+    [
+      "Solar Sharer Offer",
+      "Three hours of free midday power for smart-meter homes, renters included."
+    ],
+    [
+      "Blended network tariffs",
+      "Pricing now reflects the accelerated smart-meter rollout."
+    ]
+  ],
+  "basics": [
+    [
+      "A price cap",
+      "The most a retailer can charge someone who never switched \u2014 a 'standing offer' customer."
+    ],
+    [
+      "A reference price",
+      "Every market offer is advertised against it: '15% below the reference price'."
+    ],
+    [
+      "Covers ~8% directly",
+      "Only about 1-in-12 households is on it \u2014 but it anchors how everyone's plan is priced."
+    ],
+    [
+      "Reset every 1 July",
+      "The AER sets it yearly for NSW, SE QLD & SA. Victoria runs its own (the VDO)."
+    ]
+  ],
+  "branding": {
+    "org": "Renovara",
+    "tagline": "AI analysis and tools for the energy sector",
+    "url": "renovara.co",
+    "ink": "0A1F44",
+    "ink2": "0F2A55",
+    "paper": "F5F7FA",
+    "text": "0A1F44",
+    "muted": "5B6378",
+    "teal": "00C2A8",
+    "teald": "008C7A",
+    "gold": "F5C518",
+    "line": "D9DEE7",
+    "inkmute": "B8C4DA"
+  },
+  "cost_stack_timeseries": {
+    "fy": [
+      "20-21",
+      "21-22",
+      "22-23",
+      "23-24",
+      "24-25",
+      "25-26",
+      "26-27"
+    ],
+    "Network": [
+      707,
+      739,
+      696,
+      695,
+      723,
+      795,
+      838
+    ],
+    "Wholesale": [
+      476,
+      377,
+      524,
+      798,
+      760,
+      805,
+      735
+    ],
+    "Retail + margin": [
+      205,
+      195,
+      212,
+      256,
+      253,
+      295,
+      266
+    ],
+    "Environmental": [
+      74,
+      82,
+      80,
+      78,
+      74,
+      70,
+      60
+    ],
+    "yoy_latest": {
+      "Wholesale": -8.7,
+      "Network": 5.4,
+      "Retail + margin": -9.8,
+      "Environmental": -14.3
+    }
+  },
+  "cpi_index": {
+    "2019-20": 114.8,
+    "2020-21": 114.4,
+    "2021-22": 118.8,
+    "2022-23": 126.1,
+    "2023-24": 133.7,
+    "2024-25": 138.8,
+    "2025-26": 141.7,
+    "2026-27": 147.8
+  },
+  "cpi_note": "ABS CPI, all groups, weighted average of 8 capital cities (June quarter). 2026-27 estimated (~+4.3% y/y).",
+  "residential_real_ausgrid": [
+    1467,
+    1467,
+    1346,
+    1377,
+    1569,
+    1497,
+    1592,
+    1475
+  ],
+  "nominal_vs_real_change": [
+    [
+      "Ausgrid",
+      "+29%",
+      "+1%"
+    ],
+    [
+      "Endeavour",
+      "+35%",
+      "+5%"
+    ],
+    [
+      "Essential",
+      "+33%",
+      "+3%"
+    ],
+    [
+      "Energex",
+      "+27%",
+      "-2%"
+    ],
+    [
+      "SA Power Networks",
+      "+20%",
+      "-7%"
+    ]
+  ],
+  "calc_components": [
+    [
+      "Network",
+      "AER-approved poles-and-wires tariffs"
+    ],
+    [
+      "Wholesale",
+      "ACIL Allen models the cost to hedge the load (futures + cap contracts)"
+    ],
+    [
+      "Environmental",
+      "Renewable Energy Target (certificates) plus state green schemes"
+    ],
+    [
+      "Retail operating cost",
+      "Benchmark efficient cost to serve a customer"
+    ],
+    [
+      "Retail margin",
+      "A set percentage (10% homes, 15% small business)"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked example - Ausgrid 2026-27",
+    "usage": "model customer, 3,900 kWh/yr",
+    "rows": [
+      [
+        "Network",
+        838
+      ],
+      [
+        "Wholesale",
+        735
+      ],
+      [
+        "Retail + margin",
+        266
+      ],
+      [
+        "Environmental",
+        60
+      ]
+    ],
+    "total": 1899,
+    "note": "Network & retail split indicative; wholesale & environmental from AER cost data."
+  },
+  "network_building_blocks": [
+    [
+      "Return on capital",
+      58
+    ],
+    [
+      "Operating expenditure",
+      29
+    ],
+    [
+      "Depreciation",
+      6
+    ],
+    [
+      "Adjustments + tax",
+      7
+    ]
+  ],
+  "networks_distribution": [
+    [
+      "SA Power Networks",
+      "25-30",
+      "$5.2bn",
+      "+33%"
+    ],
+    [
+      "Energex (SE QLD)",
+      "25-30",
+      "$9.0bn",
+      "+47%"
+    ],
+    [
+      "Ausgrid (NSW)",
+      "24-29",
+      "$9.6bn",
+      "~+5%/yr*"
+    ],
+    [
+      "Endeavour (NSW)",
+      "24-29",
+      "$5.6bn",
+      "n/p"
+    ],
+    [
+      "Essential (NSW)",
+      "24-29",
+      "$6.2bn",
+      "n/p"
+    ]
+  ],
+  "networks_transmission": [
+    [
+      "TransGrid (NSW)",
+      "23-28",
+      "$4.9bn"
+    ],
+    [
+      "Powerlink (QLD)",
+      "22-27",
+      "$3.8bn"
+    ],
+    [
+      "ElectraNet (SA)",
+      "23-28",
+      "$2.2bn"
+    ]
+  ],
+  "network_attribution": "AER's own attribution: ~46-50% of the latest distribution increases is higher inflation and interest rates - SA Power Networks 46%, Energex ~50%.",
+  "rooftop_solar": {
+    "labels": [
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025",
+      "2026"
+    ],
+    "values": [
+      10.2,
+      12.5,
+      15.0,
+      19.0,
+      22.0,
+      25.5,
+      27.0,
+      28.3
+    ]
+  },
+  "demand_stats": [
+    [
+      "Network revenue",
+      "+33% to +47%",
+      "latest 5-year resets vs prior period"
+    ],
+    [
+      "Average demand",
+      "~22 GW, flat",
+      "grid energy barely moved since 2019"
+    ],
+    [
+      "Peak demand",
+      "~33-34 GW",
+      "no upward trend; 2019-20 a heat outlier"
+    ]
+  ],
+  "demand_labels": [
+    "19-20",
+    "20-21",
+    "21-22",
+    "22-23",
+    "23-24",
+    "24-25"
+  ],
+  "demand_avg": [
+    22.0,
+    21.5,
+    21.6,
+    21.5,
+    21.5,
+    21.7
+  ],
+  "demand_peak": [
+    35.6,
+    31.9,
+    32.8,
+    32.6,
+    33.6,
+    34.1
+  ],
+  "demand_note": "NEM operational demand (GW), financial year. Average = annual energy / hours; peak = annual maximum (summer or winter). Source: AER demand & energy charts.",
+  "why_caption": "SA Power Networks' reset shows the split \u2014 +$1,299m (+33%) for 2025-30:",
+  "network_split": {
+    "financing": 46,
+    "investment": 54
+  },
+  "investment_for": [
+    [
+      "Replacing an ageing grid",
+      "the largest capex; assets built decades ago"
+    ],
+    [
+      "Resilience & cybersecurity",
+      "hardening against bushfire, flood & cyber risk"
+    ],
+    [
+      "Hosting rooftop solar & batteries",
+      "re-engineering for two-way power flows"
+    ]
+  ],
+  "km_note": "Customers keep growing (+26% since 2006), so the network is still extending. But the heavy build-out was last decade - capex is now replacement-led (augmentation down ~63%) and the real asset base has been flat since 2015. (The AER does not publish line length yearly.)",
+  "references": [
+    [
+      "AER \u2014 Default Market Offer 2026-27",
+      "https://www.aer.gov.au/industry/registers/resources/reviews/default-market-offer-2026-27"
+    ],
+    [
+      "AER \u2014 network revenue determinations",
+      "https://www.aer.gov.au/industry/registers/determinations"
+    ],
+    [
+      "AER \u2014 SA Power Networks 2025-30 decision",
+      "https://www.aer.gov.au/industry/registers/determinations/sa-power-networks-determination-2025-30/final-decision"
+    ],
+    [
+      "AEMO \u2014 2024 Integrated System Plan",
+      "https://www.aemo.com.au/energy-systems/major-publications/integrated-system-plan-isp/2024-integrated-system-plan-isp"
+    ],
+    [
+      "AER \u2014 demand & energy charts",
+      "https://www.aer.gov.au/industry/registers/charts/seasonal-peak-demand-nem"
+    ],
+    [
+      "ABS CPI (via the ATO table)",
+      "https://www.ato.gov.au/tax-rates-and-codes/consumer-price-index"
+    ],
+    [
+      "AER \u2014 State of the Energy Market (data)",
+      "https://www.aer.gov.au/publications/reports/performance/state-energy-market-2025"
+    ]
+  ],
+  "longview": {
+    "revenue": [
+      8.8,
+      9.0,
+      9.3,
+      9.7,
+      10.6,
+      11.5,
+      12.8,
+      14.3,
+      14.7,
+      15.2,
+      12.2,
+      12.5,
+      11.9,
+      11.7,
+      11.5,
+      10.5,
+      10.6,
+      10.3,
+      10.3
+    ],
+    "stats": [
+      [
+        "Real revenue",
+        "-32%",
+        "since the 2015 peak ($15.2bn -> $10.3bn)"
+      ],
+      [
+        "Asset base",
+        "x2, then flat",
+        "doubled 2006-15; ~flat since (~$95bn)"
+      ],
+      [
+        "Capex",
+        "-36%",
+        "from the 2012 peak ($8.4bn -> $5.4bn)"
+      ],
+      [
+        "Allowed return",
+        "~halved",
+        "~10% (2011) -> ~5% (2024)"
+      ]
+    ],
+    "insight": "Real, 2024 dollars. Nominal revenue rose in the latest resets (+33-47%; see 'every network just reset'), but adjusted for inflation it sits below the 2015 peak. The recent bill rises are inflation and a rate-of-return bounce - not a transition-driven cost boom."
+  },
+  "usage_per_customer": {
+    "values": [
+      17.065,
+      17.032,
+      17.071,
+      16.878,
+      16.793,
+      16.271,
+      15.84,
+      15.204,
+      14.767,
+      14.74,
+      14.645,
+      14.4,
+      14.105,
+      13.985,
+      13.552,
+      13.387,
+      13.336,
+      13.342,
+      13.383
+    ]
+  },
+  "tariff_shift": {
+    "usage_value": "-22%",
+    "usage_detail": "grid energy per customer, 2006->2024 (17.1 -> 13.4 MWh)",
+    "tariff_value": "9% -> 37%",
+    "tariff_detail": "residential customers on cost-reflective tariffs, 2018->2024",
+    "text": "Network costs are largely fixed, so as rooftop solar and efficiency cut usage, flat per-kWh tariffs stop recovering them fairly. Networks are shifting to fixed daily, demand and time-of-use charges - the structural change behind DMO 8's tariff caps and Solar Sharer Offer."
+  }
+}
