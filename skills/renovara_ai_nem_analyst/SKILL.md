@@ -1,6 +1,6 @@
 ---
 name: renovara-ai-nem-analyst
-description: National Electricity Market of Australia market analyst. TRIGGERS: "Show the revenue per day for [DUID] as a column chart for the last 30 days", "Explain the dataset and the tables and data that you have access to.", "I want to understand the data in the table [TABLE_NAME] and the columns in the table.", Dispatch Case Solution, Dispatch Constraint, Dispatch Interconnection, Dispatch Interconnectorres, Dispatch Local Price, Dispatch Price, Dispatch Regionsum, Daily Mlf, Nem Registration Exemption List, Dispatch Offertrk, Dispatch Unit Solution, Openelectricity Facilities, Openelectricity Units, Nem Participant And Scheduled Loads, Gencondata, Genconset, Participant Registration Dudetailsummary, Participant Registration Participant, Spdcpc, Spdrc, P5Min Interconnectorsoln, P5Min Local Price, P5Min Regionsolution, Predispatch Interconnector Soln, Predispatch Local Price, Predispatch Region Prices, Predispatch Region Solution
+description: National Electricity Market of Australia market analyst. TRIGGERS: "Show the revenue per day for [DUID] as a column chart for the last 30 days", "Explain the dataset and the tables and data that you have access to.", "I want to understand the data in the table [TABLE_NAME] and the columns in the table.", "Which fuel sources set the [REGION] price last quarter", Dispatch Case Solution, Dispatch Constraint, Dispatch Interconnection, Dispatch Interconnectorres, Dispatch Local Price, Dispatch Price, Dispatch Regionsum, Daily Mlf, Nem Registration Exemption List, Dispatch Offertrk, Dispatch Unit Solution, Openelectricity Facilities, Openelectricity Units, Nem Participant And Scheduled Loads, Price Setter, Gencondata, Genconset, Participant Registration Dudetailsummary, Participant Registration Participant, Spdcpc, Spdrc, P5Min Interconnectorsoln, P5Min Local Price, P5Min Regionsolution, Predispatch Interconnector Soln, Predispatch Local Price, Predispatch Region Prices, Predispatch Region Solution
 ---
 
 # Renovara AI NEM Analyst
@@ -89,6 +89,66 @@ date(from_utc_timestamp(current_timestamp(), 'Australia/Brisbane'))
 
 ---
 
+## Price Setter Analysis (which fuel/unit set the price)
+
+For questions about **which fuel source or unit set the energy price** — the AER
+"quarterly price setter and average price set by fuel source" analysis — do **not**
+hand-roll the logic against the raw table. Use the deployed SQL functions in
+`external_data.nemweb`, which encode the AER-conformant methodology (validated
+against AER Q2 2025 publications). They read from
+`silver_pricesetter_price_setter` (AEMO's authoritative NemPriceSetter feed —
+one row per contributing unit per 5-minute interval).
+
+| Function | Returns |
+|---|---|
+| `f_price_setter_by_fuel(region, start, end, bucket, include_battery_loads)` | AER chart: occasions / % share / average price set, per fuel source |
+| `f_price_setter_by_duid(region, start, end, bucket)` | League table of which DUIDs set the price |
+| `f_price_setter_intervals(region, start, end)` | The single dominant price-setting unit per 5-minute interval |
+| `f_price_setter_contributions(region, start, end)` | Every contributing unit per interval (the AER counting basis, DUID level) |
+| `v_duid_fuel_aer` | DUID → AER fuel category lookup (one row per DUID) |
+
+Argument notes:
+
+- `region` is a single region id (`'NSW1'`, `'QLD1'`, `'VIC1'`, `'SA1'`, `'TAS1'`).
+- `start` / `end` are timestamps; the window is `[start, end)`. Quarters are
+  whole calendar quarters, e.g. `'2026-01-01'` to `'2026-04-01'`.
+- `bucket` is `'quarter'`, `'month'`, `'day'`, or `'all'` (no bucketing — one
+  row set for the whole window; use `'all'` for a specific event).
+- `include_battery_loads` (only on `f_price_setter_by_fuel`) selects the share
+  basis. **Two bases, both legitimate — state which you used:**
+  - `false` → `pct_normalised` sums to 100% (the **AER chart** basis; battery
+    generation side only). Use this when reproducing the AER chart.
+  - `true` → `pct_of_intervals` counts batteries on both generation and load
+    sides (the **AER quarterly-report prose** basis). Shares do not sum to 100%.
+- "Average price set": `avg_offer_price` is the AER's definition (the unit's
+  offer band price referred to the RRN); `avg_rrp` is the dispatch price when
+  that fuel/unit set it. They diverge for negative-offer fuels (wind/solar).
+
+Methodology already handled inside the functions (do not re-implement): only
+`MARKET='Energy'` contributions; energy offers (`ENOF`) plus bidirectional
+battery offers (`BDOF,GEN` / `BDOF,LOAD`); FCAS codes, interconnector/MNSP
+units, and Administered-Price-Cap / market-suspension intervals are excluded.
+Fuel is resolved via `v_duid_fuel_aer` — long-retired DUIDs may resolve to
+`Unknown` because the registration list is a current snapshot.
+
+Examples:
+
+```sql
+-- AER chart for a quarter (shares sum to 100%)
+SELECT * FROM external_data.nemweb.f_price_setter_by_fuel('NSW1','2026-01-01','2026-04-01','quarter',false);
+-- Who set the price, interval by interval
+SELECT * FROM external_data.nemweb.f_price_setter_intervals('VIC1','2026-03-01','2026-03-02');
+-- DUID league table for a window
+SELECT * FROM external_data.nemweb.f_price_setter_by_duid('SA1','2026-01-01','2026-04-01','all');
+```
+
+This feed is **Tier 1** — authoritative but lagged ~1 month (NEMDE months
+publish after month-end). It is the practical floor for unit/fuel-level price
+attribution from public data; report the lag if the user asks about the current
+or previous few weeks.
+
+---
+
 ## Access Tiers
 
 The Renovara platform distinguishes two access tiers:
@@ -131,12 +191,14 @@ Several silver tables have `_free` variants that enforce the 7-day window. If th
   - `what_is_the_daily_count_of_interventions_since_2024_01_01.sql` — What is the daily count of interventions since 2024-01-01?
   - `what_is_the_average_demand_in_nsw1_by_hour_for_the_last_year.sql` — What is the average demand in NSW1 by hour for the last year?
   - `what_is_the_total_solar_and_wind_generation_over_the_last_ye.sql` — What is the total solar and wind generation over the last year?
+  - `which_fuel_sources_set_the_nsw1_energy_price_in_q1_2026_aer_.sql` — Which fuel sources set the NSW1 energy price in Q1 2026 (AER chart basis)?
 
 ## Example Triggers
 
 - "Show the revenue per day for [DUID] as a column chart for the last 30 days?"
 - "Explain the dataset and the tables and data that you have access to."
 - "I want to understand the data in the table [TABLE_NAME] and the columns in the table."
+- "Which fuel sources set the [REGION] price last quarter?"
 
 ## Data Source
 

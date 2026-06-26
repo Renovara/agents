@@ -116,6 +116,10 @@ If the YAML and live table differ after error-driven inspection:
   PREDISPATCH_REGION_SOLUTION sets out the overall regional Pre-Dispatch results for.
   Expected live table: `external_data.nemweb.silver_predispatchis_reports_predispatch_region_solution`
 
+- [`knowledge/price_setter.yaml`](knowledge/price_setter.yaml)
+  AEMO NemPriceSetter — the marginal "price setter" attribution NEMDE publishes for every 5-minute dispatch interval.
+  Expected live table: `external_data.nemweb.silver_pricesetter_price_setter`
+
 - [`knowledge/spdcpc.yaml`](knowledge/spdcpc.yaml)
   SPDCONNECTIONPOINTCONSTRAINT contains the LHS factor terms applied to connection points by generic constraints in dispatch, predispatch, and STPASA.
   Expected live table: `external_data.nemweb.silver___spdcpc`

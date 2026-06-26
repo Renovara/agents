@@ -1,0 +1,60 @@
+PRICE_SETTER:
+  table_name: silver_pricesetter_price_setter
+  display_name: Price Setter
+  table_comment: AEMO NemPriceSetter — the marginal "price setter" attribution NEMDE publishes for every
+    5-minute dispatch interval. One row per contributing unit, per region, per market (Energy plus the
+    8 FCAS services). For the energy price, the unit contributions are rows with DISPATCHEDMARKET='ENOF'
+    (energy offers) or 'BDOF,GEN'/'BDOF,LOAD' (bidirectional units, i.e. batteries; the suffix is the
+    dispatched side). Other Energy-market rows (FCAS codes, tbslack*, GenericConstraintSurplus) and interconnector
+    UNITs (LIKE '%MNSP%') are not unit price-setters. Parsed from the NEMDE XML archive (Data_Archive/Wholesale_Electricity/NEMDE)
+    by nemweb_pricesetter_ingest. Underpins the AER "price setter / average price by fuel source" analysis
+    via the f_price_setter_* SQL functions. Join UNIT to v_duid_fuel_aer for fuel source.
+  primary_keys:
+  - SETTLEMENTDATE
+  - REGIONID
+  - MARKET
+  - UNIT
+  - DISPATCHEDMARKET
+  - BANDNO
+  visibility: Public
+  update_frequency: Daily files in the NEMDE monthly archive (~1 month publication lag)
+  schema:
+  - column: SETTLEMENTDATE
+    data_type: STRING
+    comment: Dispatch interval end time, AEST (Australia/Brisbane), parsed to timestamp in silver. Derived
+      from the XML PeriodID (which carries a +10:00 offset).
+  - column: REGIONID
+    data_type: STRING
+    comment: Region whose price this row helps set (e.g. NSW1, QLD1, VIC1, SA1, TAS1).
+  - column: MARKET
+    data_type: STRING
+    comment: Priced commodity — "Energy" or an FCAS service (R6SE, R60S, R5MI, R1SE, L6SE, L60S, L5MI,
+      L1SE).
+  - column: PRICE
+    data_type: DECIMAL(15,5)
+    comment: Resolved regional price for MARKET in this interval ($/MWh for Energy, $/MW for FCAS). Equals
+      DISPATCH_PRICE.RRP for Energy.
+  - column: UNIT
+    data_type: STRING
+    comment: DUID of the contributing unit, or an interconnector id for inter-regional contributions (e.g.
+      "T-V-MNSP1,TAS1" — exclude with NOT LIKE '%MNSP%' for unit-level analysis). Join to v_duid_fuel_aer
+      (or silver_nem_participant_and_scheduled_loads) for fuel source.
+  - column: DISPATCHEDMARKET
+    data_type: STRING
+    comment: Market the unit was dispatched in for this contribution. ENOF = energy offer; BDOF,GEN /
+      BDOF,LOAD = bidirectional-unit (battery) offer by side — together these are the unit energy price-setters.
+      R*/L* codes = FCAS offers contributing to the energy price via co-optimisation; tbslack* / GenericConstraintSurplus
+      = solver artifacts. LDOF = scheduled-load offer (rare).
+  - column: BANDNO
+    data_type: TINYINT
+    comment: Offer band number (1-10) of the contributing unit.
+  - column: INCREASE
+    data_type: DECIMAL(18,8)
+    comment: Marginal MW response of this unit/band to a 1 MW demand change in REGIONID (effectiveness
+      factor). Largest absolute INCREASE among ENOF/BDOF rows = the dominant energy price setter.
+  - column: RRNBANDPRICE
+    data_type: DECIMAL(15,5)
+    comment: The unit's offer band price referred to the Regional Reference Node ($/MWh).
+  - column: BANDCOST
+    data_type: DECIMAL(18,8)
+    comment: INCREASE x RRNBANDPRICE — this band's contribution to the resolved regional price.
