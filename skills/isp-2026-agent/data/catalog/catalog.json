@@ -1,0 +1,1665 @@
+{
+ "generated": "2026-07-10",
+ "source": "aemo.com.au (verified 2026-07-10; final 2026 ISP published 2026-06-25)",
+ "scenarios": [
+  "Step Change",
+  "Accelerated Transition",
+  "Slower Growth"
+ ],
+ "pages": {
+  "2026-isp-home": "https://www.aemo.com.au/energy-systems/major-publications/integrated-system-plan-isp/2026-integrated-system-plan-isp",
+  "2025-26-iasr": "https://www.aemo.com.au/energy-systems/major-publications/integrated-system-plan-isp/2026-integrated-system-plan-isp/2025-26-inputs-assumptions-and-scenarios",
+  "isp-methodology": "https://www.aemo.com.au/energy-systems/major-publications/integrated-system-plan-isp/2026-integrated-system-plan-isp/isp-methodology",
+  "draft-2026-isp-consultation": "https://www.aemo.com.au/consultations/current-and-closed-consultations/draft-2026-isp-consultation",
+  "draft-2026-isp-addendum-consultation": "https://www.aemo.com.au/consultations/current-and-closed-consultations/draft-2026-isp-addendum-consultation",
+  "transmission-cost-database": "https://www.aemo.com.au/energy-systems/major-publications/integrated-system-plan-isp/2026-integrated-system-plan-isp/2025-26-inputs-assumptions-and-scenarios/transmission-cost-database"
+ },
+ "documents": [
+  {
+   "id": "2026-integrated-system-plan-isp",
+   "category": "report",
+   "title": "2026 Integrated System Plan (ISP)",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/2026-integrated-system-plan-isp.pdf?rev=f2f142d0a8d740a986f186da17bb8a9d&sc_lang=en",
+   "type": "pdf",
+   "date": "2026-06-25",
+   "file": "data/sources/report/2026-integrated-system-plan-isp.pdf",
+   "size": "6.93 MB",
+   "notes": "The final 2026 ISP: optimal development path (ODP), key findings, actionable transmission projects, scenario outcomes."
+  },
+  {
+   "id": "2026-integrated-system-plan-explainer",
+   "category": "report",
+   "title": "2026 Integrated System Plan - Explainer",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/aemo-2026-isp-explainer.pdf?rev=a1aa113a81194508a1aced90d26b1dd9&sc_lang=en",
+   "type": "pdf",
+   "date": "2026-06-25",
+   "file": "data/sources/report/aemo-2026-isp-explainer.pdf",
+   "size": "1.57 MB"
+  },
+  {
+   "id": "2026-integrated-system-plan-infographic",
+   "category": "report",
+   "title": "2026 Integrated System Plan - Infographic",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/2026-integrated-system-plan-infographic.pdf?rev=6568e9e8a4f34f5cb5f28a702d7fb453&sc_lang=en",
+   "type": "pdf",
+   "date": "2026-06-25",
+   "file": "data/sources/report/2026-integrated-system-plan-infographic.pdf",
+   "size": "5.96 MB"
+  },
+  {
+   "id": "2026-isp-publication-webinar-presentation",
+   "category": "report",
+   "title": "2026 ISP Publication Webinar Presentation",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/2026-isp-publication-webinar-presentation.pdf?rev=c28503d5b36e49ff821ba8a01a9a5502&sc_lang=en",
+   "type": "pdf",
+   "date": "2026-07-07",
+   "file": "data/sources/report/2026-isp-publication-webinar-presentation.pdf",
+   "size": "2.26 MB"
+  },
+  {
+   "id": "2026-isp-timetable",
+   "category": "report",
+   "title": "2026 ISP Timetable",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/2026-isp-timetable.pdf?rev=dd922dccb4b34164ba620057d7f19bb0&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-10-23",
+   "file": "data/sources/report/2026-isp-timetable.pdf",
+   "size": "1.05 MB"
+  },
+  {
+   "id": "appendix-a1-stakeholder-engagement",
+   "category": "appendices",
+   "title": "Appendix A1 Stakeholder Engagement",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/appendices/a1-stakeholder-engagement.pdf?rev=fb67d2dee69042f3885d5f8a649267d6&sc_lang=en",
+   "type": "pdf",
+   "date": "2026-06-25",
+   "file": "data/sources/appendices/a1-stakeholder-engagement.pdf",
+   "size": "1.95 MB"
+  },
+  {
+   "id": "appendix-a2-isp-development-opportunities",
+   "category": "appendices",
+   "title": "Appendix A2 ISP Development Opportunities",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/appendices/a2-isp-development-opportunities.pdf?rev=d81062e7cdcf4af8a04fbccdfc3c9fb4&sc_lang=en",
+   "type": "pdf",
+   "date": "2026-06-25",
+   "file": "data/sources/appendices/a2-isp-development-opportunities.pdf",
+   "size": "4.83 MB",
+   "notes": "Generation, storage and firming development opportunities under the ODP."
+  },
+  {
+   "id": "appendix-a3-renewable-energy-zones",
+   "category": "appendices",
+   "title": "Appendix A3 Renewable Energy Zones",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/appendices/a3-renewable-energy-zones.pdf?rev=6bb2ea22f0244c04a87cf3b2139be152&sc_lang=en",
+   "type": "pdf",
+   "date": "2026-06-25",
+   "file": "data/sources/appendices/a3-renewable-energy-zones.pdf",
+   "size": "14.77 MB",
+   "notes": "REZ capacities, boundaries and development."
+  },
+  {
+   "id": "appendix-a4-system-operability",
+   "category": "appendices",
+   "title": "Appendix A4 System Operability",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/appendices/a4-system-operability.pdf?rev=bdf7b0d6a2f94c07a6b05938ad94a518&sc_lang=en",
+   "type": "pdf",
+   "date": "2026-06-25",
+   "file": "data/sources/appendices/a4-system-operability.pdf",
+   "size": "3.38 MB"
+  },
+  {
+   "id": "appendix-a5-network-investments",
+   "category": "appendices",
+   "title": "Appendix A5 Network Investments",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/appendices/a5-network-investments.pdf?rev=a351f6c817484d79bc34f9a8e817f077&sc_lang=en",
+   "type": "pdf",
+   "date": "2026-06-25",
+   "file": "data/sources/appendices/a5-network-investments.pdf",
+   "size": "3.05 MB",
+   "notes": "Actionable and future ISP transmission projects, costs, timings, decision rules."
+  },
+  {
+   "id": "appendix-a6-cost-benefit-analysis",
+   "category": "appendices",
+   "title": "Appendix A6 Cost Benefit Analysis",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/appendices/a6-cost-benefit-analysis.pdf?rev=65263f64b43f4e7c856ba47364508845&sc_lang=en",
+   "type": "pdf",
+   "date": "2026-06-25",
+   "file": "data/sources/appendices/a6-cost-benefit-analysis.pdf",
+   "size": "6.53 MB",
+   "notes": "How the optimal development path was chosen; candidate development path (CDP) comparison."
+  },
+  {
+   "id": "appendix-a7-system-security",
+   "category": "appendices",
+   "title": "Appendix A7 System Security",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/appendices/a7-system-security.pdf?rev=d5ac8b3674ef42178d6453e2111f8532&sc_lang=en",
+   "type": "pdf",
+   "date": "2026-06-25",
+   "file": "data/sources/appendices/a7-system-security.pdf",
+   "size": "3.66 MB"
+  },
+  {
+   "id": "appendix-a8-social-licence",
+   "category": "appendices",
+   "title": "Appendix A8 Social Licence",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/appendices/a8-social-licence.pdf?rev=035a91c449f44bfc82a888a6770d9f90&sc_lang=en",
+   "type": "pdf",
+   "date": "2026-06-25",
+   "file": "data/sources/appendices/a8-social-licence.pdf",
+   "size": "1.26 MB"
+  },
+  {
+   "id": "appendix-a9-demand-side-factors-statement",
+   "category": "appendices",
+   "title": "Appendix A9 Demand Side Factors Statement",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/appendices/a9-demand-side-factors-statement.pdf?rev=cfadf873c9934b46aecd670fdcd8995f&sc_lang=en",
+   "type": "pdf",
+   "date": "2026-06-25",
+   "file": "data/sources/appendices/a9-demand-side-factors-statement.pdf",
+   "size": "2 MB"
+  },
+  {
+   "id": "appendix-a10-gas-development-projections",
+   "category": "appendices",
+   "title": "Appendix A10 Gas Development Projections",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/appendices/a10-gas-development-projections.pdf?rev=e204886dac1c4f01a471e239723fb054&sc_lang=en",
+   "type": "pdf",
+   "date": "2026-06-25",
+   "file": "data/sources/appendices/a10-gas-development-projections.pdf",
+   "size": "2.58 MB"
+  },
+  {
+   "id": "2026-isp-consultation-summary-report",
+   "category": "supporting-materials",
+   "title": "2026 ISP Consultation Summary Report",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/supporting-materials/2026-isp-consultation-summary-report.pdf?rev=7982dc7041d4477d988d9f75485846d3&sc_lang=en",
+   "type": "pdf",
+   "date": "2026-06-25",
+   "file": "data/sources/supporting-materials/2026-isp-consultation-summary-report.pdf",
+   "size": "2.35 MB"
+  },
+  {
+   "id": "2026-isp-chart-data",
+   "category": "supporting-materials",
+   "title": "2026 ISP chart data",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/supporting-materials/2026-isp-chart-data.xlsx?rev=c84f5cba01b94b10aa5893f04fbbbba1&sc_lang=en",
+   "type": "xlsx",
+   "date": "2026-06-25",
+   "file": "data/sources/supporting-materials/2026-isp-chart-data.xlsx",
+   "size": "4.69 MB",
+   "notes": "Data behind every chart in the 2026 ISP report - the fastest route to headline numbers."
+  },
+  {
+   "id": "2026-isp-generation-and-storage-outlook",
+   "category": "supporting-materials",
+   "title": "2026 ISP generation and storage outlook",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/supporting-materials/2026-isp-generation-and-storage-outlook.zip?rev=b64eda28a46b4d3eb3e4b3cbafea3f84&sc_lang=en",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/supporting-materials/2026-isp-generation-and-storage-outlook.zip",
+   "size": "80.01 MB",
+   "notes": "Model outputs: capacity/generation/storage build by scenario and CDP to 2050."
+  },
+  {
+   "id": "2026-isp-inputs-and-assumptions-workbook",
+   "category": "supporting-materials",
+   "title": "2026 ISP Inputs and Assumptions workbook",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/supporting-materials/2026-isp-inputs-and-assumptions-workbook.xlsm?rev=de6f5853cd5e4d5cbb06bc90bdf0e378&sc_lang=en",
+   "type": "xlsm",
+   "date": "2026-06-25",
+   "file": "data/sources/supporting-materials/2026-isp-inputs-and-assumptions-workbook.xlsm",
+   "size": "22.96 MB",
+   "notes": "The consolidated inputs/assumptions workbook used for the final 2026 ISP."
+  },
+  {
+   "id": "indicative-rez-boundaries-2026-gis-data",
+   "category": "supporting-materials",
+   "title": "Indicative REZ boundaries 2026 - GIS data",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/supporting-materials/indicative-rez-boundaries-2026-gis-data.kmz?rev=9b0bf7fc154b496aa8736928be26b015&sc_lang=en",
+   "type": "kmz",
+   "date": "2026-06-25",
+   "file": "data/sources/supporting-materials/indicative-rez-boundaries-2026-gis-data.kmz",
+   "size": "885.18 KB"
+  },
+  {
+   "id": "indicative-sub-regional-boundaries-2026-gis-data",
+   "category": "supporting-materials",
+   "title": "Indicative sub-regional boundaries 2026 - GIS data",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/supporting-materials/indicative-subregional-boundaries-2026-gis-data.kmz?rev=9e0f0e434d9343ad8d4111068da9c531&sc_lang=en",
+   "type": "kmz",
+   "date": "2026-06-25",
+   "file": "data/sources/supporting-materials/indicative-subregional-boundaries-2026-gis-data.kmz",
+   "size": "44.3 KB"
+  },
+  {
+   "id": "ministerial-letter-new-england-rez-network-infrastructure-project",
+   "category": "supporting-materials",
+   "title": "Ministerial letter - New England REZ network infrastructure project",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/supporting-materials/2026-isp-ministerial-letter-new-england-rez.pdf?rev=a840f63a7ad34dff95f223de5af1508f&sc_lang=en",
+   "type": "pdf",
+   "date": "2026-06-25",
+   "file": "data/sources/supporting-materials/2026-isp-ministerial-letter-new-england-rez.pdf",
+   "size": "194.47 KB"
+  },
+  {
+   "id": "2026-isp-model",
+   "category": "isp-model",
+   "title": "2026 ISP Model",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/isp-model/2026-isp-model.zip?rev=78bfcf05ad414a8f9ba01f6a7c329fc2&sc_lang=en",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/isp-model/2026-isp-model.zip",
+   "size": "127.07 MB",
+   "notes": "Full PLEXOS model package."
+  },
+  {
+   "id": "2026-isp-plexos-model-instructions",
+   "category": "isp-model",
+   "title": "2026 ISP PLEXOS Model Instructions",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/isp-model/2026-isp-plexos-model-instructions.pdf?rev=79d503ba4e584fa88c65ee90e25ad7a2&sc_lang=en",
+   "type": "pdf",
+   "date": "2026-06-25",
+   "file": "data/sources/isp-model/2026-isp-plexos-model-instructions.pdf",
+   "size": "781.05 KB"
+  },
+  {
+   "id": "2026-isp-solar-traces-bulk",
+   "category": "isp-model",
+   "title": "2026 ISP Solar traces (bulk)",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/isp-model/2026-isp-solar-traces.zip?rev=3ad06155b7b94628bc77b90efe94588e&sc_lang=en",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/isp-model/2026-isp-solar-traces.zip",
+   "size": "98.68 MB"
+  },
+  {
+   "id": "2026-isp-timeslice-traces",
+   "category": "isp-model",
+   "title": "2026 ISP Timeslice traces",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/isp-model/2026-isp-timeslice-traces.zip?rev=ea662aca37774fc9bd63e824297e2967&sc_lang=en",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/isp-model/2026-isp-timeslice-traces.zip",
+   "size": "11.92 KB"
+  },
+  {
+   "id": "2026-isp-wind-traces-bulk",
+   "category": "isp-model",
+   "title": "2026 ISP Wind traces (bulk)",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/isp-model/2026-isp-wind-traces.zip?rev=73674cd5bc6b4b7fbbc7d0e68ee0bc7c&sc_lang=en",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/isp-model/2026-isp-wind-traces.zip",
+   "size": "151.88 MB"
+  },
+  {
+   "id": "isp-demand-traces-nsw-accelerated-transition-poe10",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces NSW Accelerated Transition POE10",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-NSW-Accelerated-Transition-POE10",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-nsw-accelerated-transition-poe10.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-nsw-accelerated-transition-poe50",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces NSW Accelerated Transition POE50",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-NSW-Accelerated-Transition-POE50",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-nsw-accelerated-transition-poe50.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-nsw-slower-growth-poe10",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces NSW Slower Growth POE10",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-NSW-Slower-Growth-POE10",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-nsw-slower-growth-poe10.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-nsw-slower-growth-poe50",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces NSW Slower Growth POE50",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-NSW-Slower-Growth-POE50",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-nsw-slower-growth-poe50.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-nsw-step-change-poe10",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces NSW Step Change POE10",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-NSW-Step-Change-POE10",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-nsw-step-change-poe10.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-nsw-step-change-poe50",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces NSW Step Change POE50",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-NSW-Step-Change-POE50",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-nsw-step-change-poe50.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-qld-accelerated-transition-poe10",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces QLD Accelerated Transition POE10",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-QLD-Accelerated-Transition-POE10",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-qld-accelerated-transition-poe10.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-qld-accelerated-transition-poe50",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces QLD Accelerated Transition POE50",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-QLD-Accelerated-Transition-POE50",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-qld-accelerated-transition-poe50.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-qld-slower-growth-poe10",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces QLD Slower Growth POE10",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-QLD-Slower-Growth-POE10",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-qld-slower-growth-poe10.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-qld-slower-growth-poe50",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces QLD Slower Growth POE50",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-QLD-Slower-Growth-POE50",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-qld-slower-growth-poe50.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-qld-step-change-poe10",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces QLD Step Change POE10",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-QLD-Step-Change-POE10",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-qld-step-change-poe10.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-qld-step-change-poe50",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces QLD Step Change POE50",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-QLD-Step-Change-POE50",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-qld-step-change-poe50.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-sa-accelerated-transition-poe10",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces SA Accelerated Transition POE10",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SA-Accelerated-Transition-POE10",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-sa-accelerated-transition-poe10.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-sa-accelerated-transition-poe50",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces SA Accelerated Transition POE50",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SA-Accelerated-Transition-POE50",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-sa-accelerated-transition-poe50.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-sa-slower-growth-poe10",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces SA Slower Growth POE10",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SA-Slower-Growth-POE10",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-sa-slower-growth-poe10.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-sa-slower-growth-poe50",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces SA Slower Growth POE50",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SA-Slower-Growth-POE50",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-sa-slower-growth-poe50.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-sa-step-change-poe10",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces SA Step Change POE10",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SA-Step-Change-POE10",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-sa-step-change-poe10.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-sa-step-change-poe50",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces SA Step Change POE50",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SA-Step-Change-POE50",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-sa-step-change-poe50.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-tas-accelerated-transition-poe10",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces TAS Accelerated Transition POE10",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-TAS-Accelerated-Transition-POE10",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-tas-accelerated-transition-poe10.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-tas-accelerated-transition-poe50",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces TAS Accelerated Transition POE50",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-TAS-Accelerated-Transition-POE50",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-tas-accelerated-transition-poe50.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-tas-slower-growth-poe10",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces TAS Slower Growth POE10",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-TAS-Slower-Growth-POE10",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-tas-slower-growth-poe10.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-tas-slower-growth-poe50",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces TAS Slower Growth POE50",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-TAS-Slower-Growth-POE50",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-tas-slower-growth-poe50.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-tas-step-change-poe10",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces TAS Step Change POE10",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-TAS-Step-Change-POE10",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-tas-step-change-poe10.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-tas-step-change-poe50",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces TAS Step Change POE50",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-TAS-Step-Change-POE50",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-tas-step-change-poe50.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-vic-accelerated-transition-poe10",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces VIC Accelerated Transition POE10",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-VIC-Accelerated-Transition-POE10",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-vic-accelerated-transition-poe10.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-vic-accelerated-transition-poe50",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces VIC Accelerated Transition POE50",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-VIC-Accelerated-Transition-POE50",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-vic-accelerated-transition-poe50.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-vic-slower-growth-poe10",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces VIC Slower Growth POE10",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-VIC-Slower-Growth-POE10",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-vic-slower-growth-poe10.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-vic-slower-growth-poe50",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces VIC Slower Growth POE50",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-VIC-Slower-Growth-POE50",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-vic-slower-growth-poe50.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-vic-step-change-poe10",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces VIC Step Change POE10",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-VIC-Step-Change-POE10",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-vic-step-change-poe10.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-vic-step-change-poe50",
+   "category": "demand-traces-regional",
+   "title": "ISP Demand Traces VIC Step Change POE50",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-VIC-Step-Change-POE50",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-regional/isp-demand-traces-vic-step-change-poe50.zip",
+   "notes": "Half-hourly regional demand by component, 23 reference years (2003-2025)."
+  },
+  {
+   "id": "isp-demand-traces-cnsw-accelerated-transition",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces CNSW Accelerated Transition",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-CNSW-Accelerated-Transition",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-cnsw-accelerated-transition.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-cnsw-slower-growth",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces CNSW Slower Growth",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-CNSW-Slower-Growth",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-cnsw-slower-growth.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-cnsw-step-change",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces CNSW Step Change",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-CNSW-Step-Change",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-cnsw-step-change.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-cq-accelerated-transition",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces CQ Accelerated Transition",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-CQ-Accelerated-Transition",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-cq-accelerated-transition.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-cq-slower-growth",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces CQ Slower Growth",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-CQ-Slower-Growth",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-cq-slower-growth.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-cq-step-change",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces CQ Step Change",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-CQ-Step-Change",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-cq-step-change.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-csa-accelerated-transition",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces CSA Accelerated Transition",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-CSA-Accelerated-Transition",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-csa-accelerated-transition.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-csa-slower-growth",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces CSA Slower Growth",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-CSA-Slower-Growth",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-csa-slower-growth.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-csa-step-change",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces CSA Step Change",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-CSA-Step-Change",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-csa-step-change.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-gg-accelerated-transition",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces GG Accelerated Transition",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-GG-Accelerated-Transition",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-gg-accelerated-transition.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-gg-slower-growth",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces GG Slower Growth",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-GG-Slower-Growth",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-gg-slower-growth.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-gg-step-change",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces GG Step Change",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-GG-Step-Change",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-gg-step-change.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-mel-accelerated-transition",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces MEL Accelerated Transition",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-MEL-Accelerated-Transition",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-mel-accelerated-transition.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-mel-slower-growth",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces MEL Slower Growth",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-MEL-Slower-Growth",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-mel-slower-growth.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-mel-step-change",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces MEL Step Change",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-MEL-Step-Change",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-mel-step-change.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-nnsw-accelerated-transition",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces NNSW Accelerated Transition",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-NNSW-Accelerated-Transition",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-nnsw-accelerated-transition.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-nnsw-slower-growth",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces NNSW Slower Growth",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-NNSW-Slower-Growth",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-nnsw-slower-growth.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-nnsw-step-change",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces NNSW Step Change",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-NNSW-Step-Change",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-nnsw-step-change.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-nq-accelerated-transition",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces NQ Accelerated Transition",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-NQ-Accelerated-Transition",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-nq-accelerated-transition.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-nq-slower-growth",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces NQ Slower Growth",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-NQ-Slower-Growth",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-nq-slower-growth.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-nq-step-change",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces NQ Step Change",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-NQ-Step-Change",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-nq-step-change.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-nsa-accelerated-transition",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces NSA Accelerated Transition",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-NSA-Accelerated-Transition",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-nsa-accelerated-transition.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-nsa-slower-growth",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces NSA Slower Growth",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-NSA-Slower-Growth",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-nsa-slower-growth.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-nsa-step-change",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces NSA Step Change",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-NSA-Step-Change",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-nsa-step-change.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-sesa-accelerated-transition",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces SESA Accelerated Transition",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SESA-Accelerated-Transition",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-sesa-accelerated-transition.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-sesa-slower-growth",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces SESA Slower Growth",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SESA-Slower-Growth",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-sesa-slower-growth.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-sesa-step-change",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces SESA Step Change",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SESA-Step-Change",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-sesa-step-change.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-sev-accelerated-transition",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces SEV Accelerated Transition",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SEV-Accelerated-Transition",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-sev-accelerated-transition.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-sev-slower-growth",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces SEV Slower Growth",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SEV-Slower-Growth",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-sev-slower-growth.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-sev-step-change",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces SEV Step Change",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SEV-Step-Change",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-sev-step-change.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-snsw-accelerated-transition",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces SNSW Accelerated Transition",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SNSW-Accelerated-Transition",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-snsw-accelerated-transition.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-snsw-slower-growth",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces SNSW Slower Growth",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SNSW-Slower-Growth",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-snsw-slower-growth.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-snsw-step-change",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces SNSW Step Change",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SNSW-Step-Change",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-snsw-step-change.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-snw-accelerated-transition",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces SNW Accelerated Transition",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SNW-Accelerated-Transition",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-snw-accelerated-transition.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-snw-slower-growth",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces SNW Slower Growth",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SNW-Slower-Growth",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-snw-slower-growth.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-snw-step-change",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces SNW Step Change",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SNW-Step-Change",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-snw-step-change.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-sq-accelerated-transition",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces SQ Accelerated Transition",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SQ-Accelerated-Transition",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-sq-accelerated-transition.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-sq-slower-growth",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces SQ Slower Growth",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SQ-Slower-Growth",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-sq-slower-growth.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-sq-step-change",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces SQ Step Change",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-SQ-Step-Change",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-sq-step-change.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-tas-accelerated-transition",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces TAS Accelerated Transition",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-TAS-Accelerated-Transition",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-tas-accelerated-transition.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-tas-slower-growth",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces TAS Slower Growth",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-TAS-Slower-Growth",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-tas-slower-growth.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-tas-step-change",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces TAS Step Change",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-TAS-Step-Change",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-tas-step-change.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-wnv-accelerated-transition",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces WNV Accelerated Transition",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-WNV-Accelerated-Transition",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-wnv-accelerated-transition.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-wnv-slower-growth",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces WNV Slower Growth",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-WNV-Slower-Growth",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-wnv-slower-growth.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "isp-demand-traces-wnv-step-change",
+   "category": "demand-traces-subregional",
+   "title": "ISP Demand Traces WNV Step Change",
+   "url": "https://www.aemo.com.au/2026-06-ISP-Demand-Traces/ISP-Demand-Traces-WNV-Step-Change",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/demand-traces-subregional/isp-demand-traces-wnv-step-change.zip",
+   "notes": "Half-hourly sub-regional demand (OPSO_MODELLING, OPSO_MODELLING_PV_LITE, PV_TOT)."
+  },
+  {
+   "id": "2026-isp-firm-contribution-factors",
+   "category": "vre-traces",
+   "title": "2026 ISP Firm Contribution Factors",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/2026-isp-firm-contribution-factors.xlsx?rev=0805c25abe754f7bbd562c50bbe8e054&sc_lang=en",
+   "type": "xlsx",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/2026-isp-firm-contribution-factors.xlsx",
+   "size": "2.06 MB"
+  },
+  {
+   "id": "isp-solar-traces-r2011",
+   "category": "vre-traces",
+   "title": "ISP Solar Traces r2011",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Solar-Traces/ISP-Solar-Traces-r2011",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-solar-traces-r2011.zip"
+  },
+  {
+   "id": "isp-wind-traces-r2011",
+   "category": "vre-traces",
+   "title": "ISP Wind Traces r2011",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Wind-Traces/ISP-Wind-Traces-r2011",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-wind-traces-r2011.zip"
+  },
+  {
+   "id": "isp-solar-traces-r2012",
+   "category": "vre-traces",
+   "title": "ISP Solar Traces r2012",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Solar-Traces/ISP-Solar-Traces-r2012",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-solar-traces-r2012.zip"
+  },
+  {
+   "id": "isp-wind-traces-r2012",
+   "category": "vre-traces",
+   "title": "ISP Wind Traces r2012",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Wind-Traces/ISP-Wind-Traces-r2012",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-wind-traces-r2012.zip"
+  },
+  {
+   "id": "isp-solar-traces-r2013",
+   "category": "vre-traces",
+   "title": "ISP Solar Traces r2013",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Solar-Traces/ISP-Solar-Traces-r2013",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-solar-traces-r2013.zip"
+  },
+  {
+   "id": "isp-wind-traces-r2013",
+   "category": "vre-traces",
+   "title": "ISP Wind Traces r2013",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Wind-Traces/ISP-Wind-Traces-r2013",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-wind-traces-r2013.zip"
+  },
+  {
+   "id": "isp-solar-traces-r2014",
+   "category": "vre-traces",
+   "title": "ISP Solar Traces r2014",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Solar-Traces/ISP-Solar-Traces-r2014",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-solar-traces-r2014.zip"
+  },
+  {
+   "id": "isp-wind-traces-r2014",
+   "category": "vre-traces",
+   "title": "ISP Wind Traces r2014",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Wind-Traces/ISP-Wind-Traces-r2014",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-wind-traces-r2014.zip"
+  },
+  {
+   "id": "isp-solar-traces-r2015",
+   "category": "vre-traces",
+   "title": "ISP Solar Traces r2015",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Solar-Traces/ISP-Solar-Traces-r2015",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-solar-traces-r2015.zip"
+  },
+  {
+   "id": "isp-wind-traces-r2015",
+   "category": "vre-traces",
+   "title": "ISP Wind Traces r2015",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Wind-Traces/ISP-Wind-Traces-r2015",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-wind-traces-r2015.zip"
+  },
+  {
+   "id": "isp-solar-traces-r2016",
+   "category": "vre-traces",
+   "title": "ISP Solar Traces r2016",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Solar-Traces/ISP-Solar-Traces-r2016",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-solar-traces-r2016.zip"
+  },
+  {
+   "id": "isp-wind-traces-r2016",
+   "category": "vre-traces",
+   "title": "ISP Wind Traces r2016",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Wind-Traces/ISP-Wind-Traces-r2016",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-wind-traces-r2016.zip"
+  },
+  {
+   "id": "isp-solar-traces-r2017",
+   "category": "vre-traces",
+   "title": "ISP Solar Traces r2017",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Solar-Traces/ISP-Solar-Traces-r2017",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-solar-traces-r2017.zip"
+  },
+  {
+   "id": "isp-wind-traces-r2017",
+   "category": "vre-traces",
+   "title": "ISP Wind Traces r2017",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Wind-Traces/ISP-Wind-Traces-r2017",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-wind-traces-r2017.zip"
+  },
+  {
+   "id": "isp-solar-traces-r2018",
+   "category": "vre-traces",
+   "title": "ISP Solar Traces r2018",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Solar-Traces/ISP-Solar-Traces-r2018",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-solar-traces-r2018.zip"
+  },
+  {
+   "id": "isp-wind-traces-r2018",
+   "category": "vre-traces",
+   "title": "ISP Wind Traces r2018",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Wind-Traces/ISP-Wind-Traces-r2018",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-wind-traces-r2018.zip"
+  },
+  {
+   "id": "isp-solar-traces-r2019",
+   "category": "vre-traces",
+   "title": "ISP Solar Traces r2019",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Solar-Traces/ISP-Solar-Traces-r2019",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-solar-traces-r2019.zip"
+  },
+  {
+   "id": "isp-wind-traces-r2019",
+   "category": "vre-traces",
+   "title": "ISP Wind Traces r2019",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Wind-Traces/ISP-Wind-Traces-r2019",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-wind-traces-r2019.zip"
+  },
+  {
+   "id": "isp-solar-traces-r2020",
+   "category": "vre-traces",
+   "title": "ISP Solar Traces r2020",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Solar-Traces/ISP-Solar-Traces-r2020",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-solar-traces-r2020.zip"
+  },
+  {
+   "id": "isp-wind-traces-r2020",
+   "category": "vre-traces",
+   "title": "ISP Wind Traces r2020",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Wind-Traces/ISP-Wind-Traces-r2020",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-wind-traces-r2020.zip"
+  },
+  {
+   "id": "isp-solar-traces-r2021",
+   "category": "vre-traces",
+   "title": "ISP Solar Traces r2021",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Solar-Traces/ISP-Solar-Traces-r2021",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-solar-traces-r2021.zip"
+  },
+  {
+   "id": "isp-wind-traces-r2021",
+   "category": "vre-traces",
+   "title": "ISP Wind Traces r2021",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Wind-Traces/ISP-Wind-Traces-r2021",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-wind-traces-r2021.zip"
+  },
+  {
+   "id": "isp-solar-traces-r2022",
+   "category": "vre-traces",
+   "title": "ISP Solar Traces r2022",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Solar-Traces/ISP-Solar-Traces-r2022",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-solar-traces-r2022.zip"
+  },
+  {
+   "id": "isp-wind-traces-r2022",
+   "category": "vre-traces",
+   "title": "ISP Wind Traces r2022",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Wind-Traces/ISP-Wind-Traces-r2022",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-wind-traces-r2022.zip"
+  },
+  {
+   "id": "isp-solar-traces-r2023",
+   "category": "vre-traces",
+   "title": "ISP Solar Traces r2023",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Solar-Traces/ISP-Solar-Traces-r2023",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-solar-traces-r2023.zip"
+  },
+  {
+   "id": "isp-wind-traces-r2023",
+   "category": "vre-traces",
+   "title": "ISP Wind Traces r2023",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Wind-Traces/ISP-Wind-Traces-r2023",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-wind-traces-r2023.zip"
+  },
+  {
+   "id": "isp-solar-traces-r2024",
+   "category": "vre-traces",
+   "title": "ISP Solar Traces r2024",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Solar-Traces/ISP-Solar-Traces-r2024",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-solar-traces-r2024.zip"
+  },
+  {
+   "id": "isp-wind-traces-r2024",
+   "category": "vre-traces",
+   "title": "ISP Wind Traces r2024",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Wind-Traces/ISP-Wind-Traces-r2024",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-wind-traces-r2024.zip"
+  },
+  {
+   "id": "isp-solar-traces-r2025",
+   "category": "vre-traces",
+   "title": "ISP Solar Traces r2025",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Solar-Traces/ISP-Solar-Traces-r2025",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-solar-traces-r2025.zip"
+  },
+  {
+   "id": "isp-wind-traces-r2025",
+   "category": "vre-traces",
+   "title": "ISP Wind Traces r2025",
+   "url": "https://www.aemo.com.au//2026-06-ISP-Wind-Traces/ISP-Wind-Traces-r2025",
+   "type": "zip",
+   "date": "2026-06-25",
+   "file": "data/sources/vre-traces/isp-wind-traces-r2025.zip"
+  },
+  {
+   "id": "2025-inputs-assumptions-and-scenarios-report",
+   "category": "iasr",
+   "title": "2025 Inputs Assumptions and Scenarios Report",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2024/2025-iasr-scenarios/final-docs/2025-inputs-assumptions-and-scenarios-report.pdf?rev=63268acd3f044adb9f5f3a32b6880c27&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-08-28",
+   "file": "data/sources/iasr/2025-inputs-assumptions-and-scenarios-report.pdf",
+   "size": "10.9 MB",
+   "notes": "The IASR: scenarios, demand, fuel prices, build costs for 2025-26 planning."
+  },
+  {
+   "id": "2025-inputs-and-assumptions-workbook",
+   "category": "iasr",
+   "title": "2025 Inputs and Assumptions Workbook",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2024/2025-iasr-scenarios/final-docs/2025-inputs-and-assumptions-workbook.xlsm?rev=2d0e43f63185479e9c7b54331f0aad7b&sc_lang=en",
+   "type": "xlsm",
+   "date": "2025-08-28",
+   "file": "data/sources/iasr/2025-inputs-and-assumptions-workbook.xlsm",
+   "size": "17.4 MB",
+   "notes": "Key scenario data used as inputs to AEMO's market models."
+  },
+  {
+   "id": "addendum-to-the-2025-iasr",
+   "category": "iasr",
+   "title": "Addendum to the 2025 IASR",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/draft-2026/addendum-to-the-2025-inputs-assumptions-and-scenarios-report.pdf?rev=00798523a25e42078034d1878c337f19&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-12-10",
+   "file": "data/sources/iasr/addendum-to-the-2025-inputs-assumptions-and-scenarios-report.pdf",
+   "size": "894.02 KB",
+   "notes": "Released with the Draft 2026 ISP."
+  },
+  {
+   "id": "2025-iasr-consultation-summary-report",
+   "category": "iasr",
+   "title": "2025 IASR Consultation Summary Report",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2024/2025-iasr-scenarios/final-docs/2025-iasr-consultation-summary-report.pdf?rev=6dc56931355649d9a4610a540d11154c&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-07-31",
+   "file": "data/sources/iasr/2025-iasr-consultation-summary-report.pdf",
+   "size": "1.92 MB"
+  },
+  {
+   "id": "2025-iasr-overview",
+   "category": "iasr",
+   "title": "2025 IASR Overview",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2024/2025-iasr-scenarios/final-docs/2025-iasr-overview.pdf?rev=edd69645d24046babf574a4505c80ec2&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-07-31",
+   "file": "data/sources/iasr/2025-iasr-overview.pdf",
+   "size": "542.71 KB"
+  },
+  {
+   "id": "2026-isp-scenario-weighting-overview",
+   "category": "iasr",
+   "title": "2026 ISP Scenario weighting overview",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/2026-isp-scenario-weighting-overview.pdf?rev=4dae70ae407241f68e19e768a4ce2a14&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-11-05",
+   "file": "data/sources/iasr/2026-isp-scenario-weighting-overview.pdf",
+   "size": "320.22 KB"
+  },
+  {
+   "id": "2025-iasr-ev-workbook",
+   "category": "iasr",
+   "title": "2025 IASR EV workbook",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2024/2025-iasr-scenarios/final-docs/aemo-2025-iasr-ev-workbook.xlsx?rev=66c26c22845d4891a020e32ecd0be709&sc_lang=en",
+   "type": "xlsx",
+   "date": "2025-07-31",
+   "file": "data/sources/iasr/aemo-2025-iasr-ev-workbook.xlsx",
+   "size": "660.68 KB"
+  },
+  {
+   "id": "aurecon-2024-energy-technology-cost-and-technical-parameter-review-report",
+   "category": "iasr-reference",
+   "title": "Aurecon 2024 Energy technology cost and technical parameter review report",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2024/2025-iasr-scenarios/final-docs/aurecon-2024-energy-technology-cost-technical-parameter-review-report.pdf?rev=5526946b9e3e4db680b7bcc82ecce94b&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-07-31",
+   "file": "data/sources/iasr-reference/aurecon-2024-energy-technology-cost-technical-parameter-review-report.pdf",
+   "size": "5.61 MB"
+  },
+  {
+   "id": "aurecon-2024-cost-review-tables",
+   "category": "iasr-reference",
+   "title": "Aurecon 2024 cost review tables",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2024/2025-iasr-scenarios/final-docs/aurecon-2024-energy-technology-cost-technical-parameter-review-tables.xlsx?rev=3fc5ff7dc11142a5a768753c4837e56f&sc_lang=en",
+   "type": "xlsx",
+   "date": "2025-07-31",
+   "file": "data/sources/iasr-reference/aurecon-2024-energy-technology-cost-technical-parameter-review-tables.xlsx",
+   "size": "59.45 KB",
+   "notes": "Technology build-cost tables."
+  },
+  {
+   "id": "aurecon-2024-cost-review-tables-mid-size-solar-pv-and-bess",
+   "category": "iasr-reference",
+   "title": "Aurecon 2024 cost review tables - Mid Size Solar PV and BESS",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2024/2025-iasr-scenarios/final-docs/aurecon-2024-energy-technology-cost-technical-parameter-review-tables-solar.xlsx?rev=ad3f9545639847479cddefc050c862b8&sc_lang=en",
+   "type": "xlsx",
+   "date": "2025-07-31",
+   "file": "data/sources/iasr-reference/aurecon-2024-energy-technology-cost-technical-parameter-review-tables-solar.xlsx",
+   "size": "24.25 KB"
+  },
+  {
+   "id": "ghd-2025-pumped-hydro-energy-storage-cost-parameter-review",
+   "category": "iasr-reference",
+   "title": "GHD 2025 Pumped hydro energy storage cost parameter review",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2024/2025-iasr-scenarios/final-docs/ghd-2025-pumped-hydro-energy-storage-cost-parameter-review.pdf?rev=23aa606f804b44c9a60efb1cd078468b&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-07-31",
+   "file": "data/sources/iasr-reference/ghd-2025-pumped-hydro-energy-storage-cost-parameter-review.pdf",
+   "size": "20.51 MB"
+  },
+  {
+   "id": "ghd-2025-energy-technology-retirement-cost-and-o-m-estimate-review",
+   "category": "iasr-reference",
+   "title": "GHD 2025 Energy technology retirement cost and O&M estimate review",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2024/2025-iasr-scenarios/final-docs/ghd-2025-energy-technology-retirement-cost-om-estimate-review.pdf?rev=e2644c247ff7443a93c5ab09349fe0d9&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-07-31",
+   "file": "data/sources/iasr-reference/ghd-2025-energy-technology-retirement-cost-om-estimate-review.pdf",
+   "size": "1.18 MB"
+  },
+  {
+   "id": "oxford-economics-australia-data-centre-energy-consumption-report",
+   "category": "iasr-reference",
+   "title": "Oxford Economics Australia - Data centre energy consumption report",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2024/2025-iasr-scenarios/final-docs/oxford-economics-australia-data-centre-energy-consumption-report.pdf?rev=2d89b1a4455f4f0db94c1ffff76c0c06&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-07-31",
+   "file": "data/sources/iasr-reference/oxford-economics-australia-data-centre-energy-consumption-report.pdf",
+   "size": "1.39 MB"
+  },
+  {
+   "id": "oxford-economics-australia-discount-rates-for-energy-infrastructure-report",
+   "category": "iasr-reference",
+   "title": "Oxford Economics Australia - Discount rates for energy infrastructure report",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2024/2025-iasr-scenarios/final-docs/oxford-economics-australia-discount-rates-for-energy-infrastructure-report.pdf?rev=2b6a76734b334a309f30167baa7e154d&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-07-31",
+   "file": "data/sources/iasr-reference/oxford-economics-australia-discount-rates-for-energy-infrastructure-report.pdf",
+   "size": "1.36 MB"
+  },
+  {
+   "id": "oxford-economics-australia-planning-and-installation-cost-escalation-factors-report",
+   "category": "iasr-reference",
+   "title": "Oxford Economics Australia - Planning and installation cost escalation factors report",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2024/2025-iasr-scenarios/final-docs/oxford-economics-australia-planning-installation-cost-escalation-factors-report.pdf?rev=92ecc2e2bdec49c4a82fd29e1e3992f2&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-07-31",
+   "file": "data/sources/iasr-reference/oxford-economics-australia-planning-installation-cost-escalation-factors-report.pdf",
+   "size": "1.41 MB"
+  },
+  {
+   "id": "strategy-policy-research-2025-energy-efficiency-report",
+   "category": "iasr-reference",
+   "title": "Strategy Policy Research 2025 Energy Efficiency report",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2024/2025-iasr-scenarios/final-docs/strategy-policy-research-2025-energy-efficiency-report.pdf?rev=16f21ea5114a47f9b8f535505c520ea4&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-07-31",
+   "file": "data/sources/iasr-reference/strategy-policy-research-2025-energy-efficiency-report.pdf",
+   "size": "3.81 MB"
+  },
+  {
+   "id": "acil-allen-2024-gas-liquid-fuel-coal-and-renewable-gas-projections",
+   "category": "iasr-reference",
+   "title": "ACIL Allen 2024 Gas, liquid fuel, coal and renewable gas projections",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2025/acil-allen-2024-fuel-price-forecast-report.pdf?rev=3dd0a9e2448f46cabf84196e012eb081&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-07-31",
+   "file": "data/sources/iasr-reference/acil-allen-2024-fuel-price-forecast-report.pdf",
+   "size": "2 MB"
+  },
+  {
+   "id": "acil-allen-2024-price-forecast-data-files",
+   "category": "iasr-reference",
+   "title": "ACIL Allen 2024 Price forecast data files",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2025/acil-allen-2024-price-forecast-data-files.zip?rev=b26651230b4940fe82a0da00f0fc590a&sc_lang=en",
+   "type": "zip",
+   "date": "2024-12-11",
+   "file": "data/sources/iasr-reference/acil-allen-2024-price-forecast-data-files.zip",
+   "size": "893.78 KB",
+   "notes": "Fuel price trajectories by scenario."
+  },
+  {
+   "id": "csiro-2024-solar-pv-and-battery-projections-report",
+   "category": "iasr-reference",
+   "title": "CSIRO 2024 Solar PV and Battery Projections Report",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2025/csiro-2024-solar-pv-and-battery-projections-report.pdf?rev=e8a158794c6d4327a1eb66ae15d86ca8&sc_lang=en",
+   "type": "pdf",
+   "date": "2024-12-11",
+   "file": "data/sources/iasr-reference/csiro-2024-solar-pv-and-battery-projections-report.pdf",
+   "size": "1.86 MB"
+  },
+  {
+   "id": "deloitte-access-economics-2024-economic-forecast",
+   "category": "iasr-reference",
+   "title": "Deloitte Access Economics 2024 Economic Forecast",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2025/deloitte-access-economics-2024-economic-forecast.pdf?rev=92704425728b4097b3cb4894e1ccf0de&sc_lang=en",
+   "type": "pdf",
+   "date": "2024-12-11",
+   "file": "data/sources/iasr-reference/deloitte-access-economics-2024-economic-forecast.pdf",
+   "size": "1.44 MB"
+  },
+  {
+   "id": "2025-electricity-network-options-report",
+   "category": "network-options",
+   "title": "2025 Electricity Network Options Report",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2025/2025-electricity-network-options-report/final/2025-electricity-network-options-report.pdf?rev=7fd2059752bd41eba55184df4e389e1e&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-08-28",
+   "file": "data/sources/network-options/2025-electricity-network-options-report.pdf",
+   "size": "8.61 MB",
+   "notes": "Candidate network options, costs and timings feeding the ISP."
+  },
+  {
+   "id": "2025-transmission-cost-estimates",
+   "category": "network-options",
+   "title": "2025 transmission cost estimates",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/enor-reference-material/2025-transmission-cost-estimates.zip?rev=5b48ab65e0154f209794f6ca9518014a&sc_lang=en",
+   "type": "zip",
+   "date": "2025-07-31",
+   "file": "data/sources/network-options/2025-transmission-cost-estimates.zip",
+   "size": "3.32 MB"
+  },
+  {
+   "id": "ghd-2025-transmission-cost-database-update-report",
+   "category": "network-options",
+   "title": "GHD 2025 Transmission Cost Database update report",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/enor-reference-material/ghd-2025-transmission-cost-database-update-report.pdf?rev=7aed994756df40678b68fa51ccffeedf&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-07-31",
+   "file": "data/sources/network-options/ghd-2025-transmission-cost-database-update-report.pdf",
+   "size": "933.77 KB",
+   "notes": "TCD v3.1 itself is via AEMO request form, not direct download."
+  },
+  {
+   "id": "ghd-2025-transmission-cost-forecasting-method-update-report",
+   "category": "network-options",
+   "title": "GHD 2025 Transmission cost forecasting method update report",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/enor-reference-material/ghd-2025-transmission-cost-forecasting-method-update-report.pdf?rev=0121a12dddda4c8eb5ad90d79ff13d3c&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-05-22",
+   "file": "data/sources/network-options/ghd-2025-transmission-cost-forecasting-method-update-report.pdf",
+   "size": "1.3 MB"
+  },
+  {
+   "id": "jacobs-2025-strategic-land-use-transmission-assessment-report",
+   "category": "network-options",
+   "title": "Jacobs 2025 Strategic land use transmission assessment report",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/enor-reference-material/jacobs-strategic-land-use-transmission-assessment-report.pdf?rev=027ad6aa178948f4a9cb9e1f8db3bbab&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-05-22",
+   "file": "data/sources/network-options/jacobs-strategic-land-use-transmission-assessment-report.pdf",
+   "size": "3.31 MB"
+  },
+  {
+   "id": "jacobs-strategic-land-use-transmission-assessment-gis-data",
+   "category": "network-options",
+   "title": "Jacobs Strategic land use transmission assessment GIS data",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/2026/enor-reference-material/jacobs-strategic-land-use-transmission-assessment-gis-data.zip?rev=b93171dafa064574b91ce69c4c0fba10&sc_lang=en",
+   "type": "zip",
+   "date": "2025-05-22",
+   "file": "data/sources/network-options/jacobs-strategic-land-use-transmission-assessment-gis-data.zip",
+   "size": "6.51 MB"
+  },
+  {
+   "id": "2025-gas-infrastructure-options-report",
+   "category": "gas",
+   "title": "2025 Gas Infrastructure Options Report",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2025/2025-gas-infrastructure-options-report/final/2025-gas-infrastructure-options-report.pdf?rev=fecf33c5de994deb9423ad1e326c6e98&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-07-31",
+   "file": "data/sources/gas/2025-gas-infrastructure-options-report.pdf",
+   "size": "1.88 MB"
+  },
+  {
+   "id": "2025-gas-fuel-limitations-data-existing-infrastructure",
+   "category": "gas",
+   "title": "2025 Gas fuel limitations data (existing infrastructure)",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2024/2025-iasr-scenarios/final-docs/2025-gas-fuel-limitations-data.zip?rev=bb5ab15e63444ccd8111e5b2499a13a8&sc_lang=en",
+   "type": "zip",
+   "date": "2025-08-06",
+   "file": "data/sources/gas/2025-gas-fuel-limitations-data.zip",
+   "size": "16.65 MB"
+  },
+  {
+   "id": "ghd-2025-gas-infrastructure-costs-report",
+   "category": "gas",
+   "title": "GHD 2025 Gas Infrastructure Costs Report",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2025/2025-gas-infrastructure-options-report/2025-gas-infrastructure-costs-report.pdf?rev=013f876a90b9421c886f8e4c96a600dd&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-05-22",
+   "file": "data/sources/gas/2025-gas-infrastructure-costs-report.pdf",
+   "size": "2.2 MB"
+  },
+  {
+   "id": "ghd-2025-gas-master-cost-database",
+   "category": "gas",
+   "title": "GHD 2025 Gas Master Cost database",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2025/2025-gas-infrastructure-options-report/2025-gas-master-cost-database.xlsx?rev=3a2caf85294a4520907f707c81ac88d0&sc_lang=en",
+   "type": "xlsx",
+   "date": "2025-05-22",
+   "file": "data/sources/gas/2025-gas-master-cost-database.xlsx",
+   "size": "83.38 KB"
+  },
+  {
+   "id": "ghd-2025-gas-adjustment-factors-database",
+   "category": "gas",
+   "title": "GHD 2025 Gas Adjustment Factors database",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2025/2025-gas-infrastructure-options-report/2025-gas-adjustment-factors-database.xlsx?rev=feae5791b7dd4f3b88c87230e389fb53&sc_lang=en",
+   "type": "xlsx",
+   "date": "2025-05-22",
+   "file": "data/sources/gas/2025-gas-adjustment-factors-database.xlsx",
+   "size": "59.12 KB"
+  },
+  {
+   "id": "ghd-2025-gas-infrastructure-price-forecasts",
+   "category": "gas",
+   "title": "GHD 2025 Gas Infrastructure Price forecasts",
+   "url": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2025/2025-gas-infrastructure-options-report/ghd-2025-gas-infrastructure-price-forecasts.xlsx?rev=29cc81d909624e4abba79aacb3a976b3&sc_lang=en",
+   "type": "xlsx",
+   "date": "2025-05-22",
+   "file": "data/sources/gas/ghd-2025-gas-infrastructure-price-forecasts.xlsx",
+   "size": "574.93 KB"
+  },
+  {
+   "id": "draft-2026-integrated-system-plan",
+   "category": "draft",
+   "title": "Draft 2026 Integrated System Plan",
+   "url": "https://www.aemo.com.au/-/media/files/major-publications/isp/draft-2026/draft-2026-integrated-system-plan.pdf?rev=01e6116c8dbd473a954928253886791c&sc_lang=en",
+   "type": "pdf",
+   "date": "2025-12-10",
+   "file": "data/sources/draft/draft-2026-integrated-system-plan.pdf",
+   "notes": "Superseded by the final 2026 ISP; use for draft-vs-final comparison only."
+  }
+ ]
+}
