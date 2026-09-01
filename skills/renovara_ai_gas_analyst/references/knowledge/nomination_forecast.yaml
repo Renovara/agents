@@ -1,0 +1,62 @@
+NOMINATION_FORECAST:
+  table_name: silver_gbb_nomination_forecast
+  display_name: Nomination Forecast
+  table_comment: 'AEMO Gas Bulletin Board nominations and forecasts. AEMO: "The report shall return Nomination
+    and Forecast data submitted to the market. Nomination and Forecasts data shall be aggregated by BB
+    facility." This is the GASBB_NOMINATION_AND_FORECAST_NEXT_7 variant, covering the outlook period D+0
+    through D+6. [AI-generated] The forward half of the GBB: what participants expect to supply and consume,
+    against which silver_gbb_actual_flow_storage records what actually happened. Comparing the two over
+    time gives per-facility forecast bias. Restated like the actuals -- latest LastUpdated per (Gasdate,
+    FacilityId, LocationId) wins. Column comments are from the AEMO guide v2.2 section 4.7 except those
+    marked [AI-generated].'
+  primary_keys:
+  - Gasdate
+  - FacilityId
+  - LocationId
+  visibility: Public
+  update_frequency: Typically updated within 30 minutes of receiving new data; covers gas days D+0 to
+    D+6
+  schema:
+  - column: Gasdate
+    data_type: string
+    comment: Date of gas day. [AI-generated] AEMO spells this column `GasDate` in the guide and in every
+      other GBB report, but the CSV header for this report is `Gasdate` -- the inconsistency is in the
+      source file. Stored as `yyyy/MM/dd`.
+  - column: FacilityId
+    data_type: INT
+    comment: A unique AEMO defined Facility identifier. [AI-generated] Join to silver_gbb_facilities.FacilityId.
+  - column: FacilityName
+    data_type: STRING
+    comment: The name of the BB facility. [AI-generated] Not a stable key -- join on FacilityId.
+  - column: FacilityType
+    data_type: STRING
+    comment: 'Facility type associated with the Facility Id. AEMO examples: PIPE; PROD; STOR; COMPRESSOR;
+      LNGIMPORT.'
+  - column: LocationId
+    data_type: INT
+    comment: Unique location identifier. [AI-generated] Join to silver_gbb_locations.LocationId.
+  - column: LocationName
+    data_type: STRING
+    comment: Name of the location. [AI-generated] Join on LocationId rather than this.
+  - column: State
+    data_type: STRING
+    comment: Name of the state. [AI-generated] NSW, VIC, QLD, SA, TAS, NT.
+  - column: Demand
+    data_type: DECIMAL(15,3)
+    comment: Usage type expressed in TJ. Three decimal places is not shown if the value has trailing zeros
+      after the decimal place.
+  - column: Supply
+    data_type: DECIMAL(15,3)
+    comment: Usage type expressed in TJ. Three decimal places is not shown if the value has trailing zeros
+      after the decimal place.
+  - column: TransferIn
+    data_type: DECIMAL(15,3)
+    comment: Usage type expressed in TJ. Only applicable to BB pipelines. Three decimal places is not
+      shown if the value has trailing zeros after the decimal place.
+  - column: TransferOut
+    data_type: DECIMAL(15,3)
+    comment: Usage type expressed in TJ. Only applicable to BB pipelines. Three decimal places is not
+      shown if the value has trailing zeros after the decimal place.
+  - column: LastUpdated
+    data_type: string
+    comment: Date file was last updated. [AI-generated] `yyyy/MM/dd HH:mm:ss` AEST.

@@ -1,0 +1,234 @@
+DISPATCH_PRICE:
+  table_name: silver_dispatchis_reports_dispatch_price
+  display_name: Dispatch Price
+  table_comment: DISPATCHPRICE records 5-minute dispatch prices for energy and FCAS, including whether
+    an intervention has occurred, or price override (e.g. for Administered Price Cap). Updates occur every
+    5 minutes. APCFLAG meanings are as follows Bit 5 (16) Price Scaling via Inter-regional Loss Factor
+    (IRLF) Bit 4 (8) Price manually overwritten Bit 3 (4) MPC or MPF binding (ROP outside MPC/MPF) Bit
+    2 (2) VoLL Override applied Bit 1 (1) APC or APF binding (ROP outside APC/APF) FCAS APCFLAG meanings
+    are as follows Bit 4 (8) Price manually overwritten Bit 3 (4) MPC ($VoLL) or MPF ($zero) binding (ROP
+    outside MPC/MPF) Bit 1 (1) APC or APF binding (ROP outside APC/APF) Where MPC = Market Price Cap,
+    MPF = Market Price Floor, APC = Administered Price Cap, APF = Administered Price Floor
+  primary_keys:
+  - DISPATCHINTERVAL
+  - INTERVENTION
+  - REGIONID
+  - RUNNO
+  - SETTLEMENTDATE
+  indexes:
+  - LASTCHANGED
+  visibility: Public
+  update_frequency: Every 5 minutes
+  schema:
+  - column: SETTLEMENTDATE
+    data_type: STRING
+    comment: Market date and time (parsed to timestamp in silver). Timestamp is in AEST or Australia/Brisbane.
+  - column: RUNNO
+    data_type: SMALLINT
+    comment: Dispatch run number; always 1
+  - column: REGIONID
+    data_type: STRING
+    comment: Region Identifier
+  - column: DISPATCHINTERVAL
+    data_type: BIGINT
+    comment: Dispatch interval identifier, format YYYYMMDDPPP (001–288).
+  - column: INTERVENTION
+    data_type: TINYINT
+    comment: Manual intervention flag.
+  - column: RRP
+    data_type: DECIMAL(15,5)
+    comment: Regional Reference Price for this dispatch period (used for settlement).
+  - column: EEP
+    data_type: DECIMAL(15,5)
+    comment: Excess energy price (no longer used).
+  - column: ROP
+    data_type: DECIMAL(15,5)
+    comment: Regional Override Price before any scaling, capping, or VoLL override.
+  - column: APCFLAG
+    data_type: SMALLINT
+    comment: Administered Price Cap flag indicating post-processing adjustments.
+  - column: MARKETSUSPENDEDFLAG
+    data_type: SMALLINT
+    comment: Indicates if market was suspended.
+  - column: LASTCHANGED
+    data_type: string
+    comment: Timestamp of last record change.
+  - column: RAISE6SECRRP
+    data_type: DECIMAL(15,5)
+    comment: RAISE 6SEC Regional Reference Price.
+  - column: RAISE6SECROP
+    data_type: DECIMAL(15,5)
+    comment: RAISE 6SEC Regional Override Price.
+  - column: RAISE6SECAPCFLAG
+    data_type: SMALLINT
+    comment: RAISE 6SEC APC Flag.
+  - column: RAISE60SECRRP
+    data_type: DECIMAL(15,5)
+    comment: RAISE 60SEC Regional Reference Price.
+  - column: RAISE60SECROP
+    data_type: DECIMAL(15,5)
+    comment: RAISE 60SEC Regional Override Price.
+  - column: RAISE60SECAPCFLAG
+    data_type: SMALLINT
+    comment: RAISE 60SEC APC Flag.
+  - column: RAISE5MINRRP
+    data_type: DECIMAL(15,5)
+    comment: RAISE 5MIN Regional Reference Price.
+  - column: RAISE5MINROP
+    data_type: DECIMAL(15,5)
+    comment: RAISE 5MIN Regional Override Price.
+  - column: RAISE5MINAPCFLAG
+    data_type: SMALLINT
+    comment: RAISE 5MIN APC Flag.
+  - column: RAISEREGRRP
+    data_type: DECIMAL(15,5)
+    comment: RAISE REG Regional Reference Price.
+  - column: RAISEREGROP
+    data_type: DECIMAL(15,5)
+    comment: RAISE REG Regional Override Price.
+  - column: RAISEREGAPCFLAG
+    data_type: SMALLINT
+    comment: RAISE REG APC Flag.
+  - column: LOWER6SECRRP
+    data_type: DECIMAL(15,5)
+    comment: LOWER 6SEC Regional Reference Price.
+  - column: LOWER6SECROP
+    data_type: DECIMAL(15,5)
+    comment: LOWER 6SEC Regional Override Price.
+  - column: LOWER6SECAPCFLAG
+    data_type: SMALLINT
+    comment: LOWER 6SEC APC Flag.
+  - column: LOWER60SECRRP
+    data_type: DECIMAL(15,5)
+    comment: LOWER 60SEC Regional Reference Price.
+  - column: LOWER60SECROP
+    data_type: DECIMAL(15,5)
+    comment: LOWER 60SEC Regional Override Price.
+  - column: LOWER60SECAPCFLAG
+    data_type: SMALLINT
+    comment: LOWER 60SEC APC Flag.
+  - column: LOWER5MINRRP
+    data_type: DECIMAL(15,5)
+    comment: LOWER 5MIN Regional Reference Price.
+  - column: LOWER5MINROP
+    data_type: DECIMAL(15,5)
+    comment: LOWER 5MIN Regional Override Price.
+  - column: LOWER5MINAPCFLAG
+    data_type: SMALLINT
+    comment: LOWER 5MIN APC Flag.
+  - column: LOWERREGRRP
+    data_type: DECIMAL(15,5)
+    comment: LOWER REG Regional Reference Price.
+  - column: LOWERREGROP
+    data_type: DECIMAL(15,5)
+    comment: LOWER REG Regional Override Price.
+  - column: LOWERREGAPCFLAG
+    data_type: SMALLINT
+    comment: LOWER REG APC Flag.
+  - column: PRICE_STATUS
+    data_type: STRING
+    comment: 'Status of regional prices for this dispatch interval: "FIRM" or "NOT FIRM".'
+  - column: PRE_AP_ENERGY_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Energy price before administered price (AP) capping or scaling.
+  - column: PRE_AP_RAISE6SEC_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Price before AP capping or scaling (for rolling sum monitoring).
+  - column: PRE_AP_RAISE60SEC_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Price before AP capping or scaling (for rolling sum monitoring).
+  - column: PRE_AP_RAISE5MIN_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Price before AP capping or scaling (for rolling sum monitoring).
+  - column: PRE_AP_RAISEREG_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Price before AP capping or scaling (for rolling sum monitoring).
+  - column: PRE_AP_LOWER6SEC_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Price before AP capping or scaling (for rolling sum monitoring).
+  - column: PRE_AP_LOWER60SEC_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Price before AP capping or scaling (for rolling sum monitoring).
+  - column: PRE_AP_LOWER5MIN_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Price before AP capping or scaling (for rolling sum monitoring).
+  - column: PRE_AP_LOWERREG_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Price before AP capping or scaling (for rolling sum monitoring).
+  - column: CUMUL_PRE_AP_ENERGY_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Cumulative price that triggers administered pricing if above the threshold.
+  - column: CUMUL_PRE_AP_RAISE6_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Cumulative price that triggers administered pricing if above the threshold.
+  - column: CUMUL_PRE_AP_RAISE60_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Cumulative price that triggers administered pricing if above the threshold.
+  - column: CUMUL_PRE_AP_RAISE5MIN_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Cumulative price that triggers administered pricing if above the threshold.
+  - column: CUMUL_PRE_AP_RAISEREG_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Cumulative price that triggers administered pricing if above the threshold.
+  - column: CUMUL_PRE_AP_LOWER6_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Cumulative price that triggers administered pricing if above the threshold.
+  - column: CUMUL_PRE_AP_LOWER60_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Cumulative price that triggers administered pricing if above the threshold.
+  - column: CUMUL_PRE_AP_LOWER5MIN_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Cumulative price that triggers administered pricing if above the threshold.
+  - column: CUMUL_PRE_AP_LOWERREG_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Cumulative price that triggers administered pricing if above the threshold.
+  - column: OCD_STATUS
+    data_type: STRING
+    comment: 'OCD status: ''NOT_OCD'', ''OCD_UNRESOLVED'', or ''OCD_RESOLVED''.'
+  - column: MII_STATUS
+    data_type: STRING
+    comment: 'MII status: ''NOT_MII'', ''MII_SUBJECT_TO_REVIEW'', ''MII_PRICE_REJECTED'', or ''MII_PRICE_ACCEPTED''.'
+  - column: PRE_AP_RAISE6_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Price before ap capping or scaling - for rolling sum price monitoring
+  - column: PRE_AP_RAISE60_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Price before ap capping or scaling - for rolling sum price monitoring
+  - column: PRE_AP_LOWER6_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Price before ap capping or scaling - for rolling sum price monitoring
+  - column: PRE_AP_LOWER60_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Price before ap capping or scaling - for rolling sum price monitoring
+  - column: RAISE1SECRRP
+    data_type: DECIMAL(15,5)
+    comment: Regional Raise 1Sec Price - R1Price attribute after capping/flooring
+  - column: RAISE1SECROP
+    data_type: DECIMAL(15,5)
+    comment: Raise1Sec Regional Original Price - uncapped/unfloored and unscaled
+  - column: RAISE1SECAPCFLAG
+    data_type: TINYINT
+    comment: BitFlag field for Price adjustments - "1" = Voll_Override; "4" = Floor_VoLL; "8" = Manual_Override;
+      "16" = Price_Scaled
+  - column: LOWER1SECRRP
+    data_type: DECIMAL(15,5)
+    comment: Regional Lower 1Sec Price - RegionSolution element L1Price attribute
+  - column: LOWER1SECROP
+    data_type: DECIMAL(15,5)
+    comment: Lower1Sec Regional Original Price - uncapped/unfloored and unscaled
+  - column: LOWER1SECAPCFLAG
+    data_type: TINYINT
+    comment: BitFlag field for Price adjustments - "1" = Voll_Override; "4" = Floor_VoLL; "8" = Manual_Override;
+      "16" = Price_Scaled
+  - column: PRE_AP_RAISE1_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Price before AP capping or scaling - for Rolling Sum Price monitoring
+  - column: PRE_AP_LOWER1_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Price before AP capping or scaling - for Rolling Sum Price monitoring
+  - column: CUMUL_PRE_AP_RAISE1_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Cumulative price that triggers administered pricing event if above the threshold
+  - column: CUMUL_PRE_AP_LOWER1_PRICE
+    data_type: DECIMAL(15,5)
+    comment: Cumulative price that triggers administered pricing event if above the threshold

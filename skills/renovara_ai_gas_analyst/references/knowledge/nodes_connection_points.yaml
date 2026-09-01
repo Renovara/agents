@@ -1,0 +1,65 @@
+NODES_CONNECTION_POINTS:
+  table_name: silver_gbb_nodes_connection_points
+  display_name: Nodes Connection Points
+  table_comment: 'AEMO Gas Bulletin Board nodes and connection points. AEMO: "Displays detailed information
+    on all facilities and their associated nodes and Connection Points." [AI-generated] The topology dimension,
+    and the authoritative source of connection point names: it resolves the ReceiptLocation / DeliveryLocation
+    ids in the capacity outlook tables, whose own denormalised name columns disagree with it and are therefore
+    not projected into silver. Per the guide, a node consists of up to four connection points and can
+    have up to two facilities connected to it. Column comments are from the AEMO guide v2.2 section 4.30
+    except those marked [AI-generated].'
+  primary_keys:
+  - ConnectionPointId
+  visibility: Public
+  update_frequency: Updated daily; all current facilities and their nodes and connection points
+  schema:
+  - column: FacilityName
+    data_type: STRING
+    comment: Name of the facility. [AI-generated] Join on FacilityId rather than this.
+  - column: FacilityId
+    data_type: INT
+    comment: A unique AEMO defined facility identifier. [AI-generated] Join to silver_gbb_facilities.FacilityId.
+  - column: FacilityType
+    data_type: STRING
+    comment: 'Facility type associated with the Facility Id. AEMO examples: PIPE, PROD, STOR, COMPRESSOR.'
+  - column: ConnectionPointId
+    data_type: INT
+    comment: A unique AEMO defined connection point identifier. [AI-generated] The target of ReceiptLocation
+      / DeliveryLocation in the capacity outlook tables.
+  - column: ConnectionPointName
+    data_type: STRING
+    comment: Name of connection point. [AI-generated] Authoritative -- prefer this over the denormalised
+      name columns in the capacity outlook reports, which disagree with it.
+  - column: FlowDirection
+    data_type: STRING
+    comment: 'Gas flow direction. RECEIPT: the flow of gas into the BB storage facility or LNG import.
+      DELIVERY: the flow of gas out of the BB storage facility or LNG export. PROCESSED: used only for
+      capacities -- for LNG export the amount of gas that can be processed to a liquefied state on a gas
+      day, for LNG import the amount that can be received and processed into storage. DELIVERYLNGSTOR:
+      used only for capacities -- for LNG import, the amount of gas withdrawn from storage for processing
+      to a gaseous state on a gas day.'
+  - column: Exempt
+    data_type: BOOLEAN
+    comment: Flag indicating whether the connection point has a data exemption.
+  - column: ExemptionDescription
+    data_type: STRING
+    comment: Description of exemption. [AI-generated] NULL on every row in the current source file.
+  - column: NodeId
+    data_type: INT
+    comment: A unique AEMO defined node identifier.
+  - column: StateId
+    data_type: SMALLINT
+    comment: A unique AEMO defined state identifier.
+  - column: StateName
+    data_type: STRING
+    comment: 'Name of the state. AEMO values: New South Wales and ACT, Northern Territory, Queensland,
+      South Australia, Tasmania, Victoria.'
+  - column: LocationName
+    data_type: STRING
+    comment: Name of location. [AI-generated] Join on LocationId rather than this.
+  - column: LocationId
+    data_type: INT
+    comment: A unique AEMO defined location identifier. [AI-generated] Join to silver_gbb_locations.LocationId.
+  - column: LastUpdated
+    data_type: string
+    comment: Date the record was last modified. [AI-generated] `yyyy/MM/dd HH:mm:ss` AEST.

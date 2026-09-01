@@ -1,0 +1,57 @@
+PARTICIPANTS:
+  table_name: silver_gbb_participants
+  display_name: Participants
+  table_comment: 'AEMO Gas Bulletin Board participants list. AEMO: "Provides a report of registered participants."
+    [AI-generated] The companies with GBB obligations, their organisation type (Shipper, BB Reporting
+    Entity, Gas Market Operator, etc.), ABN and head-office contact details. Resolves FacilityId -> OperatorId
+    -> company. Uses the `dd MMM yyyy HH:mm:ss` date form rather than the slash form. The guide writes
+    these field names with spaces ("Company Name"); the CSV header does not. Column comments are from
+    the AEMO guide v2.2 section 4.10 except those marked [AI-generated].'
+  primary_keys:
+  - CompanyId
+  visibility: Public
+  update_frequency: Updated daily; current records
+  schema:
+  - column: CompanyId
+    data_type: INT
+    comment: Company ID associated with the person. [AI-generated] The target of silver_gbb_facilities.OperatorId.
+  - column: CompanyName
+    data_type: STRING
+    comment: Company name associated with the person.
+  - column: OrganisationTypeName
+    data_type: STRING
+    comment: The type of organisation. [AI-generated] e.g. Shipper, BB Reporting Entity, Gas Market Operator.
+      NULL for ~10% of companies.
+  - column: ABN
+    data_type: STRING
+    comment: Australian Business Number for the participant. [AI-generated] STRING, not numeric -- AEMO
+      types this varchar(30), and most values carry the conventional space grouping ("11 086 013 283")
+      while some do not.
+  - column: CompanyPhone
+    data_type: STRING
+    comment: Company phone details. [AI-generated] STRING -- values carry leading zeros and spaces.
+  - column: Locale
+    data_type: STRING
+    comment: Location for the participant. [AI-generated] Suburb or city of the registered address.
+  - column: AddressType
+    data_type: STRING
+    comment: Type of address. [AI-generated] "Head Office" on every row observed.
+  - column: Address
+    data_type: STRING
+    comment: Mailing address for the company. [AI-generated] NULL for ~84% of companies.
+  - column: State
+    data_type: STRING
+    comment: State where the company is located. [AI-generated] The source mixes conventions -- "VI" appears
+      alongside "VIC".
+  - column: Postcode
+    data_type: STRING
+    comment: Postcode details. [AI-generated] STRING, not INT -- AEMO types this varchar(4), and NT postcodes
+      carry a leading zero (0481, 0801, 0828) that an integer type would silently destroy.
+  - column: CompanyFax
+    data_type: STRING
+    comment: Company fax details. [AI-generated] STRING for the same reason as CompanyPhone. NULL for
+      ~47% of companies.
+  - column: LastUpdated
+    data_type: string
+    comment: Last changed details. [AI-generated] `dd MMM yyyy HH:mm:ss` AEST -- NOT the slash form used
+      by most GBB reports.

@@ -1,0 +1,20 @@
+BASINS:
+  table_name: silver_gbb_basins
+  display_name: Basins
+  table_comment: 'AEMO Gas Bulletin Board basins list. AEMO: "This report displays a list of all basins."
+    [AI-generated] The 15 gas basins (Surat, Bowen, Amadeus, Gippsland, etc.) used to classify production
+    and reserves. Smallest GBB dimension; included so basin names resolve without a hardcoded mapping.
+    Column comments are from the AEMO guide v2.2 section 4.20 except those marked [AI-generated].'
+  primary_keys:
+  - BasinId
+  visibility: Public
+  update_frequency: Updated daily; all current basins
+  schema:
+  - column: BasinId
+    data_type: INT
+    comment: A unique AEMO defined Facility Identifier. [AI-generated] The guide says "Facility" here,
+      which appears to be a copy-paste error -- this is a basin identifier. AEMO types it bigint; observed
+      values fit comfortably in INT.
+  - column: BasinName
+    data_type: STRING
+    comment: The name of the basin. If short name exists then short name included in report.

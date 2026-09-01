@@ -1,0 +1,46 @@
+FACILITIES:
+  table_name: silver_gbb_facilities
+  display_name: Facilities
+  table_comment: 'AEMO Gas Bulletin Board facility register. AEMO: "Displays a list of all currently registered
+    BB facilities and identifies the organisation responsible for the operation of the respective facility."
+    [AI-generated] The dimension table for every FacilityId appearing in the GBB fact tables. Without
+    this join the fact tables are unreadable numeric ids. Note this is a CURRENT snapshot, so a facility
+    that has since changed operator resolves to the new one for historical rows. Column comments are from
+    the AEMO guide v2.2 section 4.31 except those marked [AI-generated].'
+  primary_keys:
+  - FacilityId
+  visibility: Public
+  update_frequency: Updated daily; current records
+  schema:
+  - column: FacilityName
+    data_type: STRING
+    comment: Name of the facility.
+  - column: FacilityShortName
+    data_type: STRING
+    comment: Abbreviated version of the facility name. [AI-generated] NULL for ~40% of facilities.
+  - column: FacilityId
+    data_type: INT
+    comment: A unique AEMO defined facility identifier. [AI-generated] The join key from every GBB fact
+      table.
+  - column: FacilityType
+    data_type: STRING
+    comment: 'Facility type associated with the facility id. AEMO examples: PIPE, PROD, STOR, COMPRESSOR.'
+  - column: FacilityTypeDescription
+    data_type: STRING
+    comment: Free text description of the facility type.
+  - column: OperatingState
+    data_type: STRING
+    comment: The operating state (Active or Inactive) of the facility.
+  - column: OperatingStateDate
+    data_type: string
+    comment: Date the current operating state was set. [AI-generated] Stored as `yyyy/MM/dd`.
+  - column: OperatorName
+    data_type: STRING
+    comment: Name of the operator for the facility. [AI-generated] NULL for ~13% of facilities.
+  - column: OperatorId
+    data_type: INT
+    comment: The facility operator's ID. [AI-generated] Join to silver_gbb_participants.CompanyId.
+  - column: OperatorChangeDate
+    data_type: string
+    comment: Date the current operator for the facility was set. [AI-generated] Stored as `yyyy/MM/dd`;
+      NULL where OperatorName is NULL.

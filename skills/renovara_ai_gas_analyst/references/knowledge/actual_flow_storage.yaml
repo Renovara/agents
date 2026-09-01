@@ -1,0 +1,75 @@
+ACTUAL_FLOW_STORAGE:
+  table_name: silver_gbb_actual_flow_storage
+  display_name: Actual Flow Storage
+  table_comment: 'AEMO Gas Bulletin Board actual flow and storage. AEMO: "The report shows Daily Production,
+    Flow and Storage data aggregated by Facility Id for an outlook period." This is the GASBB_ACTUAL_FLOW_STORAGE_LAST_31
+    variant, which shows records from the last 31 days and is updated within 30 minutes of receiving new
+    data. [AI-generated] Rows are RESTATED long after the gas day (a 2026/08/02 row was observed carrying
+    LastUpdated 2026/08/31), so bronze holds every published version and this silver view keeps the latest
+    per (GasDate, FacilityId, LocationId). Gas date is a day label, not an instant -- do not timezone-shift
+    it. Join FacilityId to silver_gbb_facilities and LocationId to silver_gbb_locations. Column comments
+    are from the AEMO guide v2.2 section 4.1 except those marked [AI-generated].'
+  primary_keys:
+  - GasDate
+  - FacilityId
+  - LocationId
+  visibility: Public
+  update_frequency: Updated within 30 minutes of receiving new data; rolling last 31 gas days
+  schema:
+  - column: GasDate
+    data_type: string
+    comment: Date of gas day. Timestamps are ignored. The gas day as defined in the pipeline contract
+      or market rules. [AI-generated] Stored as `yyyy/MM/dd`; parse with to_date, never timezone-shift.
+  - column: FacilityName
+    data_type: STRING
+    comment: Name of the facility. [AI-generated] Not a stable key -- join on FacilityId.
+  - column: FacilityId
+    data_type: INT
+    comment: A unique AEMO defined Facility identifier. [AI-generated] Join to silver_gbb_facilities.FacilityId.
+  - column: FacilityType
+    data_type: STRING
+    comment: 'The type of facility. AEMO lists: BBGPG, COMPRESSOR, PIPE, PROD, STOR, LNGEXPORT, LNGIMPORT,
+      BBLARGE. [AI-generated] BDIST (blended gas distribution system) also occurs in the live data but
+      is not in the guide''s v2.2 list.'
+  - column: Demand
+    data_type: DECIMAL(15,3)
+    comment: Usage type expressed in TJ. Three decimal places is not shown if the value has trailing zeros
+      after the decimal place.
+  - column: Supply
+    data_type: DECIMAL(15,3)
+    comment: Usage type expressed in TJ. Three decimal places is not shown if the value has trailing zeros
+      after the decimal place.
+  - column: TransferIn
+    data_type: DECIMAL(15,3)
+    comment: Usage type. Only applicable to BB pipelines. Three decimal places is not shown if the value
+      has trailing zeros after the decimal place.
+  - column: TransferOut
+    data_type: DECIMAL(15,3)
+    comment: Usage type. Only applicable to BB pipelines. Three decimal places is not shown if the value
+      has trailing zeros after the decimal place.
+  - column: HeldInStorage
+    data_type: DECIMAL(15,3)
+    comment: Quantity in TJ; three decimal places is not shown if the value has trailing zeros after the
+      decimal place. The AEMO guide gives no semantic definition for this field. [AI-generated] Observed
+      populated only for storage facilities (~3% of rows), NULL otherwise. Guide spells the field `HeldinStorage`;
+      the CSV header is `HeldInStorage`.
+  - column: CushionGasStorage
+    data_type: DECIMAL(15,3)
+    comment: The quantity of natural gas that must be retained in the Storage or LNG Import facility in
+      order to maintain the required pressure and deliverability rates. [AI-generated] NULL for non-storage
+      facilities.
+  - column: State
+    data_type: STRING
+    comment: Name of the state. [AI-generated] NSW, VIC, QLD, SA, TAS, NT. Western Australia is a separate
+      bulletin board and is not in this feed.
+  - column: LocationName
+    data_type: STRING
+    comment: Name of the location. [AI-generated] Join on LocationId rather than this.
+  - column: LocationId
+    data_type: INT
+    comment: Unique location identifier. [AI-generated] Join to silver_gbb_locations.LocationId.
+  - column: LastUpdated
+    data_type: string
+    comment: The date data was last submitted by a participant based on the report query. [AI-generated]
+      `yyyy/MM/dd HH:mm:ss` AEST. Greatest value per key wins in this silver view; the full revision history
+      is in bronze.

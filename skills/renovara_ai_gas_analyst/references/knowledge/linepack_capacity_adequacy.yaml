@@ -1,0 +1,53 @@
+LINEPACK_CAPACITY_ADEQUACY:
+  table_name: silver_gbb_linepack_capacity_adequacy
+  display_name: Linepack Capacity Adequacy
+  table_comment: 'AEMO Gas Bulletin Board Linepack Capacity Adequacy (LCA). AEMO: "Provides a report for
+    the Linepack Capacity Adequacy for each Pipeline for the current and next 2 gas days (D to D+2)."
+    This is the GASBB_LINEPACK_CAPACITY_ADEQUACY_FUTURE variant. [AI-generated] The nearest gas equivalent
+    of an electricity reliability signal, and the most direct link between gas system stress and NEM outcomes:
+    AMBER/RED on a pipeline feeding gas generation is a candidate explanator for an electricity price
+    event. Uniquely among the onboarded GBB reports, this file uses the `dd MMM yyyy HH:mm:ss` date form
+    and its GasDate carries a time component. Column comments are from the AEMO guide v2.2 section 4.3
+    except those marked [AI-generated].'
+  primary_keys:
+  - FacilityId
+  - GasDate
+  visibility: Public
+  update_frequency: Updated within 30 minutes of a submission; covers gas days D to D+2
+  schema:
+  - column: FacilityName
+    data_type: STRING
+    comment: The name of the BB facility. [AI-generated] Not a stable key -- join on FacilityId.
+  - column: FacilityId
+    data_type: INT
+    comment: A unique AEMO defined Facility identifier. [AI-generated] Join to silver_gbb_facilities.FacilityId.
+  - column: FacilityType
+    data_type: STRING
+    comment: 'The type of facility. AEMO examples for this report: COMPRESSOR, PIPE. [AI-generated] PROD
+      also occurs in the live data.'
+  - column: GasDate
+    data_type: string
+    comment: 'Date of gas day. Timestamps are ignored. The gas day as defined in the pipeline contract
+      or market rules. [AI-generated] Wire format is `dd MMM yyyy HH:mm:ss` in this report -- NOT the
+      `yyyy/MM/dd` form used elsewhere in GBB. Take AEMO''s "timestamps are ignored" literally: the time
+      component is noise that changes between publications of the same gas day (AGP 2026-09-01 observed
+      as 17:15:00 then 20:45:00), so silver parses this to a DATE and discards it. Keeping it made the
+      natural key unstable and duplicated the table.'
+  - column: Flag
+    data_type: STRING
+    comment: 'The flags are traffic light colours (Green, Amber, Red) indicating the LCA status for each
+      pipeline. GREEN: pipeline is able to accommodate increased gas flows and the conditions for Amber
+      or Red are not met. AMBER: pipeline is flowing at full capacity, but no involuntary curtailment
+      of ''firm'' load is likely or happening. RED: involuntary curtailment of ''firm'' load is likely
+      or happening, or linepack has (or is forecast to) drop below minimum operating levels. For a Declared
+      Transmission System, AMBER means a notice of a threat to system security has been issued indicating
+      out-of-merit-order gas may be scheduled, and RED means ''non-firm'' LNG is scheduled or involuntary
+      curtailment of load is likely or happening.'
+  - column: Description
+    data_type: STRING
+    comment: Free text; facility use is restricted to a description for reasons or comments directly related
+      to the change in the LCA flag and the times, dates, or duration for which those changes are expected
+      to apply. [AI-generated] NULL on roughly 60% of rows, including many GREEN ones.
+  - column: LastUpdated
+    data_type: string
+    comment: The date when the record was last updated. [AI-generated] `dd MMM yyyy HH:mm:ss` AEST.

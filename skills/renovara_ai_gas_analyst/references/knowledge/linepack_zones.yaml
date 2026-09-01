@@ -1,0 +1,27 @@
+LINEPACK_ZONES:
+  table_name: silver_gbb_linepack_zones
+  display_name: Linepack Zones
+  table_comment: '[AI-generated -- no AEMO documentation found] AEMO Gas Bulletin Board linepack zone
+    register: the named pipeline segments (e.g. AGP-LP-01) that linepack capacity adequacy is declared
+    against, with the operator and a description of the physical extent. Context for silver_gbb_linepack_capacity_adequacy.
+    This report is not described in the AEMO Guide to Natural Gas Services Bulletin Board Reports v2.2,
+    so every column comment here is inferred from the data rather than sourced. Note the zone code alone
+    is NOT unique: DTS-LP-01 is used by two different operators, so the key is (Operator, LinepackZone).'
+  primary_keys:
+  - Operator
+  - LinepackZone
+  visibility: Public
+  update_frequency: Refreshed daily
+  schema:
+  - column: Operator
+    data_type: STRING
+    comment: '[AI-generated] Company operating the linepack zone. Part of the key -- zone codes are only
+      unique within an operator.'
+  - column: LinepackZone
+    data_type: STRING
+    comment: '[AI-generated] Zone code, e.g. "AGP-LP-01". NOT unique on its own; DTS-LP-01 appears under
+      two operators.'
+  - column: LinepackZoneDescription
+    data_type: STRING
+    comment: '[AI-generated] Physical extent of the zone, e.g. "The entirety of the Amadeus Gas Pipeline
+      including all laterals."'

@@ -1,0 +1,35 @@
+LOCATIONS:
+  table_name: silver_gbb_locations
+  display_name: Locations
+  table_comment: 'AEMO Gas Bulletin Board locations list. AEMO: "This report lists all production and
+    demand locations within the Bulletin Board system." [AI-generated] The demand/supply zones the flow
+    and nomination tables are reported against (e.g. Sydney, Longford Hub, Curtis Island). Small dimension,
+    but the one that makes the flow tables geographically readable. Column comments are from the AEMO
+    guide v2.2 section 4.4 except those marked [AI-generated].'
+  primary_keys:
+  - LocationId
+  visibility: Public
+  update_frequency: Updated daily; current records
+  schema:
+  - column: LocationName
+    data_type: STRING
+    comment: Name of the Location.
+  - column: LocationId
+    data_type: INT
+    comment: Unique Location identifier. [AI-generated] The join key from the GBB flow and nomination
+      tables.
+  - column: LocationType
+    data_type: STRING
+    comment: Type of location. [AI-generated] Observed values are STANDARD (a demand zone) and HUB (a
+      production/transfer hub). The guide's example value for this field is "Head office", which appears
+      to be an error carried over from the Participants report.
+  - column: State
+    data_type: STRING
+    comment: '[AI-generated] State/territory abbreviation (NSW, VIC, QLD, SA, TAS, NT). The guide''s description
+      for this field reads only "Location", which is not a definition.'
+  - column: Description
+    data_type: STRING
+    comment: Free text description of the Location including boundaries and the basis of measurement.
+  - column: LastUpdated
+    data_type: string
+    comment: Date the list of locations was last updated. [AI-generated] `yyyy/MM/dd HH:mm:ss` AEST.
