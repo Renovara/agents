@@ -1,0 +1,52 @@
+ROOFTOP_ACTUAL:
+  table_name: silver_rooftop_pv_actual_rooftop_actual
+  display_name: Rooftop Actual
+  table_comment: AEMO's estimate of regional rooftop solar (distributed PV) actual generation for each
+    half-hour interval, in MW at the interval end. Rooftop PV is not metered by AEMO, so these are estimates,
+    published twice per interval under two TYPEs — MEASUREMENT (derived from a sample of metered sites;
+    AEMO's best-quality same-day estimate) and SATELLITE (derived from satellite irradiance imagery).
+    Both are delayed about one half-hour. TYPE is part of the primary key, so filter it or the same interval
+    is counted twice. Rooftop PV is netted out of operational demand, so this table is what explains the
+    difference between underlying and operational demand and drives the midday demand trough. Source AEMO
+    table ROOFTOP_PV_ACTUAL. Half-hourly; join to 5-minute dispatch tables by truncating SETTLEMENTDATE
+    to the half hour. WARNING - before 2025-12 REGIONID holds more than regions. The MMSDM archive also
+    publishes sub-regional areas (QLDC, QLDN, QLDS, TASN, TASS) in that column, and they sum to QLD1 and
+    TAS1. Filter REGIONID IN ('NSW1','QLD1','SA1','TAS1','VIC1') for any regional or national total.
+  primary_keys:
+  - INTERVAL_DATETIME
+  - TYPE
+  - REGIONID
+  indexes:
+  - LASTCHANGED
+  visibility: Public
+  update_frequency: Every 30 minutes
+  schema:
+  - column: INTERVAL_DATETIME
+    data_type: STRING
+    comment: The half-hour interval this estimate applies to, interval ending (parsed to timestamp in
+      silver). Timestamp is in AEST or Australia/Brisbane.
+  - column: REGIONID
+    data_type: STRING
+    comment: Region identifier. WARNING - not only regions. For intervals before 2025-12 the MMSDM archive
+      also publishes sub-regional AREAS in this column (QLDC, QLDN, QLDS, TASN, TASS) alongside the five
+      regions NSW1, QLD1, SA1, TAS1, VIC1. QLDC+QLDN+QLDS sum to QLD1 and TASN+TASS sum to TAS1, so any
+      aggregate MUST filter REGIONID IN ('NSW1','QLD1','SA1','TAS1','VIC1') or it double-counts Queensland
+      and Tasmania. From 2025-12 onward only the five regions are published.
+  - column: POWER
+    data_type: DECIMAL(12,3)
+    comment: Estimated rooftop PV generation in MW at the interval end.
+  - column: QI
+    data_type: DECIMAL(2,1)
+    comment: Quality indicator between 0 and 1 representing the confidence in the estimate; 1 is the highest.
+      SATELLITE estimates typically score lower than MEASUREMENT.
+  - column: TYPE
+    data_type: STRING
+    comment: Estimate method, part of the primary key. MEASUREMENT is AEMO's best-quality same-day estimate
+      from a metered sample; SATELLITE is derived from satellite imagery. A third value DAILY (best quality,
+      published day-after) exists ONLY in history - AEMO published it from the start of the archive until
+      2019-10-21 and then stopped, so intervals before that date carry THREE estimates and everything
+      after carries two. Always filter TYPE for any aggregate.
+  - column: LASTCHANGED
+    data_type: STRING
+    comment: Last date and time the record changed (parsed to timestamp in silver). Timestamp is in AEST
+      or Australia/Brisbane.

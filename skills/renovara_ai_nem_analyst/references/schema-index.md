@@ -52,6 +52,10 @@ If the YAML and live table differ after error-driven inspection:
   DISPATCHREGIONSUM sets out the 5-minute solution for each dispatch run for each region, including Frequency Control Ancillary Services (FCAS) data, demand, generation, and semi-scheduled forecasts.
   Expected live table: `external_data.nemweb.silver_dispatchis_reports_dispatch_regionsum`
 
+- [`knowledge/dispatch_unit_scada.yaml`](knowledge/dispatch_unit_scada.yaml)
+  Dispatchable unit MW from SCADA at the start of the dispatch interval.
+  Expected live table: `external_data.nemweb.silver_dispatch_scada_dispatch_unit_scada`
+
 - [`knowledge/dispatch_unit_solution.yaml`](knowledge/dispatch_unit_solution.yaml)
   DISPATCHLOAD set out the current SCADA MW and target MW for each dispatchable unit, including relevant Frequency Control Ancillary Services (FCAS) enabling targets for each five minutes and additional fields to handle the new Ancillary Services functionality.
   Expected live table: `external_data.nemweb.silver_next_day_dispatch_dispatch_unit_solution`
@@ -119,6 +123,14 @@ If the YAML and live table differ after error-driven inspection:
 - [`knowledge/price_setter.yaml`](knowledge/price_setter.yaml)
   AEMO NemPriceSetter — the marginal "price setter" attribution NEMDE publishes for every 5-minute dispatch interval.
   Expected live table: `external_data.nemweb.silver_pricesetter_price_setter`
+
+- [`knowledge/rooftop_actual.yaml`](knowledge/rooftop_actual.yaml)
+  AEMO's estimate of regional rooftop solar (distributed PV) actual generation for each half-hour interval, in MW at the interval end.
+  Expected live table: `external_data.nemweb.silver_rooftop_pv_actual_rooftop_actual`
+
+- [`knowledge/rooftop_forecast.yaml`](knowledge/rooftop_forecast.yaml)
+  AEMO's regional forecast of rooftop solar (distributed PV) generation, half-hourly over the next 8 days, in MW at the interval end.
+  Expected live table: `external_data.nemweb.silver_rooftop_pv_forecast_rooftop_forecast`
 
 - [`knowledge/spdcpc.yaml`](knowledge/spdcpc.yaml)
   SPDCONNECTIONPOINTCONSTRAINT contains the LHS factor terms applied to connection points by generic constraints in dispatch, predispatch, and STPASA.

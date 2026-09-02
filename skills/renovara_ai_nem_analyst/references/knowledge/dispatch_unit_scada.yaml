@@ -1,0 +1,29 @@
+DISPATCH_UNIT_SCADA:
+  table_name: silver_dispatch_scada_dispatch_unit_scada
+  display_name: Dispatch Unit Scada
+  table_comment: Dispatchable unit MW from SCADA at the start of the dispatch interval. Covers every unit
+    with SCADA telemetry, including non-scheduled units that appear in no other dispatch table. Subtracting
+    SCADAVALUE from DISPATCH_UNIT_SOLUTION.UIGF gives semi-scheduled curtailment.
+  primary_keys:
+  - SETTLEMENTDATE
+  - DUID
+  indexes:
+  - LASTCHANGED
+  visibility: Public
+  update_frequency: Every 5 minutes
+  schema:
+  - column: SETTLEMENTDATE
+    data_type: STRING
+    comment: Date and time of the dispatch interval, interval ending (parsed to timestamp in silver).
+      Timestamp is in AEST or Australia/Brisbane.
+  - column: DUID
+    data_type: STRING
+    comment: Dispatchable unit identifier.
+  - column: SCADAVALUE
+    data_type: DECIMAL(16,6)
+    comment: Instantaneous MW reading from SCADA at the start of the dispatch interval. NULL where a unit's
+      telemetry was unavailable.
+  - column: LASTCHANGED
+    data_type: STRING
+    comment: Last date and time the record changed (parsed to timestamp in silver). Timestamp is in AEST
+      or Australia/Brisbane.
