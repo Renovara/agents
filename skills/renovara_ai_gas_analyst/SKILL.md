@@ -1,6 +1,6 @@
 ---
 name: renovara-ai-gas-analyst
-description: 'Australian east coast and NT gas market analyst — AEMO Gas Bulletin Board flows, nominations and pipeline capacity. TRIGGERS: "Which pipelines are flagged AMBER or RED for linepack capacity adequacy right now", "How much gas flowed into Sydney last week, and which facilities supplied it", "Was gas supply constrained on the days NSW1 electricity prices spiked", "Which facilities have capacity reductions scheduled over the next month", "Explain the dataset and the tables and data that you have access to.", Dispatch Price, Actual Flow Storage, Basins, Facilities, Linepack Capacity Adequacy, Linepack Zones, Locations, Medium Term Capacity Outlook, Nodes Connection Points, Nomination Forecast, Participants, Short Term Capacity Outlook'
+description: 'Australian east coast and NT gas market analyst — AEMO Gas Bulletin Board flows, nominations and pipeline capacity. TRIGGERS: "Which pipelines are flagged AMBER or RED for linepack capacity adequacy right now", "How much gas flowed into Sydney last week, and which facilities supplied it", "Was gas supply constrained on the days NSW1 electricity prices spiked", "Which facilities have capacity reductions scheduled over the next month", "Show the gas day summary by state — supply, demand and net in TJ.", "Explain the dataset and the tables and data that you have access to.", Dispatch Price, Actual Flow Storage, Basins, Facilities, Linepack Capacity Adequacy, Linepack Zones, Locations, Medium Term Capacity Outlook, Nodes Connection Points, Nomination Forecast, Participants, Short Term Capacity Outlook'
 ---
 
 # Renovara AI Gas Analyst
@@ -111,6 +111,94 @@ not an instant. Two consequences:
   matters, the gas day *D* covers `D 06:00` to `D+1 06:00` AEST.
 - There is no `*_UTC` twin column on any GBB table, deliberately.
 
+### Use case: the gas day summary, on AEMO's published basis
+
+AEMO publishes a state-level SUPPLY / DEMAND / NET summary on the GBB
+interactive map. Reproducing it is the most common ask, and it has one trap
+that makes the difference between right and roughly double. Worked query:
+`gas_day_summary_where_did_the_gas_go.sql`.
+
+**Filter to `FacilityType = 'PIPE'`.** Gas is recorded more than once as it
+moves through the network — at the producer, then again as each pipeline
+receives and delivers it — so summing every facility type double-counts.
+On gas day 2026-08-29 that is **10,992 TJ instead of the published 5,489 TJ**.
+The pipeline rows count each molecule once, at the transmission system
+boundary, which is the basis AEMO publishes on.
+
+Verified against AEMO's published table for 2026-08-29:
+
+| | AEMO supply | ours | AEMO demand | ours |
+|---|---|---|---|---|
+| QLD | 4,249 | **4,249** | 4,384 | **4,384** |
+| NSW | 0 | **0** | 337 | **337** |
+| SA | 219 | **219** | 136 | **136** |
+| VIC | 964 | **964** | 495 | 501 |
+| TAS | 0 | **0** | 40 | **40** |
+| NT | 57 | **57** | 48 | 57 |
+| **TOTAL** | **5,489** | **5,489** | 5,440 | 5,455 |
+
+Supply matches exactly on every state and the total. Demand matches on four,
+and both differences are accounted for:
+
+**Victoria (+6.2), fully explained.** AEMO publishes Victorian demand on the
+Victorian Transmission System only, and only at genuine demand zones. The six
+VTS zones — Melbourne 311.9, Geelong 54.6, Northern 48.8, Gippsland 36.7,
+Ballarat 31.9, Western 11.2 — sum to **495.1**. Our extra 6.1 is VTS Iona Hub
+(2.7, a storage hub rather than end use) plus two non-VTS pipelines, BassGas
+to Pakenham (2.7) and Eastern Gas Pipeline (0.7).
+
+**Northern Territory (+9.1), mechanism identified.** Every NT pipeline delivery
+equals a generator's consumption exactly:
+
+| pipeline delivery | | generator burn |
+|---|---|---|
+| Amadeus Gas Pipeline (Darwin) 20.4 | = | Channel Island Power Station 20.4 |
+| Wickham Point Pipeline 10.8 | = | Weddell Power Station 10.8 |
+| McArthur River Pipeline 9.5 | = | McArthur River Mine 9.5 |
+
+These are **the same gas recorded twice**, by the pipeline that delivered it
+and the generator that burned it — which is what AEMO's "some GPG nomination
+data may be excluded … due to the aggregation methodology" footnote is about.
+Removing McArthur River gives 47.6 and removing Tanami gives 48.4; both round
+to the published 48, so which one AEMO drops cannot be settled from a rounded
+figure.
+
+Neither is a data error, and **neither should be corrected for**. This table
+holds the raw submissions, which is the more useful thing to hold: you can
+always aggregate up to AEMO's published basis, and never back down from it.
+
+**The general lesson: the same gas is reported by every party that touches it.**
+Producer, each pipeline, and the end user all submit their own view, so any
+total that spans facility types counts some molecules more than once. Pick one
+layer and stay in it.
+
+Finer grain on the same gas day, all exact: map location pins are PIPE demand
+at that location (Curtis Island 4,174, Sydney 221, Adelaide 49, Brisbane 37),
+and production pins are PROD supply at that facility (Woleebee Creek 643,
+Longford 636, Moomba 216).
+
+### Facility types have fixed roles
+
+Knowing them is what makes any GBB total readable, and what tells you when a
+number is wrong:
+
+| Type | Role | Expect |
+|---|---|---|
+| `PROD` | production | pure **source** |
+| `LNGEXPORT` | LNG export | pure **sink** — gas leaves and never returns |
+| `BBGPG` | gas-powered generation | sink |
+| `BBLARGE` | large industrial user | sink |
+| `PIPE`, `COMPRESSOR` | transport | **≈ balanced** per facility |
+| `STOR` | storage | small ±; negative is injection |
+
+The shape of the market falls out of this. **Queensland produces and exports**
+(4,246 TJ produced on 2026-08-29, 4,174 leaving as LNG at Curtis Island — LNG
+takes the overwhelming majority of east coast production). **Victoria
+produces** (919 TJ, Gippsland and Otway). **South Australia produces modestly**
+(216 TJ, Cooper Basin). **New South Wales and Tasmania produce nothing** and
+are supplied entirely by pipeline. If a query returns NSW production, the query
+is wrong.
+
 ### Use case: gas supply stress behind an electricity price event
 
 When asked why prices spiked in a gas-dependent region, check whether gas
@@ -216,6 +304,7 @@ a question needs a name, an operator or a region:
   Values carry `measured_at` and are a point-in-time observation; for a continuously-loading table treat a range's end as a floor.
 - `references/catalog/coverage.md`: what Renovara holds against what AEMO publishes, and what is not loaded.
 - `references/examples/*.sql`: worked example queries:
+  - `reproduce_aemos_published_gas_day_summary_supply_demand_and_.sql` — Reproduce AEMO's published gas day summary — supply, demand and net by state.
   - `was_gas_supply_constrained_on_the_days_nsw1_prices_spiked.sql` — Was gas supply constrained on the days NSW1 prices spiked?
   - `which_facilities_most_consistently_under_forecast_their_own_.sql` — Which facilities most consistently under-forecast their own gas supply?
 
@@ -225,6 +314,7 @@ a question needs a name, an operator or a region:
 - "How much gas flowed into Sydney last week, and which facilities supplied it?"
 - "Was gas supply constrained on the days NSW1 electricity prices spiked?"
 - "Which facilities have capacity reductions scheduled over the next month?"
+- "Show the gas day summary by state — supply, demand and net in TJ."
 - "Explain the dataset and the tables and data that you have access to."
 
 ## Data Source

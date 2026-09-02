@@ -10,18 +10,18 @@ tags:
 - canonical:DISPATCH_UNIT_SCADA
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-01T23:41:23Z'
-stale_after: '2026-11-30'
+  at: '2026-09-02T00:56:32Z'
+stale_after: '2026-12-01'
 renovara_table: external_data.nemweb.silver_dispatch_scada_dispatch_unit_scada
 canonical_report: DISPATCH_UNIT_SCADA
 column_count: 7
-row_count: 337411264
-measured_at: '2026-09-01T17:10:37Z'
+row_count: 337448786
+measured_at: '2026-09-02T00:03:03Z'
 coverage:
   column: SETTLEMENTDATE
   from: '2019-01-01 00:05:00'
-  to: '2026-09-02 02:40:00'
-size_bytes: 736433957
+  to: '2026-09-02 08:45:00'
+size_bytes: 736551161
 primary_key:
 - SETTLEMENTDATE
 - DUID
@@ -36,12 +36,12 @@ Dispatchable unit MW from SCADA at the start of the dispatch interval. Covers ev
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver_dispatch_scada_dispatch_unit_scada` |
-| Rows | 337,411,264 |
-| Date range | 2019-01-01 00:05:00 to 2026-09-02 02:40:00 (by `SETTLEMENTDATE`) |
-| Size on disk | 702.3 MB |
-| Measured at | `2026-09-01T17:10:37Z` |
+| Rows | 337,448,786 |
+| Date range | 2019-01-01 00:05:00 to 2026-09-02 08:45:00 (by `SETTLEMENTDATE`) |
+| Size on disk | 702.4 MB |
+| Measured at | `2026-09-02T00:03:03Z` |
 
-**Measured 2026-09-01T17:10:37Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-09-02T00:03:03Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 

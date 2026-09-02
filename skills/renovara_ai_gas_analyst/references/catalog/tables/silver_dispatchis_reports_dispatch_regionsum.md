@@ -10,18 +10,18 @@ tags:
 - canonical:DISPATCH_REGIONSUM
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-01T23:41:23Z'
-stale_after: '2026-11-30'
+  at: '2026-09-02T00:56:32Z'
+stale_after: '2026-12-01'
 renovara_table: external_data.nemweb.silver_dispatchis_reports_dispatch_regionsum
 canonical_report: DISPATCH_REGIONSUM
 column_count: 138
-row_count: 4140435
-measured_at: '2026-09-01T17:10:37Z'
+row_count: 4140800
+measured_at: '2026-09-02T00:03:03Z'
 coverage:
   column: SETTLEMENTDATE
   from: '2019-01-01 00:05:00'
-  to: '2026-09-02 02:45:00'
-size_bytes: 639002966
+  to: '2026-09-02 08:50:00'
+size_bytes: 639166082
 primary_key:
 - DISPATCHINTERVAL
 - INTERVENTION
@@ -39,12 +39,12 @@ DISPATCHREGIONSUM sets out the 5-minute solution for each dispatch run for each 
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver_dispatchis_reports_dispatch_regionsum` |
-| Rows | 4,140,435 |
-| Date range | 2019-01-01 00:05:00 to 2026-09-02 02:45:00 (by `SETTLEMENTDATE`) |
-| Size on disk | 609.4 MB |
-| Measured at | `2026-09-01T17:10:37Z` |
+| Rows | 4,140,800 |
+| Date range | 2019-01-01 00:05:00 to 2026-09-02 08:50:00 (by `SETTLEMENTDATE`) |
+| Size on disk | 609.6 MB |
+| Measured at | `2026-09-02T00:03:03Z` |
 
-**Measured 2026-09-01T17:10:37Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-09-02T00:03:03Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 

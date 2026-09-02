@@ -7,9 +7,9 @@ tags:
 - coverage
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-01T23:41:23Z'
-stale_after: '2026-11-30'
-measured_at: '2026-09-01T17:10:37Z'
+  at: '2026-09-02T00:56:32Z'
+stale_after: '2026-12-01'
+measured_at: '2026-09-02T00:03:03Z'
 totals:
   aemo_live_tables: 437
   aemo_all_tables: 571

@@ -10,18 +10,18 @@ tags:
 - canonical:PREDISPATCH_INTERCONNECTOR_SOLN
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-01T23:41:23Z'
-stale_after: '2026-11-30'
+  at: '2026-09-02T00:56:32Z'
+stale_after: '2026-12-01'
 renovara_table: external_data.nemweb.silver_predispatchis_reports_predispatch_interconnector_soln
 canonical_report: PREDISPATCH_INTERCONNECTOR_SOLN
 column_count: 25
-row_count: 4604160
-measured_at: '2026-09-01T17:10:37Z'
+row_count: 4607364
+measured_at: '2026-09-02T00:03:03Z'
 coverage:
   column: LASTCHANGED
   from: '2025-11-18 00:32:25'
-  to: '2026-09-02 02:31:55'
-size_bytes: 161560572
+  to: '2026-09-02 08:31:44'
+size_bytes: 161698433
 primary_key:
 - DATETIME
 - INTERCONNECTORID
@@ -36,12 +36,12 @@ PREDISPATCHINTERCONNECTORRES records interconnector flows and losses for the per
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver_predispatchis_reports_predispatch_interconnector_soln` |
-| Rows | 4,604,160 |
-| Date range | 2025-11-18 00:32:25 to 2026-09-02 02:31:55 (by `LASTCHANGED`) |
-| Size on disk | 154.1 MB |
-| Measured at | `2026-09-01T17:10:37Z` |
+| Rows | 4,607,364 |
+| Date range | 2025-11-18 00:32:25 to 2026-09-02 08:31:44 (by `LASTCHANGED`) |
+| Size on disk | 154.2 MB |
+| Measured at | `2026-09-02T00:03:03Z` |
 
-**Measured 2026-09-01T17:10:37Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-09-02T00:03:03Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 

@@ -10,18 +10,18 @@ tags:
 - canonical:DISPATCH_CASE_SOLUTION
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-01T23:41:23Z'
-stale_after: '2026-11-30'
+  at: '2026-09-02T00:56:32Z'
+stale_after: '2026-12-01'
 renovara_table: external_data.nemweb.silver_dispatchis_reports_dispatch_case_solution
 canonical_report: DISPATCH_CASE_SOLUTION
 column_count: 27
-row_count: 209410
-measured_at: '2026-09-01T17:10:37Z'
+row_count: 209483
+measured_at: '2026-09-02T00:03:03Z'
 coverage:
   column: SETTLEMENTDATE
   from: '2024-09-05 00:05:00'
-  to: '2026-09-02 02:45:00'
-size_bytes: 5950279
+  to: '2026-09-02 08:50:00'
+size_bytes: 5970554
 primary_key:
 - RUNNO
 - SETTLEMENTDATE
@@ -36,12 +36,12 @@ DISPATCHCASESOLUTION shows information relating to the complete dispatch run. Th
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver_dispatchis_reports_dispatch_case_solution` |
-| Rows | 209,410 |
-| Date range | 2024-09-05 00:05:00 to 2026-09-02 02:45:00 (by `SETTLEMENTDATE`) |
+| Rows | 209,483 |
+| Date range | 2024-09-05 00:05:00 to 2026-09-02 08:50:00 (by `SETTLEMENTDATE`) |
 | Size on disk | 5.7 MB |
-| Measured at | `2026-09-01T17:10:37Z` |
+| Measured at | `2026-09-02T00:03:03Z` |
 
-**Measured 2026-09-01T17:10:37Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-09-02T00:03:03Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 

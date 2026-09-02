@@ -9,18 +9,18 @@ tags:
 - canonical:P5MIN_REGIONSOLUTION
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-01T23:41:23Z'
-stale_after: '2026-11-30'
+  at: '2026-09-02T00:56:32Z'
+stale_after: '2026-12-01'
 renovara_table: external_data.nemweb.silver_p5_reports_p5min_regionsolution
 canonical_report: P5MIN_REGIONSOLUTION
 column_count: 121
-row_count: 4961340
-measured_at: '2026-09-01T17:10:37Z'
+row_count: 4965840
+measured_at: '2026-09-02T00:03:03Z'
 coverage:
   column: INTERVAL_DATETIME
   from: '2025-11-19 00:05:00'
-  to: '2026-09-02 03:40:00'
-size_bytes: 665626987
+  to: '2026-09-02 09:55:00'
+size_bytes: 666327126
 primary_key:
 - INTERVAL_DATETIME
 - REGIONID
@@ -37,12 +37,12 @@ The five-minute predispatch (P5Min) system provides projected dispatch for 12 di
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver_p5_reports_p5min_regionsolution` |
-| Rows | 4,961,340 |
-| Date range | 2025-11-19 00:05:00 to 2026-09-02 03:40:00 (by `INTERVAL_DATETIME`) |
-| Size on disk | 634.8 MB |
-| Measured at | `2026-09-01T17:10:37Z` |
+| Rows | 4,965,840 |
+| Date range | 2025-11-19 00:05:00 to 2026-09-02 09:55:00 (by `INTERVAL_DATETIME`) |
+| Size on disk | 635.5 MB |
+| Measured at | `2026-09-02T00:03:03Z` |
 
-**Measured 2026-09-01T17:10:37Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-09-02T00:03:03Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 

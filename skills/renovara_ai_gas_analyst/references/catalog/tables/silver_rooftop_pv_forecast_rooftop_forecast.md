@@ -10,18 +10,18 @@ tags:
 - canonical:ROOFTOP_FORECAST
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-01T23:41:23Z'
-stale_after: '2026-11-30'
+  at: '2026-09-02T00:56:32Z'
+stale_after: '2026-12-01'
 renovara_table: external_data.nemweb.silver_rooftop_pv_forecast_rooftop_forecast
 canonical_report: ROOFTOP_FORECAST
 column_count: 10
-row_count: 244538105
-measured_at: '2026-09-01T17:10:37Z'
+row_count: 247034120
+measured_at: '2026-09-02T00:03:03Z'
 coverage:
   column: INTERVAL_DATETIME
   from: '2019-01-01 01:00:00'
-  to: '2026-09-10 02:30:00'
-size_bytes: 1546570520
+  to: '2026-09-10 04:00:00'
+size_bytes: 1563185447
 primary_key:
 - VERSION_DATETIME
 - REGIONID
@@ -37,12 +37,12 @@ AEMO's regional forecast of rooftop solar (distributed PV) generation, half-hour
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver_rooftop_pv_forecast_rooftop_forecast` |
-| Rows | 244,538,105 |
-| Date range | 2019-01-01 01:00:00 to 2026-09-10 02:30:00 (by `INTERVAL_DATETIME`) |
-| Size on disk | 1.4 GB |
-| Measured at | `2026-09-01T17:10:37Z` |
+| Rows | 247,034,120 |
+| Date range | 2019-01-01 01:00:00 to 2026-09-10 04:00:00 (by `INTERVAL_DATETIME`) |
+| Size on disk | 1.5 GB |
+| Measured at | `2026-09-02T00:03:03Z` |
 
-**Measured 2026-09-01T17:10:37Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-09-02T00:03:03Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 
