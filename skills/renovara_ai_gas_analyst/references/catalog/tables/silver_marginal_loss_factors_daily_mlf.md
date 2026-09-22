@@ -9,7 +9,7 @@ tags:
 - canonical:DAILY_MLF
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-02T00:56:32Z'
+  at: '2026-09-22T08:00:26Z'
 stale_after: '2026-12-01'
 renovara_table: external_data.nemweb.silver_marginal_loss_factors_daily_mlf
 canonical_report: DAILY_MLF

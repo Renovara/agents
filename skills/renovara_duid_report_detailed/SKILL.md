@@ -1,6 +1,6 @@
 ---
 name: renovara-duid-report-detailed
-description: Welcome to the NEM dispatch unit reporter. TRIGGERS: Dispatch Case Solution, Dispatch Interconnection, Dispatch Interconnectorres, Dispatch Price, Dispatch Regionsum, Nem Participant And Scheduled Loads, Dispatch Unit Solution, Predispatch Interconnector Soln, Predispatch Region Prices, Predispatch Region Solution
+description: Welcome to the NEM dispatch unit reporter.
 ---
 
 # Renovara DUID Report Detailed
@@ -230,10 +230,6 @@ The bundled YAML knowledge files under `references/knowledge/` are the source of
 - Convert 5-minute MW to MWh with `MW / 12.0` before summing.
 - Be explicit in the answer about whether a metric is average MW, interval MWh, or total MWh.
 
-### Access Tiers
-
-The Renovara platform distinguishes two tiers: **Free** (last 7 days) and **Pro** (full history). Several silver tables have `_free` variants that enforce the 7-day window. For free-tier behaviour, prefer the `_free` table or constrain the query to the last 7 days; otherwise use the full historical silver table.
-
 ### Response Style
 
 - British/Australian English.
@@ -245,6 +241,9 @@ The Renovara platform distinguishes two tiers: **Free** (last 7 days) and **Pro*
 
 - [`references/schema-index.md`](references/schema-index.md): entry point and file selection guide.
 - `references/knowledge/*.yaml`: per-table schema knowledge (table_name, display_name, table_comment, primary keys, indexes, typed column list with comments).
+- [`references/catalog/index.md`](references/catalog/index.md): what the warehouse ACTUALLY holds, measured from the live catalogue — per-table row counts, real date coverage, and the link to AEMO's own definition. Check a table's date range here before writing a query over a historical window: outside it the query returns nothing, which is an empty window and not an error.
+  Values carry `measured_at` and are a point-in-time observation; for a continuously-loading table treat a range's end as a floor.
+- `references/catalog/coverage.md`: what Renovara holds against what AEMO publishes, and what is not loaded.
 - `references/examples/*.sql`: worked example queries:
   - `report_1_market_context_overview.sql` — Report 1: Market Context Overview
   - `report_2_capacity_and_availability_analysis_comparison_of_ge.sql` — Report 2: Capacity and Availability Analysis: Comparison of generator availability with market energy prices.

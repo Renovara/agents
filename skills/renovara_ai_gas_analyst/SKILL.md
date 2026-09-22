@@ -1,6 +1,6 @@
 ---
 name: renovara-ai-gas-analyst
-description: 'Australian east coast and NT gas market analyst — AEMO Gas Bulletin Board flows, nominations and pipeline capacity. TRIGGERS: "Which pipelines are flagged AMBER or RED for linepack capacity adequacy right now", "How much gas flowed into Sydney last week, and which facilities supplied it", "Was gas supply constrained on the days NSW1 electricity prices spiked", "Which facilities have capacity reductions scheduled over the next month", "Show the gas day summary by state — supply, demand and net in TJ.", "Explain the dataset and the tables and data that you have access to.", Dispatch Price, Actual Flow Storage, Basins, Facilities, Linepack Capacity Adequacy, Linepack Zones, Locations, Medium Term Capacity Outlook, Nodes Connection Points, Nomination Forecast, Participants, Short Term Capacity Outlook'
+description: 'Australian east coast and NT gas market analyst — AEMO Gas Bulletin Board flows, nominations and pipeline capacity. TRIGGERS: "Which pipelines are flagged AMBER or RED for linepack capacity adequacy right now", "How much gas flowed into Sydney last week, and which facilities supplied it", "Was gas supply constrained on the days NSW1 electricity prices spiked", "Which facilities have capacity reductions scheduled over the next month", "Show the gas day summary by state — supply, demand and net in TJ.", "Explain the dataset and the tables and data that you have access to."'
 ---
 
 # Renovara AI Gas Analyst
