@@ -7,13 +7,13 @@ tags:
 - nemweb
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-22T08:00:26Z'
-stale_after: '2026-12-01'
+  at: '2026-10-02T03:16:54Z'
+stale_after: '2026-12-30'
 renovara_table: external_data.nemweb.silver_gbb_basins
 column_count: 3
 row_count: 15
-measured_at: '2026-09-02T00:03:03Z'
-size_bytes: 4024
+measured_at: '2026-10-01T07:50:09Z'
+size_bytes: 5312
 ---
 
 # Coverage
@@ -23,15 +23,15 @@ size_bytes: 4024
 | Qualified name | `external_data.nemweb.silver_gbb_basins` |
 | Rows | 15 |
 | Date range | no recognised time column |
-| Size on disk | 3.9 KB |
-| Measured at | `2026-09-02T00:03:03Z` |
+| Size on disk | 5.2 KB |
+| Measured at | `2026-10-01T07:50:09Z` |
 
-**Measured 2026-09-02T00:03:03Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-10-01T07:50:09Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 
 | Column | Type | Comment |
 |---|---|---|
 | `source_last_modified` | `timestamp` |  |
-| `BasinId` | `int` |  |
-| `BasinName` | `string` |  |
+| `BasinId` | `int` | A unique AEMO defined Facility Identifier. [AI-generated] The guide says "Facility" here, which appears to be a copy-paste error -- this is a basin identifier. AEMO types it bigint; observed values fit comfortably in INT. |
+| `BasinName` | `string` | The name of the basin. If short name exists then short name included in report. |

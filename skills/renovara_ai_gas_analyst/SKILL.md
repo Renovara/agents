@@ -1,6 +1,6 @@
 ---
 name: renovara-ai-gas-analyst
-description: 'Australian east coast and NT gas market analyst — AEMO Gas Bulletin Board flows, nominations and pipeline capacity. TRIGGERS: "Which pipelines are flagged AMBER or RED for linepack capacity adequacy right now", "How much gas flowed into Sydney last week, and which facilities supplied it", "Was gas supply constrained on the days NSW1 electricity prices spiked", "Which facilities have capacity reductions scheduled over the next month", "Show the gas day summary by state — supply, demand and net in TJ.", "Explain the dataset and the tables and data that you have access to."'
+description: 'Australian east coast and NT gas market analyst — AEMO Gas Bulletin Board flows, nominations and pipeline capacity. TRIGGERS: "Which pipelines are flagged AMBER or RED for linepack capacity adequacy right now", "How much gas flowed into Sydney last week, and which facilities supplied it", "Was gas supply constrained on the days NSW1 electricity prices spiked", "Which facilities have capacity reductions scheduled over the next month", "Show the gas day summary by state — supply, demand and net in TJ.", "How much gas has gone to the Curtis Island LNG plants each year since 2019", "Explain the dataset and the tables and data that you have access to."'
 ---
 
 # Renovara AI Gas Analyst
@@ -69,8 +69,9 @@ say what it cost.
 
 1. **Classify the request.** Physical flows, forward nominations, pipeline
    adequacy, capacity outlook, or reference lookup?
-2. **Check the window before answering anything historical.** These tables are
-   shallow — see the history note below.
+2. **Check the window before answering anything historical.** Flows and
+   storage go back to 2018-09-29; the nomination forecast, short-term outlook
+   and linepack tables only from 2026-09-01 (measured 2026-10-02).
 3. **Write the query against ids, join for names.**
 4. **Answer with analysis, not raw rows.** State the time basis, and say
    whether a figure is a gas day total in TJ or something else.
@@ -199,6 +200,12 @@ produces** (919 TJ, Gippsland and Otway). **South Australia produces modestly**
 are supplied entirely by pipeline. If a query returns NSW production, the query
 is wrong.
 
+**Flow on a pipeline at a hub** is, per gas day, what enters it there less what
+leaves (`Supply + TransferIn - TransferOut` for that facility and location).
+Totals in each direction are that **daily net split by sign** — positive days
+one way, negative days the other — never gross receipts against gross
+deliveries.
+
 ### Use case: gas supply stress behind an electricity price event
 
 When asked why prices spiked in a gas-dependent region, check whether gas
@@ -278,9 +285,9 @@ a question needs a name, an operator or a region:
   It means "not applicable" (any BB facility that is not a pipeline).
 - **`silver_gbb_facilities` is a current snapshot.** A facility that changed
   operator resolves to the *new* operator for historical rows.
-- **Shallow history.** `ACTUAL_FLOW_STORAGE` comes from AEMO's rolling 31-day
-  file, so it holds ~31 gas days plus whatever has accumulated since load.
-  Check `MIN(GasDate)` before answering anything historical.
+- **History from 2018-09-29.** `ACTUAL_FLOW_STORAGE` and
+  `PIPELINE_CONNECTION_FLOW` were loaded from AEMO's full-history files, then
+  kept current from the rolling 31-day files. Nothing earlier is published.
 - Column comments marked `[AI-generated]` were inferred rather than taken from
   AEMO's published report guide. Treat them as less authoritative.
 
@@ -307,6 +314,7 @@ a question needs a name, an operator or a region:
   - `reproduce_aemos_published_gas_day_summary_supply_demand_and_.sql` — Reproduce AEMO's published gas day summary — supply, demand and net by state.
   - `was_gas_supply_constrained_on_the_days_nsw1_prices_spiked.sql` — Was gas supply constrained on the days NSW1 prices spiked?
   - `which_facilities_most_consistently_under_forecast_their_own_.sql` — Which facilities most consistently under-forecast their own gas supply?
+  - `how_much_feed_gas_went_to_the_curtis_island_lng_plants_each_.sql` — How much feed gas went to the Curtis Island LNG plants each month since 2019, by pipeline?
 
 ## Example Triggers
 
@@ -315,6 +323,7 @@ a question needs a name, an operator or a region:
 - "Was gas supply constrained on the days NSW1 electricity prices spiked?"
 - "Which facilities have capacity reductions scheduled over the next month?"
 - "Show the gas day summary by state — supply, demand and net in TJ."
+- "How much gas has gone to the Curtis Island LNG plants each year since 2019?"
 - "Explain the dataset and the tables and data that you have access to."
 
 ## Data Source

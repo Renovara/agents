@@ -60,6 +60,10 @@ If the YAML and live table differ after error-driven inspection:
   AEMO Gas Bulletin Board participants list.
   Expected live table: `external_data.nemweb.silver_gbb_participants`
 
+- [`knowledge/pipeline_connection_flow.yaml`](knowledge/pipeline_connection_flow.yaml)
+  AEMO Gas Bulletin Board pipeline connection flow.
+  Expected live table: `external_data.nemweb.silver_gbb_pipeline_connection_flow`
+
 - [`knowledge/short_term_capacity_outlook.yaml`](knowledge/short_term_capacity_outlook.yaml)
   AEMO Gas Bulletin Board short-term capacity outlook.
   Expected live table: `external_data.nemweb.silver_gbb_short_term_capacity_outlook`

@@ -7,12 +7,12 @@ tags:
 - nemweb
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-22T08:00:26Z'
-stale_after: '2026-12-01'
+  at: '2026-10-02T03:16:54Z'
+stale_after: '2026-12-30'
 renovara_table: external_data.nemweb.silver_nem_participant_and_scheduled_loads
 column_count: 27
 row_count: 1134
-measured_at: '2026-09-02T00:03:03Z'
+measured_at: '2026-10-01T07:50:09Z'
 size_bytes: 85249
 ---
 
@@ -24,9 +24,9 @@ size_bytes: 85249
 | Rows | 1,134 |
 | Date range | no recognised time column |
 | Size on disk | 83.3 KB |
-| Measured at | `2026-09-02T00:03:03Z` |
+| Measured at | `2026-10-01T07:50:09Z` |
 
-**Measured 2026-09-02T00:03:03Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-10-01T07:50:09Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 

@@ -9,18 +9,18 @@ tags:
 - canonical:PARTICIPANT_REGISTRATION_DUDETAILSUMMARY
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-22T08:00:26Z'
-stale_after: '2026-12-01'
+  at: '2026-10-02T03:16:54Z'
+stale_after: '2026-12-30'
 renovara_table: external_data.nemweb.silver___participant_registration_dudetailsummary
 canonical_report: PARTICIPANT_REGISTRATION_DUDETAILSUMMARY
 column_count: 31
-row_count: 387214
-measured_at: '2026-09-02T00:03:03Z'
+row_count: 410554
+measured_at: '2026-10-01T07:50:09Z'
 coverage:
   column: LASTCHANGED
   from: '2007-06-13 12:29:29'
-  to: '2026-08-07 15:49:45'
-size_bytes: 3975095
+  to: '2026-09-04 16:50:21'
+size_bytes: 4296118
 primary_key:
 - DUID
 - START_DATE
@@ -36,12 +36,12 @@ DUDETAILSUMMARY sets out a single summary unit table so reducing the need for pa
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver___participant_registration_dudetailsummary` |
-| Rows | 387,214 |
-| Date range | 2007-06-13 12:29:29 to 2026-08-07 15:49:45 (by `LASTCHANGED`) |
-| Size on disk | 3.8 MB |
-| Measured at | `2026-09-02T00:03:03Z` |
+| Rows | 410,554 |
+| Date range | 2007-06-13 12:29:29 to 2026-09-04 16:50:21 (by `LASTCHANGED`) |
+| Size on disk | 4.1 MB |
+| Measured at | `2026-10-01T07:50:09Z` |
 
-**Measured 2026-09-02T00:03:03Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-10-01T07:50:09Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 
