@@ -7,17 +7,17 @@ tags:
 - nemweb
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-22T08:00:26Z'
-stale_after: '2026-12-01'
+  at: '2026-10-02T03:16:58Z'
+stale_after: '2026-12-30'
 renovara_table: external_data.nemweb.silver_pricesetter_price_setter
 column_count: 11
-row_count: 85520979
-measured_at: '2026-09-02T00:03:03Z'
+row_count: 86094118
+measured_at: '2026-10-01T07:50:09Z'
 coverage:
   column: SETTLEMENTDATE
   from: '2019-01-01 04:05:00'
-  to: '2026-08-01 04:00:00'
-size_bytes: 454815262
+  to: '2026-09-01 04:00:00'
+size_bytes: 457937003
 ---
 
 # Coverage
@@ -25,12 +25,12 @@ size_bytes: 454815262
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver_pricesetter_price_setter` |
-| Rows | 85,520,979 |
-| Date range | 2019-01-01 04:05:00 to 2026-08-01 04:00:00 (by `SETTLEMENTDATE`) |
-| Size on disk | 433.7 MB |
-| Measured at | `2026-09-02T00:03:03Z` |
+| Rows | 86,094,118 |
+| Date range | 2019-01-01 04:05:00 to 2026-09-01 04:00:00 (by `SETTLEMENTDATE`) |
+| Size on disk | 436.7 MB |
+| Measured at | `2026-10-01T07:50:09Z` |
 
-**Measured 2026-09-02T00:03:03Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-10-01T07:50:09Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 

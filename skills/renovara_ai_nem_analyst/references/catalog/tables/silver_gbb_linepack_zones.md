@@ -7,13 +7,13 @@ tags:
 - nemweb
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-22T08:00:26Z'
-stale_after: '2026-12-01'
+  at: '2026-10-02T03:16:58Z'
+stale_after: '2026-12-30'
 renovara_table: external_data.nemweb.silver_gbb_linepack_zones
 column_count: 4
 row_count: 56
-measured_at: '2026-09-02T00:03:03Z'
-size_bytes: 6402
+measured_at: '2026-10-01T07:50:09Z'
+size_bytes: 7695
 ---
 
 # Coverage
@@ -23,16 +23,16 @@ size_bytes: 6402
 | Qualified name | `external_data.nemweb.silver_gbb_linepack_zones` |
 | Rows | 56 |
 | Date range | no recognised time column |
-| Size on disk | 6.3 KB |
-| Measured at | `2026-09-02T00:03:03Z` |
+| Size on disk | 7.5 KB |
+| Measured at | `2026-10-01T07:50:09Z` |
 
-**Measured 2026-09-02T00:03:03Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-10-01T07:50:09Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 
 | Column | Type | Comment |
 |---|---|---|
 | `source_last_modified` | `timestamp` |  |
-| `Operator` | `string` |  |
-| `LinepackZone` | `string` |  |
-| `LinepackZoneDescription` | `string` |  |
+| `Operator` | `string` | [AI-generated] Company operating the linepack zone. Part of the key -- zone codes are only unique within an operator. |
+| `LinepackZone` | `string` | [AI-generated] Zone code, e.g. "AGP-LP-01". NOT unique on its own; DTS-LP-01 appears under two operators. |
+| `LinepackZoneDescription` | `string` | [AI-generated] Physical extent of the zone, e.g. "The entirety of the Amadeus Gas Pipeline including all laterals." |

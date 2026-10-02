@@ -84,6 +84,10 @@ If the YAML and live table differ after error-driven inspection:
   Unit-level metadata sourced from openelectricity.org.au.
   Expected live table: `external_data.nemweb.silver_openelectricity_units`
 
+- [`knowledge/operational_demand_actual.yaml`](knowledge/operational_demand_actual.yaml)
+  AEMO's measured actual operational demand per region, one value per half hour — the average MW over the half-hour interval ENDING at INTERVAL_DATETIME (the 21:30 row covers 21:00-21:30).
+  Expected live table: `external_data.nemweb.silver_operational_demand_actual_operational_demand_actual`
+
 - [`knowledge/p5min_interconnectorsoln.yaml`](knowledge/p5min_interconnectorsoln.yaml)
   The five-minute predispatch (P5Min) system provides projected dispatch for 12 dispatch cycles (one hour).
   Expected live table: `external_data.nemweb.silver_p5_reports_p5min_interconnectorsoln`
@@ -96,9 +100,17 @@ If the YAML and live table differ after error-driven inspection:
   The five-minute predispatch (P5Min) system provides projected dispatch for 12 dispatch cycles (one hour).
   Expected live table: `external_data.nemweb.silver_p5_reports_p5min_regionsolution`
 
+- [`knowledge/participant_registration_dualloc.yaml`](knowledge/participant_registration_dualloc.yaml)
+  DUALLOC cross references dispatch unit identifier (DUID) to genset ID (GENSETID), effective-dated and versioned: for a DUID, the rows with the latest EFFECTIVEDATE on or before a date, at that date's highest VERSIONNO, are the gensets in force.
+  Expected live table: `external_data.nemweb.silver___participant_registration_dualloc`
+
 - [`knowledge/participant_registration_dudetailsummary.yaml`](knowledge/participant_registration_dudetailsummary.yaml)
   DUDETAILSUMMARY sets out a single summary unit table so reducing the need for participants to use the various dispatchable unit detail and owner tables to establish generating unit specific details.
   Expected live table: `external_data.nemweb.silver___participant_registration_dudetailsummary`
+
+- [`knowledge/participant_registration_genunits.yaml`](knowledge/participant_registration_genunits.yaml)
+  GENUNITS shows genset details for each physical unit with the relevant station: one row per genset AEMO has ever registered, retired units included (Liddell LD01-04, Torrens Island A TORRA1-4).
+  Expected live table: `external_data.nemweb.silver___participant_registration_genunits`
 
 - [`knowledge/participant_registration_participant.yaml`](knowledge/participant_registration_participant.yaml)
   PARTICIPANT sets out Participant ID, name and class for all participants.

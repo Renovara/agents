@@ -1,0 +1,45 @@
+OPERATIONAL_DEMAND_ACTUAL:
+  table_name: silver_operational_demand_actual_operational_demand_actual
+  display_name: Operational Demand Actual
+  table_comment: AEMO's measured actual operational demand per region, one value per half hour — the average
+    MW over the half-hour interval ENDING at INTERVAL_DATETIME (the 21:30 row covers 21:00-21:30). Operational
+    demand is demand met by scheduled, semi-scheduled and significant non-scheduled generation, as generated;
+    it excludes rooftop PV (add ROOFTOP_ACTUAL to get underlying demand). It runs a few percent above
+    DISPATCH_REGIONSUM TOTALDEMAND, which is a 5-minute dispatch target that excludes non-scheduled generation
+    — average TOTALDEMAND over the six 5-minute SETTLEMENTDATEs in (INTERVAL_DATETIME - 30 min, INTERVAL_DATETIME]
+    to compare. OPERATIONAL_DEMAND is unadjusted; OPERATIONAL_DEMAND_ADJUSTMENT (RERT and involuntary
+    load shedding) and WDR_ESTIMATE (wholesale demand response) are zero on almost every row. SA1 can
+    be negative at midday. Source AEMO table DEMANDOPERATIONALACTUAL (Current folder Operational_Demand/ACTUAL_HH).
+    The MMSDM archive holds this table only from 2024-08.
+  primary_keys:
+  - INTERVAL_DATETIME
+  - REGIONID
+  indexes:
+  - LASTCHANGED
+  visibility: Public
+  update_frequency: Every 30 minutes
+  schema:
+  - column: INTERVAL_DATETIME
+    data_type: STRING
+    comment: End of the half-hour interval this value averages over, interval ending - the 21:30 row covers
+      21:00 to 21:30 (parsed to timestamp in silver). Timestamp is in AEST or Australia/Brisbane.
+  - column: REGIONID
+    data_type: STRING
+    comment: Region identifier. One of NSW1, QLD1, SA1, TAS1, VIC1.
+  - column: OPERATIONAL_DEMAND
+    data_type: BIGINT
+    comment: Average 30-minute measured operational demand in MW (unadjusted), as generated. Excludes
+      rooftop PV. Can be negative in SA1 around midday.
+  - column: OPERATIONAL_DEMAND_ADJUSTMENT
+    data_type: BIGINT
+    comment: Adjustment in MW for the estimated amount of activated RERT and involuntary load shedding
+      that occurred as a result of a NER 4.8.9 instruction for load shedding from AEMO. Zero outside such
+      events.
+  - column: WDR_ESTIMATE
+    data_type: BIGINT
+    comment: Estimated average 30-minute MW amount of Wholesale Demand Response that occurred. Zero on
+      almost every interval.
+  - column: LASTCHANGED
+    data_type: STRING
+    comment: Last date and time the record changed (parsed to timestamp in silver). Published about one
+      second after the interval ends. Timestamp is in AEST or Australia/Brisbane.

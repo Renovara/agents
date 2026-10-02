@@ -2,37 +2,32 @@
 -- How much did rooftop solar reduce operational demand in each region
 -- yesterday, and when was its peak contribution?
 --
--- TOTALDEMAND in dispatch_regionsum is OPERATIONAL demand: what the market
--- had to serve after rooftop PV was already consumed behind the meter.
--- Rooftop is netted out of it, so:
+-- Rooftop PV is consumed behind the meter, so it is netted out of the demand
+-- the grid sees:
 --
 --     underlying demand = operational demand + rooftop PV
 --
--- Measured on NSW1 for 2026-08-31, operational demand fell 16% between 10:00
--- and 12:30 (5,720 -> 4,790 MW) while underlying demand was essentially flat
--- at ~10,100 MW. Nothing about consumption changed; rooftop did. At the
--- trough rooftop supplied 52.6% of underlying demand.
+-- TOTALDEMAND in dispatch_regionsum is not AEMO's operational demand: it runs
+-- about 2% lower, because operational demand also counts non-scheduled
+-- generation. TOTALDEMAND + TOTALINTERMITTENTGENERATION approximates it.
 --
 -- Two joins matter here:
 --   * TYPE = 'MEASUREMENT' -- TYPE is part of the primary key and both
 --     MEASUREMENT and SATELLITE rows exist for every interval. Without this
 --     filter every rooftop figure roughly doubles and still looks plausible.
---   * the half-hour alignment -- dispatch_regionsum is 5-minute and this
---     table is 30-minute interval-ending, so the dispatch side is averaged
---     within the half hour rather than sampled at one point.
+--   * the half-hour alignment -- dispatch_regionsum is 5-minute interval-ending
+--     and this table is 30-minute interval-ending, so each 5-minute interval
+--     is rounded UP to the half hour it ends in, and the six are averaged.
 WITH half_hourly_demand AS (
-    -- Collapse 5-minute dispatch to the interval-ending half hour that the
-    -- rooftop tables use. date_trunc('HOUR', ...) + 30 min * floor(min/30)
-    -- gives the half-hour the reading falls in.
+    -- The half hour ending H holds SETTLEMENTDATE in (H - 30 min, H].
     SELECT
         REGIONID,
-        date_trunc('HOUR', SETTLEMENTDATE)
-            + INTERVAL 30 MINUTES * FLOOR(MINUTE(SETTLEMENTDATE) / 30) AS INTERVAL_DATETIME,
-        AVG(TOTALDEMAND) AS operational_mw
+        timestamp_seconds(CEIL(unix_timestamp(SETTLEMENTDATE) / 1800) * 1800) AS INTERVAL_DATETIME,
+        AVG(TOTALDEMAND + TOTALINTERMITTENTGENERATION) AS operational_mw
     FROM external_data.nemweb.silver_dispatchis_reports_dispatch_regionsum
     WHERE INTERVENTION = 0
-      AND SETTLEMENTDATE >= date_trunc('DAY', current_timestamp()) - INTERVAL 1 DAY
-      AND SETTLEMENTDATE <  date_trunc('DAY', current_timestamp())
+      AND SETTLEMENTDATE >  date_trunc('DAY', current_timestamp()) - INTERVAL 1 DAY
+      AND SETTLEMENTDATE <= date_trunc('DAY', current_timestamp())
     GROUP BY ALL
 ),
 rooftop AS (
@@ -42,8 +37,8 @@ rooftop AS (
         POWER AS rooftop_mw
     FROM external_data.nemweb.silver_rooftop_pv_actual_rooftop_actual
     WHERE TYPE = 'MEASUREMENT'          -- never omit: TYPE is in the PK
-      AND INTERVAL_DATETIME >= date_trunc('DAY', current_timestamp()) - INTERVAL 1 DAY
-      AND INTERVAL_DATETIME <  date_trunc('DAY', current_timestamp())
+      AND INTERVAL_DATETIME >  date_trunc('DAY', current_timestamp()) - INTERVAL 1 DAY
+      AND INTERVAL_DATETIME <= date_trunc('DAY', current_timestamp())
 ),
 combined AS (
     SELECT

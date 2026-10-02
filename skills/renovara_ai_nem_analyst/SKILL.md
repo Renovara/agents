@@ -68,20 +68,11 @@ before writing SQL, and prefer it to live inspection.
    column list, and the YAML for table purpose, `display_name`, and business
    meaning.
 5. **Execute the query** with the MCP tools described above.
-6. **Answer with analysis, not raw rows.** State the time basis as AEST. Explain
+6. **Copy labelled results by label, never by position** — sorted `HH:MM`
+   puts midnight first, while interval-ending order puts it last.
+7. **Answer with analysis, not raw rows.** State the time basis as AEST. Explain
    aggregation choices, especially when converting power to energy. If a chart
    is useful, provide chart-ready output and briefly justify the chart type.
-
----
-
-## Query Rules
-
-- Default to read-only SQL.
-- Always use fully qualified Unity Catalog names: `catalog.schema.table`.
-- Prefer `references/knowledge/*.yaml` to live schema inspection.
-- Use the table's display name when referring to it in prose.
-- Match identifier casing exactly in `WHERE` clauses.
-- Relevant regional IDs are `NSW1`, `QLD1`, `VIC1`, `SA1`, and `TAS1`.
 
 ---
 
@@ -90,6 +81,10 @@ before writing SQL, and prefer it to live inspection.
 - Treat user-facing results as AEST.
 - Convert relative "today", "last 7 days", and similar filters using `Australia/Brisbane`.
 - `SETTLEMENTDATE` in NEM datasets is already aligned to AEST market time. Do not shift it again.
+- `SETTLEMENTDATE` marks the **end** of its 5-minute interval: a day's
+  intervals are stamped 00:05 through 00:00 the next day. Assign days, months
+  and quarters from `SETTLEMENTDATE - INTERVAL 5 MINUTES`, so the interval
+  stamped 00:00 counts in the day before.
 - Some silver tables also expose `SETTLEMENTDATE_UTC`; use it only when UTC is explicitly required.
 - A safe AEST "now" expression:
 
@@ -108,69 +103,89 @@ date(from_utc_timestamp(current_timestamp(), 'Australia/Brisbane'))
 ## Power And Energy Rules
 
 - `TOTALCLEARED`, `TOTALDEMAND`, `AVAILABILITY`, and similar fields are power in MW. `AVAILABILITY` refers to dispatch-cycle available capacity, not rated capacity.
-- For interval-based power summaries, use `AVG(...)`.
+- Average power over a period: add units and regions within each 5-minute
+  interval, then average across the intervals. Never `SUM` MW across time.
+- Half-hourly values from 5-minute data are labelled by the half hour's end:
+  12:30 is the average of the six intervals stamped 12:05 to 12:30, not 12:00
+  to 12:25. So round `SETTLEMENTDATE` **up** to the half hour, never down. For
+  SCADA, apply its 5-minute shift first (see its traps).
 - Convert 5-minute MW observations to MWh with `MW / 12.0` before summing.
 - Be explicit in the answer about whether a metric is average MW, interval MWh, or total MWh.
 
 ---
 
+## Prices
+
+- **Average price** is the time-weighted mean of 5-minute `RRP`, with
+  `INTERVENTION = 0`.
+- **A zero or negative price** is `ROUND(RRP, 2) <= 0`: mainland prices often
+  clear a fraction of a cent above zero.
+- **AEMO's whole-dollar threshold analysis** (the share of intervals at or
+  below each of $0, −$1, … −$1,000): select the intervals at the cent as
+  above, then place them against the thresholds by `ROUND(RRP, 0)` (half away
+  from zero), never the raw `RRP`. Only for this analysis.
+- **A region's volume-weighted price** (AEMO's definition) weights `RRP` by
+  `INITIALSUPPLY + TOTALINTERMITTENTGENERATION` in every 5-minute interval,
+  not by `TOTALDEMAND`.
+
+---
+
+## Regional Quantities, Flows And FCAS
+
+- **`dispatch_regionsum` holds more than price and demand**; read its schema
+  before saying a regional quantity is not published. Wholesale demand
+  response delivered is `WDR_INITIALMW` (the measured level; `WDR_DISPATCHED`
+  is the target), MWh = sum ÷ 12. Battery state of charge is
+  `BDU_ENERGY_STORAGE`, MWh at the interval end (unit-level
+  `INITIAL_ENERGY_STORAGE` is at its start).
+- **Interconnector flow** in an interval is `MWFLOW`; energy transferred over a
+  period is `METEREDMWFLOW`.
+- **FCAS** has ten markets, including raise and lower 1-second. A unit's
+  revenue (or cost) per service is its enablement in `dispatch_unit_solution`
+  × that service's regional price ÷ 12, per interval. Energy revenue, unlike
+  these, comes from SCADA energy, never from `TOTALCLEARED`.
+
+---
+
 ## Price Setter Analysis (which fuel/unit set the price)
 
-For questions about **which fuel source or unit set the energy price** — the AER
-"quarterly price setter and average price set by fuel source" analysis — do **not**
-hand-roll the logic against the raw table. Use the deployed SQL functions in
-`external_data.nemweb`, which encode the AER-conformant methodology (validated
-against AER Q2 2025 publications). They read from
-`silver_pricesetter_price_setter` (AEMO's authoritative NemPriceSetter feed —
-one row per contributing unit per 5-minute interval).
+`silver_pricesetter_price_setter` is AEMO's NemPriceSetter feed: one row per
+unit contributing to each 5-minute regional price. It lags about a month
+(NEMDE months publish after month-end); say so if asked about recent weeks.
+Deployed functions in `external_data.nemweb` encode the **AER's** method,
+validated against AER publications:
 
 | Function | Returns |
 |---|---|
-| `f_price_setter_by_fuel(region, start, end, bucket, include_battery_loads)` | AER chart: occasions / % share / average price set, per fuel source |
-| `f_price_setter_by_duid(region, start, end, bucket)` | League table of which DUIDs set the price |
-| `f_price_setter_intervals(region, start, end)` | The single dominant price-setting unit per 5-minute interval |
-| `f_price_setter_contributions(region, start, end)` | Every contributing unit per interval (the AER counting basis, DUID level) |
-| `v_duid_fuel_aer` | DUID → AER fuel category lookup (one row per DUID) |
+| `f_price_setter_by_fuel(region, start, end, bucket, include_battery_loads)` | Occasions / % share / average price set, per fuel |
+| `f_price_setter_by_duid(region, start, end, bucket)` | Which DUIDs set the price |
+| `f_price_setter_intervals(region, start, end)` | One "dominant" unit per interval: the largest `\|INCREASE\|` |
+| `f_price_setter_contributions(region, start, end)` | Every contributing unit per interval |
 
-Argument notes:
+- `region` is one region id; the window is `[start, end)`, e.g. a quarter
+  `'2026-01-01'` to `'2026-04-01'`; `bucket` is `'quarter'`, `'month'`,
+  `'day'` or `'all'` (one row set for the window, for an event).
+- `include_battery_loads=false` gives `pct_normalised`, summing to 100% (the
+  AER chart); `true` gives `pct_of_intervals`, counting battery charge and
+  discharge (the AER prose). State which.
+- `avg_offer_price` is the AER's "average price set" (offer band price at the
+  regional node); `avg_rrp` is the regional price when that fuel set it.
+- The functions count only `MARKET='Energy'` energy and battery offers, and
+  drop interconnectors, FCAS, load offers and administered-price or
+  suspension intervals.
 
-- `region` is a single region id (`'NSW1'`, `'QLD1'`, `'VIC1'`, `'SA1'`, `'TAS1'`).
-- `start` / `end` are timestamps; the window is `[start, end)`. Quarters are
-  whole calendar quarters, e.g. `'2026-01-01'` to `'2026-04-01'`.
-- `bucket` is `'quarter'`, `'month'`, `'day'`, or `'all'` (no bucketing — one
-  row set for the whole window; use `'all'` for a specific event).
-- `include_battery_loads` (only on `f_price_setter_by_fuel`) selects the share
-  basis. **Two bases, both legitimate — state which you used:**
-  - `false` → `pct_normalised` sums to 100% (the **AER chart** basis; battery
-    generation side only). Use this when reproducing the AER chart.
-  - `true` → `pct_of_intervals` counts batteries on both generation and load
-    sides (the **AER quarterly-report prose** basis). Shares do not sum to 100%.
-- "Average price set": `avg_offer_price` is the AER's definition (the unit's
-  offer band price referred to the RRN); `avg_rrp` is the dispatch price when
-  that fuel/unit set it. They diverge for negative-offer fuels (wind/solar).
-
-Methodology already handled inside the functions (do not re-implement): only
-`MARKET='Energy'` contributions; energy offers (`ENOF`) plus bidirectional
-battery offers (`BDOF,GEN` / `BDOF,LOAD`); FCAS codes, interconnector/MNSP
-units, and Administered-Price-Cap / market-suspension intervals are excluded.
-Fuel is resolved via `v_duid_fuel_aer` — long-retired DUIDs may resolve to
-`Unknown` because the registration list is a current snapshot.
-
-Examples:
+**AEMO's own analysis names one price setter per region and interval**, a
+different basis. Query `silver_pricesetter_price_setter` directly — the
+functions drop load offers and administered-price intervals, which AEMO
+counts — and take the Energy rows with `DISPATCHEDMARKET` in `ENOF`, `BDOF,GEN`, `BDOF,LOAD`,
+`LDOF`, excluding interconnector units; sum `INCREASE` per unit and pick the
+unit whose `|INCREASE|` is closest to 1. Count every interval, and average the
+regional price over the intervals a fuel set. When a question states a
+selection rule, apply it rather than a function's.
 
 ```sql
--- AER chart for a quarter (shares sum to 100%)
 SELECT * FROM external_data.nemweb.f_price_setter_by_fuel('NSW1','2026-01-01','2026-04-01','quarter',false);
--- Who set the price, interval by interval
-SELECT * FROM external_data.nemweb.f_price_setter_intervals('VIC1','2026-03-01','2026-03-02');
--- DUID league table for a window
-SELECT * FROM external_data.nemweb.f_price_setter_by_duid('SA1','2026-01-01','2026-04-01','all');
 ```
-
-This feed is **Tier 1** — authoritative but lagged ~1 month (NEMDE months
-publish after month-end). It is the practical floor for unit/fuel-level price
-attribution from public data; report the lag if the user asks about the current
-or previous few weeks.
 
 ---
 
@@ -183,19 +198,10 @@ offered to do.
 
 ### Non-scheduled generation is only visible here
 
-This is the **only** table covering non-scheduled units. They have no dispatch
-target, so they appear in no dispatch table at all. Measured over a recent
-2-day window:
-
-| | |
-|---|---|
-| Non-scheduled DUIDs reporting SCADA | **35** |
-| …of those, absent from `dispatch_unit_solution` | **34** |
-| Their output | **~22,100 MWh, ~1.7% of all generation** |
-| Where | TAS hydro and wind, plus embedded generation in QLD, NSW, VIC |
-
-So any "total generation" or fuel-mix answer built from dispatch data is
-short by that much and does not say so. When a user asks what generated the
+This is the **only** table covering non-scheduled units (TAS hydro and wind,
+embedded generation in QLD, NSW and VIC). They have no dispatch target, so they
+appear in no dispatch table, and a "total generation" or fuel-mix answer built
+from dispatch data is about 1.7% short and does not say so. When a user asks what generated the
 NEM's electricity, start here, not from `dispatch_unit_solution`.
 
 | Question | Table | Column |
@@ -229,9 +235,27 @@ where the resource is genuinely zero.
 
 ### Fuel-mix and generation stacks
 
+**Classify fuel with `v_duid_fuel_aemo`**, not the registration list's
+descriptors. It maps every DUID AEMO has registered, retired ones included, to
+AEMO's fuel groups (Black Coal, Brown Coal, Gas, Liquid Fuel, Hydro, Hydro
+Pump Load, Wind, Grid Solar, Battery, Biomass, Other), from AEMO's historical
+registration plus the cases where AEMO reports a unit differently. It is
+effective-dated, so join on the DUID and the date:
+
+```sql
+JOIN external_data.nemweb.v_duid_fuel_aemo f
+  ON f.duid = s.DUID
+ AND s.SETTLEMENTDATE >= f.effective_from AND s.SETTLEMENTDATE < f.effective_to
+```
+
 Join to `silver___participant_registration_dudetailsummary` for `REGIONID`,
 `SCHEDULE_TYPE` and `DISPATCHTYPE`. Using SCADA rather than dispatch targets is
-what makes non-scheduled generation appear in the stack at all.
+what makes non-scheduled generation appear at all.
+
+- **Hydro generation** totals drop the generating units of every station that
+  also has a pump load — dropping only the pump is not enough. In prices by
+  fuel, price setting and renewable shares, all hydro generation counts.
+- **Grid-scale** means every registered unit of that fuel, of any size.
 
 ### Traps specific to this table
 
@@ -250,15 +274,23 @@ what makes non-scheduled generation appear in the stack at all.
   ~11 hours ahead of it. Any join of the two silently truncates to the older
   table's coverage, so "today" will look short. Check both `MAX(SETTLEMENTDATE)`
   before reporting a recent window.
-- `SCADAVALUE` is an **instantaneous reading at the start of the interval**, not
-  an average. For energy, multiply by 5/60 and sum — it is not MWh as it stands.
-- **Negative `SCADAVALUE` is normal.** Mostly `BIDIRECTIONAL` units charging
-  (65 DUIDs), but also 21 `GENERATOR` units drawing auxiliary load. Do not
-  `ABS()` it or filter it out of a generation total; net it, or split by
-  `DISPATCHTYPE`.
-- **Bidirectional units are several DUIDs** — `ADPBA1` (bidirectional),
-  `ADPBA1G` (generator leg), `ADPBA1L` (load leg). Summing all three
-  double-counts one battery.
+- ⚠ **The raw stamp is one interval late: use `SETTLEMENTDATE − 5 minutes`
+  wherever this guide says `SETTLEMENTDATE`** — joins to prices, half hours,
+  time of day and periods. A row stamped T is the reading at T − 5, the end of
+  the dispatch interval ending T − 5. A unit's average MW, including a
+  battery's discharge, is that end reading, split into charge and discharge
+  per unit before summing; energy and revenue in an interval use the mean of
+  its start and end readings (it matters for batteries and solar).
+- ⚠ **The sign depends on `DISPATCHTYPE`, not on what the unit is doing.** A
+  `BIDIRECTIONAL` unit reads negative while charging, and a `GENERATOR` can
+  read slightly negative on auxiliary load. A `LOAD` — a pump, or an older
+  battery's charging unit — reports consumption as **positive** MW. Decide
+  supply against consumption by dispatch type; loads are never supply.
+- **One battery can have several identifiers over time**: older batteries
+  were a generator plus a load identifier (`HPRG1`/`HPRL1`), later one
+  bidirectional unit (`HPR1`). `v_duid_fuel_aemo` marks them all Battery.
+  AEMO's figures sum every identifier, including the few weeks at the
+  changeover when both report.
 - `INTERVENTION` filtering belongs on the table you join to, not here — there
   is one SCADA reading per unit per interval regardless of dispatch run. No
   intervention has occurred since 2024-11-27, so `INTERVENTION = 0` is a no-op
@@ -278,46 +310,30 @@ rooftop PV sits behind the customer meter, so AEMO never measures it directly.
 
 ### Rooftop is why operational demand collapses at midday
 
-`TOTALDEMAND` in `dispatch_regionsum` is **operational** demand — what the
-market must serve *after* rooftop has already been consumed behind the meter.
-Rooftop is netted out of it. So:
+Rooftop output is consumed behind the meter, so it is netted out of the demand
+the grid sees:
 
 ```
 underlying demand = operational demand + rooftop PV
 ```
 
-Measured on NSW1, 2026-08-31:
+⚠ **`TOTALDEMAND` in `dispatch_regionsum` is not AEMO's operational demand.**
+It runs about 2% lower, because operational demand also counts non-scheduled
+generation. AEMO's own figure is `OPERATIONAL_DEMAND` in
+`silver_operational_demand_actual_operational_demand_actual` (half-hourly,
+labelled by interval end, by region; check its coverage). Outside that
+coverage, approximate it as `TOTALDEMAND + TOTALINTERMITTENTGENERATION` (within
+about 1%) and say it is an approximation.
 
-| Interval | Operational MW | Rooftop MW | Underlying MW | Rooftop share |
-|---|---|---|---|---|
-| 10:00 | 5,720 | 4,390 | 10,110 | 43.4% |
-| 12:30 | **4,790** | **5,326** | 10,115 | **52.6%** |
-| 14:30 | 5,321 | 4,223 | 9,544 | 44.2% |
-
-Operational demand fell 16% between 10:00 and 12:30 while underlying demand was
-essentially flat. **Nothing about consumption changed — rooftop did.** Any
-answer about "demand falling", the midday trough, minimum operational demand, or
-the duck curve is incomplete and can be actively misleading without this table.
-
-The effect is far larger in the smaller regions. Peak rooftop share of
-underlying demand on the same day:
-
-| Region | Min operational MW | Peak rooftop MW | Peak rooftop share |
-|---|---|---|---|
-| SA1 | **168** | 1,810 | **91.5%** |
-| NSW1 | 4,778 | 5,346 | 52.6% |
-| QLD1 | 4,146 | 4,121 | 49.7% |
-| VIC1 | 3,638 | 3,398 | 48.2% |
-| TAS1 | 884 | 242 | 21.4% |
-
-SA1 operational demand bottomed at **168 MW** while underlying demand was over
-2,000 MW. A question about South Australian demand, minimum demand records, or
-system security at low load that ignores rooftop is not merely incomplete — it
-is describing a different quantity from the one the user means.
+On a sunny day rooftop covers about half of underlying demand at midday in the
+mainland regions and over 90% in SA1 (measured 2026-08-31: SA1 operational
+demand fell to 168 MW while underlying demand was over 2,000 MW). An answer about falling
+demand, the midday trough, minimum demand or the duck curve that ignores
+rooftop describes a different quantity from the one the user means.
 
 Join on the half hour: `dispatch_regionsum` is 5-minute, this is 30-minute,
-interval-ending. Truncate the dispatch `SETTLEMENTDATE` to the half hour and
-average within it — do not sample a single 5-minute reading.
+interval-ending. Round the dispatch `SETTLEMENTDATE` **up** to the half hour
+and average within it — do not sample a single 5-minute reading.
 
 ### Which "actual" — MEASUREMENT or SATELLITE
 
@@ -329,16 +345,8 @@ interval. Not filtering it double-counts every rooftop total.
 | `MEASUREMENT` | AEMO's best-quality same-day estimate, from a sample of metered sites |
 | `SATELLITE` | Estimate from satellite irradiance imagery |
 
-**Default to `MEASUREMENT`.** They are not interchangeable — measured mean
-absolute difference over the same intervals:
-
-| Region | Mean abs diff | Max | As % of mean daytime output |
-|---|---|---|---|
-| NSW1 | 67.8 MW | 364 MW | 2.5% |
-| QLD1 | 102.4 MW | 653 MW | 4.6% |
-| VIC1 | 70.4 MW | 461 MW | 4.3% |
-| SA1 | 33.1 MW | 221 MW | 3.4% |
-| TAS1 | 6.3 MW | 34 MW | 5.2% |
+**Default to `MEASUREMENT`; it is what AEMO reports.** The two are not
+interchangeable: they differ by 2.5–5% of mean daytime output per region.
 
 ⚠ **There is a third `TYPE`, `DAILY`, and it exists only in early history.**
 AEMO published it (its best quality, day-after estimate) from the start of the
@@ -363,22 +371,10 @@ QUALIFY ROW_NUMBER() OVER (
 ```
 
 For forecast *accuracy*, pick a lead time explicitly and join to
-`TYPE = 'MEASUREMENT'` actuals on `(REGIONID, INTERVAL_DATETIME)`. Measured
-against daytime intervals (actual > 100 MW) over a 3.4-day window — a short
-sample, so treat the magnitudes as indicative and re-measure over a longer
-period before quoting them to a customer:
-
-| Lead time | MAE | Mean bias |
-|---|---|---|
-| 0–2 h | 106 MW | −42 MW |
-| 2–6 h | 128 MW | −67 MW |
-| 6–24 h | 145 MW | −81 MW |
-| 24–48 h | 173 MW | −86 MW |
-| 48 h+ | 226 MW | −79 MW |
-
-Error roughly doubles from nowcast to 2 days out, and the bias is **negative at
-every lead** — the forecast ran below the MEASUREMENT actual throughout this
-window. Report bias and MAE separately; a near-zero mean error would hide it.
+`TYPE = 'MEASUREMENT'` actuals on `(REGIONID, INTERVAL_DATETIME)`. Report bias
+and mean absolute error separately: in a short measured sample the error
+roughly doubled from nowcast to two days out and the bias was negative at every
+lead, which a near-zero mean error would hide.
 
 ### Traps specific to these tables
 
@@ -433,7 +429,8 @@ physically constrained.
 Renovara loads a subset of what AEMO publishes. `references/catalog/coverage.md`
 lists what is held against AEMO's full model, so check there before telling a
 user something is unavailable — the table may exist under a name they did not
-expect.
+expect. An AEMO table missing from it does not mean the quantity is: read the
+schema of the held tables it would come from first.
 
 When the data genuinely is not held:
 
@@ -455,22 +452,7 @@ When the data genuinely is not held:
 - Keep explanations professional and concise.
 - State assumptions when the request is ambiguous.
 - Always state that results are reported in AEST.
-- When preparing a chart in code, add brief comments that explain the chart type, the transformation applied, and why both fit the data:
-
-```python
-# I am creating a [type of chart] to analyse [specific aspect] in the [dataset].
-# This visualisation will help illustrate [specific trend, comparison, or insight].
-# I chose a [chart type] because it effectively shows [reason why it fits the data's structure].
-# The data is [describe transformations, such as filtering, grouping, or pivoting].
-# I will enhance readability with a title, axis labels, grid lines, and legends.
-```
-
----
-
-## Additional Context
-
 - Data originates from NEMWEB (provided by AEMO): https://www.aemo.com.au/energy-systems/electricity/national-electricity-market-nem/data-nem/market-data-nemweb.
-- The `TOTALCLEARED` and `TOTALDEMAND` columns represent power levels (MW). `AVAILABILITY` refers to the current capacity available for generation, not the rated capacity.
 
 ## Reference Files
 
@@ -488,6 +470,8 @@ When the data genuinely is not held:
   - `which_fuel_sources_set_the_nsw1_energy_price_in_q1_2026_aer_.sql` — Which fuel sources set the NSW1 energy price in Q1 2026 (AER chart basis)?
   - `how_much_did_rooftop_solar_reduce_operational_demand_in_each.sql` — How much did rooftop solar reduce operational demand in each region yesterday, and when was its peak contribution?
   - `how_accurate_is_aemos_rooftop_solar_forecast_and_does_the_er.sql` — How accurate is AEMO's rooftop solar forecast, and does the error grow with lead time?
+  - `what_were_operational_demand_underlying_demand_and_rooftop_p.sql` — What were operational demand, underlying demand and rooftop PV in each region, half hour by half hour, yesterday?
+  - `what_fuel_were_the_units_that_generated_in_nsw1_and_sa1_in_2.sql` — What fuel were the units that generated in NSW1 and SA1 in 2021, including units that have since retired?
 
 ## Example Triggers
 

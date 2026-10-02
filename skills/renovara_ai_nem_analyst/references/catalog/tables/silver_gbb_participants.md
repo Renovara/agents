@@ -7,13 +7,13 @@ tags:
 - nemweb
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-22T08:00:26Z'
-stale_after: '2026-12-01'
+  at: '2026-10-02T03:16:58Z'
+stale_after: '2026-12-30'
 renovara_table: external_data.nemweb.silver_gbb_participants
 column_count: 13
-row_count: 258
-measured_at: '2026-09-02T00:03:03Z'
-size_bytes: 17964
+row_count: 259
+measured_at: '2026-10-01T07:50:09Z'
+size_bytes: 26588
 ---
 
 # Coverage
@@ -21,27 +21,27 @@ size_bytes: 17964
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver_gbb_participants` |
-| Rows | 258 |
+| Rows | 259 |
 | Date range | no recognised time column |
-| Size on disk | 17.5 KB |
-| Measured at | `2026-09-02T00:03:03Z` |
+| Size on disk | 26.0 KB |
+| Measured at | `2026-10-01T07:50:09Z` |
 
-**Measured 2026-09-02T00:03:03Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-10-01T07:50:09Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 
 | Column | Type | Comment |
 |---|---|---|
 | `source_last_modified` | `timestamp` |  |
-| `CompanyId` | `int` |  |
-| `CompanyName` | `string` |  |
-| `OrganisationTypeName` | `string` |  |
-| `ABN` | `string` |  |
-| `CompanyPhone` | `string` |  |
-| `Locale` | `string` |  |
-| `AddressType` | `string` |  |
-| `Address` | `string` |  |
-| `State` | `string` |  |
-| `Postcode` | `string` |  |
-| `CompanyFax` | `string` |  |
-| `LastUpdated` | `timestamp` |  |
+| `CompanyId` | `int` | Company ID associated with the person. [AI-generated] The target of silver_gbb_facilities.OperatorId. |
+| `CompanyName` | `string` | Company name associated with the person. |
+| `OrganisationTypeName` | `string` | The type of organisation. [AI-generated] e.g. Shipper, BB Reporting Entity, Gas Market Operator. NULL for ~10% of companies. |
+| `ABN` | `string` | Australian Business Number for the participant. [AI-generated] STRING, not numeric -- AEMO types this varchar(30), and most values carry the conventional space grouping ("11 086 013 283") while some do not. |
+| `CompanyPhone` | `string` | Company phone details. [AI-generated] STRING -- values carry leading zeros and spaces. |
+| `Locale` | `string` | Location for the participant. [AI-generated] Suburb or city of the registered address. |
+| `AddressType` | `string` | Type of address. [AI-generated] "Head Office" on every row observed. |
+| `Address` | `string` | Mailing address for the company. [AI-generated] NULL for ~84% of companies. |
+| `State` | `string` | State where the company is located. [AI-generated] The source mixes conventions -- "VI" appears alongside "VIC". |
+| `Postcode` | `string` | Postcode details. [AI-generated] STRING, not INT -- AEMO types this varchar(4), and NT postcodes carry a leading zero (0481, 0801, 0828) that an integer type would silently destroy. |
+| `CompanyFax` | `string` | Company fax details. [AI-generated] STRING for the same reason as CompanyPhone. NULL for ~47% of companies. |
+| `LastUpdated` | `timestamp` | Last changed details. [AI-generated] `dd MMM yyyy HH:mm:ss` AEST -- NOT the slash form used by most GBB reports. |

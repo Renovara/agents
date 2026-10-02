@@ -10,18 +10,18 @@ tags:
 - canonical:DISPATCH_LOCAL_PRICE
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-22T08:00:26Z'
-stale_after: '2026-12-01'
+  at: '2026-10-02T03:16:58Z'
+stale_after: '2026-12-30'
 renovara_table: external_data.nemweb.silver_dispatchis_reports_dispatch_local_price
 canonical_report: DISPATCH_LOCAL_PRICE
 column_count: 7
-row_count: 10322506
-measured_at: '2026-09-02T00:03:03Z'
+row_count: 9552816
+measured_at: '2026-10-01T07:50:09Z'
 coverage:
   column: SETTLEMENTDATE
   from: '2024-08-01 00:05:00'
-  to: '2026-09-02 08:50:00'
-size_bytes: 42444249
+  to: '2026-10-01 17:30:00'
+size_bytes: 46726872
 primary_key:
 - DUID
 - SETTLEMENTDATE
@@ -36,12 +36,12 @@ Sets out local pricing offsets associated with each DUID connection point for ea
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver_dispatchis_reports_dispatch_local_price` |
-| Rows | 10,322,506 |
-| Date range | 2024-08-01 00:05:00 to 2026-09-02 08:50:00 (by `SETTLEMENTDATE`) |
-| Size on disk | 40.5 MB |
-| Measured at | `2026-09-02T00:03:03Z` |
+| Rows | 9,552,816 |
+| Date range | 2024-08-01 00:05:00 to 2026-10-01 17:30:00 (by `SETTLEMENTDATE`) |
+| Size on disk | 44.6 MB |
+| Measured at | `2026-10-01T07:50:09Z` |
 
-**Measured 2026-09-02T00:03:03Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-10-01T07:50:09Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 

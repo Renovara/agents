@@ -9,18 +9,18 @@ tags:
 - canonical:PARTICIPANT_REGISTRATION_PARTICIPANT
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-22T08:00:26Z'
-stale_after: '2026-12-01'
+  at: '2026-10-02T03:16:57Z'
+stale_after: '2026-12-30'
 renovara_table: external_data.nemweb.silver___participant_registration_participant
 canonical_report: PARTICIPANT_REGISTRATION_PARTICIPANT
 column_count: 9
-row_count: 21679
-measured_at: '2026-09-02T00:03:03Z'
+row_count: 22873
+measured_at: '2026-10-01T07:50:09Z'
 coverage:
   column: LASTCHANGED
   from: '1998-06-30 22:01:22'
-  to: '2026-07-24 15:16:29'
-size_bytes: 301252
+  to: '2026-09-04 15:43:13'
+size_bytes: 344547
 primary_key:
 - PARTICIPANTID
 aemo_table: PARTICIPANT
@@ -35,12 +35,12 @@ PARTICIPANT sets out Participant ID, name and class for all participants.
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver___participant_registration_participant` |
-| Rows | 21,679 |
-| Date range | 1998-06-30 22:01:22 to 2026-07-24 15:16:29 (by `LASTCHANGED`) |
-| Size on disk | 294.2 KB |
-| Measured at | `2026-09-02T00:03:03Z` |
+| Rows | 22,873 |
+| Date range | 1998-06-30 22:01:22 to 2026-09-04 15:43:13 (by `LASTCHANGED`) |
+| Size on disk | 336.5 KB |
+| Measured at | `2026-10-01T07:50:09Z` |
 
-**Measured 2026-09-02T00:03:03Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-10-01T07:50:09Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 

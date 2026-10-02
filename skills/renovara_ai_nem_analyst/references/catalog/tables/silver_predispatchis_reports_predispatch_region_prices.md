@@ -9,18 +9,18 @@ tags:
 - canonical:PREDISPATCH_REGION_PRICES
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-22T08:00:26Z'
-stale_after: '2026-12-01'
+  at: '2026-10-02T03:16:58Z'
+stale_after: '2026-12-30'
 renovara_table: external_data.nemweb.silver_predispatchis_reports_predispatch_region_prices
 canonical_report: PREDISPATCH_REGION_PRICES
 column_count: 37
-row_count: 3839470
-measured_at: '2026-09-02T00:03:03Z'
+row_count: 4230700
+measured_at: '2026-10-01T07:50:09Z'
 coverage:
   column: LASTCHANGED
   from: '2025-11-18 00:32:25'
-  to: '2026-09-02 08:31:44'
-size_bytes: 37867714
+  to: '2026-10-01 17:01:50'
+size_bytes: 41217723
 primary_key:
 - DATETIME
 - REGIONID
@@ -35,12 +35,12 @@ PREDISPATCHPRICE records predispatch prices for each region by period for each p
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver_predispatchis_reports_predispatch_region_prices` |
-| Rows | 3,839,470 |
-| Date range | 2025-11-18 00:32:25 to 2026-09-02 08:31:44 (by `LASTCHANGED`) |
-| Size on disk | 36.1 MB |
-| Measured at | `2026-09-02T00:03:03Z` |
+| Rows | 4,230,700 |
+| Date range | 2025-11-18 00:32:25 to 2026-10-01 17:01:50 (by `LASTCHANGED`) |
+| Size on disk | 39.3 MB |
+| Measured at | `2026-10-01T07:50:09Z` |
 
-**Measured 2026-09-02T00:03:03Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-10-01T07:50:09Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 

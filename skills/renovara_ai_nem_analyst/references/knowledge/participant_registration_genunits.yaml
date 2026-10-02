@@ -1,0 +1,89 @@
+PARTICIPANT_REGISTRATION_GENUNITS:
+  table_name: silver___participant_registration_genunits
+  display_name: Participant Registration Genunits
+  table_comment: 'GENUNITS shows genset details for each physical unit with the relevant station: one
+    row per genset AEMO has ever registered, retired units included (Liddell LD01-04, Torrens Island A
+    TORRA1-4). Carries the fuel AEMO uses for emissions (CO2E_ENERGY_SOURCE), GENSETTYPE (GENERATOR, LOAD
+    or BIDIRECTIONAL) and capacity. Join to DUIDs through PARTICIPANT_REGISTRATION_DUALLOC (DUID -> GENSETID).
+    A single cumulative snapshot from the MMSDM 2026-08 archive month, not a monthly series: GENUNITS
+    has no effective date and AEMO updates rows in place. For DUID -> AEMO fuel group use the view v_duid_fuel_aemo.'
+  primary_keys:
+  - GENSETID
+  indexes:
+  - LASTCHANGED
+  visibility: Public
+  update_frequency: Monthly
+  schema:
+  - column: GENSETID
+    data_type: string
+    comment: Physical unit identifier
+  - column: STATIONID
+    data_type: string
+    comment: Station identifier
+  - column: SETLOSSFACTOR
+    data_type: decimal(16,6)
+    comment: Not used
+  - column: CDINDICATOR
+    data_type: string
+    comment: Centrally dispatched indicator
+  - column: AGCFLAG
+    data_type: string
+    comment: AGC available flag
+  - column: SPINNINGFLAG
+    data_type: string
+    comment: Not used
+  - column: VOLTLEVEL
+    data_type: int
+    comment: Voltage level
+  - column: REGISTEREDCAPACITY
+    data_type: int
+    comment: Registered capacity (MW)
+  - column: DISPATCHTYPE
+    data_type: string
+    comment: Type NET/NET identifies if DUID is a Scheduled and GROSS/NET identifies if DUID is either
+      Semi-Scheduled or Non-Scheduled.
+  - column: STARTTYPE
+    data_type: string
+    comment: Fast / Slow / Not Dispatched
+  - column: MKTGENERATORIND
+    data_type: string
+    comment: Market generator indicator flag
+  - column: NORMALSTATUS
+    data_type: string
+    comment: On / Off for load
+  - column: MAXCAPACITY
+    data_type: int
+    comment: Maximum capacity (MW)
+  - column: GENSETTYPE
+    data_type: string
+    comment: Identifies LOAD, GENERATOR or BIDIRECTIONAL. Older batteries are registered as a GENERATOR
+      genset plus a separate LOAD genset (e.g. HPRG1 / HPRL1); newer ones as one BIDIRECTIONAL genset.
+  - column: GENSETNAME
+    data_type: string
+    comment: Genset name
+  - column: LASTCHANGED
+    data_type: string
+    comment: Last date and time record changed (parsed to timestamp in silver). AEST.
+  - column: CO2E_EMISSIONS_FACTOR
+    data_type: decimal(18,8)
+    comment: The emissions factor for the generating unit, as calculated by Settlements staff members
+  - column: CO2E_ENERGY_SOURCE
+    data_type: string
+    comment: The energy source for the generating unit, as used in the calculation of the CO2-e emissions
+      factor (e.g. 'Black coal', 'Natural Gas (Pipeline)', 'Diesel oil', 'Battery Storage'). Distinct
+      from the fuel source in the Registration and Exemption List. Blank for about 180 gensets, mostly
+      loads; AEMO does not change it when a unit switches fuel (SNAPPER1 still reads 'Diesel oil'), so
+      prefer v_duid_fuel_aemo for fuel.
+  - column: CO2E_DATA_SOURCE
+    data_type: string
+    comment: 'Source of the emission factor: NTNDP (quoted from the National Transmission Network Development
+      Plan) or Estimated (an internal AEMO procedure based on NGA factors).'
+  - column: MINCAPACITY
+    data_type: int
+    comment: Minimum capacity only for load side of BDU, otherwise 0 (MW)
+  - column: REGISTEREDMINCAPACITY
+    data_type: int
+    comment: Registered minimum capacity only for load side of BDU, otherwise 0 (MW)
+  - column: MAXSTORAGECAPACITY
+    data_type: decimal(15,5)
+    comment: The rated storage capacity (MWh), information only
