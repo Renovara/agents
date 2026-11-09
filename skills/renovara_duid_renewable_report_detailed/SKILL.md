@@ -30,7 +30,7 @@ NEM renewable energy (wind/solar) dispatch unit performance reporter.
 Run the three sub-reports in order. Present 1a and 1b as tables.
 
 ### 1a — Generator Overview
-Query: `report_1a_generator_overview.sql` → table of registration details (station, region, capacity, fuel type).
+Query: `report_1a_generator_overview.sql` → table of registration details from `v_duid_registration`, AEMO's register (station, region, participant, dispatch and schedule type, fuel group, registered and maximum capacity, storage capacity for batteries).
 
 ### 1b — Performance Summary
 Query: `report_1b_performance_summary.sql` → aggregated energy, revenue, dispatch stats over the period.
@@ -51,7 +51,7 @@ Query: `report_1c_market_context_scatter.sql` → scatter chart:
 
 Query: `report_2_capacity_factor_by_hour.sql`
 
-Capacity factor = `TOTALCLEARED / REG_CAP_GENERATION_MW × 100%`, computed per 5-minute interval and aggregated by hour of day across all dates in the period.
+Capacity factor = `TOTALCLEARED / REG_CAP_GENERATION_MW × 100%`, computed per 5-minute interval and aggregated by hour of day across all dates in the period. `REG_CAP_GENERATION_MW` is AEMO's registered capacity (`v_duid_registration.registered_capacity_mw`).
 
 Line chart:
 

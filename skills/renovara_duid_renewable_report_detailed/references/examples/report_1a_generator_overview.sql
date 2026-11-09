@@ -1,18 +1,17 @@
 -- Report 1a: Generator Overview
 SELECT
-  `DUID`,
-  `STATION_NAME`,
-  `REGIONID`,
-  `DISPATCH_TYPE`,
-  `CATEGORY`,
-  `FUEL_SOURCE_PRIMARY`,
-  `TECHNOLOGY_TYPE_PRIMARY`,
-  `REG_CAP_GENERATION_MW`,
-  `MAX_CAP_GENERATION_MW`
+  `duid`,
+  `station_name`,
+  `region_id`,
+  `participant_id`,
+  `dispatch_type`,
+  `schedule_type`,
+  `fuel_group`,
+  `co2e_energy_source`,
+  `registered_capacity_mw`,
+  `max_capacity_mw`,
+  `max_storage_capacity_mwh`
 FROM
-  `external_data`.`nemweb`.`silver_nem_participant_and_scheduled_loads`
+  `external_data`.`nemweb`.`v_duid_registration`
 WHERE
-  `DUID` = :duid
-ORDER BY
-  `_ingest_timestamp` DESC
-LIMIT 1
+  `duid` = :duid

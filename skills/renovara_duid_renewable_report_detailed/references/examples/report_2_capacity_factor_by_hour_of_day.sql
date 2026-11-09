@@ -1,14 +1,11 @@
 -- Report 2: Capacity Factor by Hour of Day
 WITH duid_info AS (
   SELECT
-    `REG_CAP_GENERATION_MW`
+    `registered_capacity_mw` AS `REG_CAP_GENERATION_MW`
   FROM
-    `external_data`.`nemweb`.`silver_nem_participant_and_scheduled_loads`
+    `external_data`.`nemweb`.`v_duid_registration`
   WHERE
-    `DUID` = :duid
-  ORDER BY
-    `_ingest_timestamp` DESC
-  LIMIT 1
+    `duid` = :duid
 ),
 intervals AS (
   SELECT

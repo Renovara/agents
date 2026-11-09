@@ -40,10 +40,6 @@ If the YAML and live table differ after error-driven inspection:
   DISPATCHLOAD set out the current SCADA MW and target MW for each dispatchable unit, including relevant Frequency Control Ancillary Services (FCAS) enabling targets for each five minutes and additional fields to handle the new Ancillary Services functionality.
   Expected live table: `external_data.nemweb.silver_next_day_dispatch_dispatch_unit_solution`
 
-- [`knowledge/nem_participant_and_scheduled_loads.yaml`](knowledge/nem_participant_and_scheduled_loads.yaml)
-  Production Units (PU) and Scheduled Loads — all registered Production Units and Scheduled Loads with their classifications and key metadata.
-  Expected live table: `external_data.nemweb.silver_nem_participant_and_scheduled_loads`
-
 - [`knowledge/predispatch_interconnector_soln.yaml`](knowledge/predispatch_interconnector_soln.yaml)
   PREDISPATCHINTERCONNECTORRES records interconnector flows and losses for the periods calculated in each predispatch run.
   Expected live table: `external_data.nemweb.silver_predispatchis_reports_predispatch_interconnector_soln`
