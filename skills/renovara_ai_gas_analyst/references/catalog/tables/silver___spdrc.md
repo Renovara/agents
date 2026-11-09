@@ -10,18 +10,18 @@ tags:
 - canonical:SPDRC
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-10-02T03:16:54Z'
-stale_after: '2026-12-30'
+  at: '2026-11-09T07:17:59Z'
+stale_after: '2027-02-07'
 renovara_table: external_data.nemweb.silver___spdrc
 canonical_report: SPDRC
 column_count: 9
-row_count: 5937
-measured_at: '2026-10-01T07:50:09Z'
+row_count: 6051
+measured_at: '2026-11-09T03:17:59Z'
 coverage:
   column: EFFECTIVEDATE
   from: '2025-01-07 00:00:00'
-  to: '2026-08-31 00:00:00'
-size_bytes: 35342
+  to: '2026-09-14 00:00:00'
+size_bytes: 39197
 primary_key:
 - BIDTYPE
 - EFFECTIVEDATE
@@ -40,12 +40,12 @@ SPDREGIONCONSTRAINT contains the LHS factor terms applied to aggregated regional
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver___spdrc` |
-| Rows | 5,937 |
-| Date range | 2025-01-07 00:00:00 to 2026-08-31 00:00:00 (by `EFFECTIVEDATE`) |
-| Size on disk | 34.5 KB |
-| Measured at | `2026-10-01T07:50:09Z` |
+| Rows | 6,051 |
+| Date range | 2025-01-07 00:00:00 to 2026-09-14 00:00:00 (by `EFFECTIVEDATE`) |
+| Size on disk | 38.3 KB |
+| Measured at | `2026-11-09T03:17:59Z` |
 
-**Measured 2026-10-01T07:50:09Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-11-09T03:17:59Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 

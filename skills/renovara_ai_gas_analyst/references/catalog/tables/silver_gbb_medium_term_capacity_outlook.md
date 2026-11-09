@@ -7,13 +7,13 @@ tags:
 - nemweb
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-10-02T03:16:54Z'
-stale_after: '2026-12-30'
+  at: '2026-11-09T07:17:59Z'
+stale_after: '2027-02-07'
 renovara_table: external_data.nemweb.silver_gbb_medium_term_capacity_outlook
 column_count: 13
-row_count: 30471
-measured_at: '2026-10-01T07:50:09Z'
-size_bytes: 139583
+row_count: 34826
+measured_at: '2026-11-09T03:17:59Z'
+size_bytes: 171534
 ---
 
 # Coverage
@@ -21,12 +21,12 @@ size_bytes: 139583
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver_gbb_medium_term_capacity_outlook` |
-| Rows | 30,471 |
+| Rows | 34,826 |
 | Date range | no recognised time column |
-| Size on disk | 136.3 KB |
-| Measured at | `2026-10-01T07:50:09Z` |
+| Size on disk | 167.5 KB |
+| Measured at | `2026-11-09T03:17:59Z` |
 
-**Measured 2026-10-01T07:50:09Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-11-09T03:17:59Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 

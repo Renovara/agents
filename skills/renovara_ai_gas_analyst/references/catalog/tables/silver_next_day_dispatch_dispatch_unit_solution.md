@@ -10,18 +10,18 @@ tags:
 - canonical:DISPATCH_UNIT_SOLUTION
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-10-02T03:16:54Z'
-stale_after: '2026-12-30'
+  at: '2026-11-09T07:17:59Z'
+stale_after: '2027-02-07'
 renovara_table: external_data.nemweb.silver_next_day_dispatch_dispatch_unit_solution
 canonical_report: DISPATCH_UNIT_SOLUTION
-column_count: 72
-row_count: 352682651
-measured_at: '2026-10-01T07:50:09Z'
+column_count: 73
+row_count: 359122523
+measured_at: '2026-11-09T03:17:59Z'
 coverage:
   column: SETTLEMENTDATE
   from: '2019-01-01 00:05:00'
-  to: '2026-10-01 04:00:00'
-size_bytes: 4927142591
+  to: '2026-11-09 04:00:00'
+size_bytes: 18257685493
 primary_key:
 - DUID
 - INTERVENTION
@@ -38,12 +38,12 @@ DISPATCHLOAD set out the current SCADA MW and target MW for each dispatchable un
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver_next_day_dispatch_dispatch_unit_solution` |
-| Rows | 352,682,651 |
-| Date range | 2019-01-01 00:05:00 to 2026-10-01 04:00:00 (by `SETTLEMENTDATE`) |
-| Size on disk | 4.6 GB |
-| Measured at | `2026-10-01T07:50:09Z` |
+| Rows | 359,122,523 |
+| Date range | 2019-01-01 00:05:00 to 2026-11-09 04:00:00 (by `SETTLEMENTDATE`) |
+| Size on disk | 17.0 GB |
+| Measured at | `2026-11-09T03:17:59Z` |
 
-**Measured 2026-10-01T07:50:09Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-11-09T03:17:59Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 
@@ -121,6 +121,7 @@ DISPATCHLOAD set out the current SCADA MW and target MW for each dispatchable un
 | `MIN_AVAILABILITY` | `decimal(15,5)` | BDU only. Load side availability (BidOfferPeriod.MAXAVAIL where DIRECTION = LOAD) |
 | `ELEMENT_CAP` | `int` | Cap on the number of turbines or inverters at a DUID. |
 | `SETTLEMENTDATE_UTC` | `timestamp` |  |
+| `_row_payload_hash` | `bigint` | Renovara de-duplication key, not AEMO data: xxhash64 of every column except the primary key, LASTCHANGED and the source file sequence. Rows that share a primary key but differ in this hash genuinely disagree on a value, and both are kept. |
 
 # Upstream
 

@@ -10,18 +10,18 @@ tags:
 - canonical:P5MIN_INTERCONNECTORSOLN
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-10-02T03:16:54Z'
-stale_after: '2026-12-30'
+  at: '2026-11-09T07:17:59Z'
+stale_after: '2027-02-07'
 renovara_table: external_data.nemweb.silver_p5_reports_p5min_interconnectorsoln
 canonical_report: P5MIN_INTERCONNECTORSOLN
 column_count: 24
-row_count: 6570198
-measured_at: '2026-10-01T07:50:09Z'
+row_count: 7501422
+measured_at: '2026-11-09T03:17:59Z'
 coverage:
   column: INTERVAL_DATETIME
   from: '2025-11-19 00:05:00'
-  to: '2026-10-01 18:20:00'
-size_bytes: 183008765
+  to: '2026-11-09 06:10:00'
+size_bytes: 209585230
 primary_key:
 - INTERCONNECTORID
 - INTERVAL_DATETIME
@@ -38,12 +38,12 @@ The five-minute predispatch (P5Min) system provides projected dispatch for 12 di
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver_p5_reports_p5min_interconnectorsoln` |
-| Rows | 6,570,198 |
-| Date range | 2025-11-19 00:05:00 to 2026-10-01 18:20:00 (by `INTERVAL_DATETIME`) |
-| Size on disk | 174.5 MB |
-| Measured at | `2026-10-01T07:50:09Z` |
+| Rows | 7,501,422 |
+| Date range | 2025-11-19 00:05:00 to 2026-11-09 06:10:00 (by `INTERVAL_DATETIME`) |
+| Size on disk | 199.9 MB |
+| Measured at | `2026-11-09T03:17:59Z` |
 
-**Measured 2026-10-01T07:50:09Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-11-09T03:17:59Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 
