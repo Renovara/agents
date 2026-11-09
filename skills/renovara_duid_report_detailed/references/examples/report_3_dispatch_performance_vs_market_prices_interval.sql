@@ -1,14 +1,11 @@
 -- Report 3: Dispatch Performance vs Market Prices interval:
 WITH duid_region AS (
   SELECT
-    REGIONID
+    region_id AS REGIONID
   FROM
-    `external_data`.`nemweb`.`silver_nem_participant_and_scheduled_loads`
+    external_data.nemweb.v_duid_registration
   WHERE
-    DUID = 'YABULU'
-  ORDER BY
-    _ingest_timestamp DESC
-  LIMIT 1
+    duid = 'YABULU'
 ),
 intervals AS (
   SELECT

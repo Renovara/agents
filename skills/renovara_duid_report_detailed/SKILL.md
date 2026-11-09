@@ -25,14 +25,14 @@ Welcome to the NEM dispatch unit reporter.
 **Tasks:**
 
 1. Analyse regional market context for the DUID.
-2. Join on REGIONID which is available from `nem_participant_and_scheduled_loads` to ensure correct RRP.
+2. Join on the DUID's region (`region_id` in `v_duid_registration`, one row per DUID) to ensure correct RRP.
 3. Produce - Report 1.1 Generator Overview
 4. Produce - Report 1.2 Performance Summary
 5. Plot **Scatter chart** of **RRP (left-hand y-axis) & Total Demand (MW) (right-hand y-axis)** by hour-of-day (x-axis) and date.
 
 ## Report 2: Capacity and Availability Analysis
 
-**Data Sources:** `DISPATCH_UNIT_SOLUTION`, `nem_participant_and_scheduled_loads`
+**Data Sources:** `DISPATCH_UNIT_SOLUTION`, `v_duid_registration` (`registered_capacity_mw`, AEMO's registered capacity, used below as REG_CAP_GENERATION_MW)
 
 **Metrics:**
 
@@ -59,7 +59,7 @@ $$
 **Steps:**
 
 1. Average TOTALCLEARED and RRP to 5-minute intervals or hourly if more than 17 days requested.
-2. Join on REGIONID which is available from `nem_participant_and_scheduled_loads` to ensure correct RRP.
+2. Join on the DUID's region (`region_id` in `v_duid_registration`) to ensure correct RRP.
 3. Plot:
 
    * Average RRP ($/MWh) – left axis.
@@ -117,7 +117,7 @@ $$
 
 **Steps:**
 
-1. Identify REGIONID from `nem_participant_and_scheduled_loads`.
+1. Identify the region from `v_duid_registration` (`region_id`).
 2. Retrieve RRP for the period.
 3. Choose interval granularity:
 

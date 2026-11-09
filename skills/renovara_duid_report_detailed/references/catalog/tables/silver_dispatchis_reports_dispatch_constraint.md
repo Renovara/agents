@@ -10,18 +10,18 @@ tags:
 - canonical:DISPATCH_CONSTRAINT
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-22T08:00:26Z'
-stale_after: '2026-12-01'
+  at: '2026-11-09T07:18:39Z'
+stale_after: '2027-02-07'
 renovara_table: external_data.nemweb.silver_dispatchis_reports_dispatch_constraint
 canonical_report: DISPATCH_CONSTRAINT
 column_count: 16
-row_count: 198231704
-measured_at: '2026-09-02T00:03:03Z'
+row_count: 218416779
+measured_at: '2026-11-09T03:17:59Z'
 coverage:
   column: SETTLEMENTDATE
   from: '2024-09-05 00:05:00'
-  to: '2026-09-02 08:50:00'
-size_bytes: 1968679371
+  to: '2026-11-09 05:10:00'
+size_bytes: 2190638247
 primary_key:
 - CONSTRAINTID
 - DISPATCHINTERVAL
@@ -39,12 +39,12 @@ DISPATCHCONSTRAINT sets out details of all binding and interregion constraints i
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver_dispatchis_reports_dispatch_constraint` |
-| Rows | 198,231,704 |
-| Date range | 2024-09-05 00:05:00 to 2026-09-02 08:50:00 (by `SETTLEMENTDATE`) |
-| Size on disk | 1.8 GB |
-| Measured at | `2026-09-02T00:03:03Z` |
+| Rows | 218,416,779 |
+| Date range | 2024-09-05 00:05:00 to 2026-11-09 05:10:00 (by `SETTLEMENTDATE`) |
+| Size on disk | 2.0 GB |
+| Measured at | `2026-11-09T03:17:59Z` |
 
-**Measured 2026-09-02T00:03:03Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-11-09T03:17:59Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 
