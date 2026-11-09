@@ -10,25 +10,25 @@ tags:
 - canonical:PARTICIPANT_REGISTRATION_GENUNITS
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-10-02T03:16:57Z'
-stale_after: '2026-12-30'
+  at: '2026-11-09T07:17:13Z'
+stale_after: '2027-02-07'
 renovara_table: external_data.nemweb.silver___participant_registration_genunits
 canonical_report: PARTICIPANT_REGISTRATION_GENUNITS
 column_count: 24
-row_count: 981
-measured_at: '2026-10-01T07:50:09Z'
+row_count: 8759
+measured_at: '2026-11-09T03:17:59Z'
 coverage:
   column: LASTCHANGED
   from: '2005-11-23 09:55:53'
-  to: '2026-09-23 09:25:40'
-size_bytes: 21689
+  to: '2026-10-02 15:12:44'
+size_bytes: 50920
 primary_key:
 - GENSETID
 aemo_table: GENUNITS
 visibility: Public
 ---
 
-GENUNITS shows genset details for each physical unit with the relevant station: one row per genset AEMO has ever registered, retired units included (Liddell LD01-04, Torrens Island A TORRA1-4). Carries the fuel AEMO uses for emissions (CO2E_ENERGY_SOURCE), GENSETTYPE (GENERATOR, LOAD or BIDIRECTIONAL) and capacity. Join to DUIDs through PARTICIPANT_REGISTRATION_DUALLOC (DUID -> GENSETID). A single cumulative snapshot from the MMSDM 2026-08 archive month, not a monthly series: GENUNITS has no effective date and AEMO updates rows in place. For DUID -> AEMO fuel group use the view v_duid_fuel_aemo.
+GENUNITS shows genset details for each physical unit with the relevant station: one row per genset AEMO has ever registered, retired units included (Liddell LD01-04, Torrens Island A TORRA1-4). Carries the fuel AEMO uses for emissions (CO2E_ENERGY_SOURCE), GENSETTYPE (GENERATOR, LOAD or BIDIRECTIONAL) and capacity. Join to DUIDs through PARTICIPANT_REGISTRATION_DUALLOC (DUID -> GENSETID). One full copy per MMSDM archive month loaded (from 2026-01): GENUNITS has no effective date and AEMO updates rows in place, so take the row with the latest LASTCHANGED per GENSETID. For DUID -> AEMO fuel group use the view v_duid_fuel_aemo; for station, region and capacity, v_duid_registration.
 
 
 # Coverage
@@ -36,12 +36,12 @@ GENUNITS shows genset details for each physical unit with the relevant station: 
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver___participant_registration_genunits` |
-| Rows | 981 |
-| Date range | 2005-11-23 09:55:53 to 2026-09-23 09:25:40 (by `LASTCHANGED`) |
-| Size on disk | 21.2 KB |
-| Measured at | `2026-10-01T07:50:09Z` |
+| Rows | 8,759 |
+| Date range | 2005-11-23 09:55:53 to 2026-10-02 15:12:44 (by `LASTCHANGED`) |
+| Size on disk | 49.7 KB |
+| Measured at | `2026-11-09T03:17:59Z` |
 
-**Measured 2026-10-01T07:50:09Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-11-09T03:17:59Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 

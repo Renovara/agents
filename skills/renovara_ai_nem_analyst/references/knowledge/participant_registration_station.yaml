@@ -1,0 +1,49 @@
+PARTICIPANT_REGISTRATION_STATION:
+  table_name: silver___participant_registration_station
+  display_name: Participant Registration Station
+  table_comment: 'STATION sets out valid station identifiers: one row per station AEMO has registered,
+    with its full name and address. Join to DUIDs on STATIONID through PARTICIPANT_REGISTRATION_DUDETAILSUMMARY
+    (or GENUNITS). Names are as registered, in mixed case (''ERARING POWER STATION'', ''Bayswater Power
+    Station''), so match them case-insensitively. One full copy per MMSDM archive month loaded (from 2026-01):
+    take the row with the latest LASTCHANGED per STATIONID. For a DUID''s station, region, fuel and capacity
+    in one row use the view v_duid_registration.'
+  primary_keys:
+  - STATIONID
+  indexes:
+  - LASTCHANGED
+  visibility: Public
+  update_frequency: Monthly
+  schema:
+  - column: STATIONID
+    data_type: string
+    comment: Station Identifier
+  - column: STATIONNAME
+    data_type: string
+    comment: Full name of station
+  - column: ADDRESS1
+    data_type: string
+    comment: Station Address
+  - column: ADDRESS2
+    data_type: string
+    comment: Station Address
+  - column: ADDRESS3
+    data_type: string
+    comment: Station Address
+  - column: ADDRESS4
+    data_type: string
+    comment: Station Address
+  - column: CITY
+    data_type: string
+    comment: City
+  - column: STATE
+    data_type: string
+    comment: State of Australia
+  - column: POSTCODE
+    data_type: string
+    comment: Post Code
+  - column: LASTCHANGED
+    data_type: string
+    comment: Last date and time record changed (parsed to timestamp in silver). AEST.
+  - column: CONNECTIONPOINTID
+    data_type: string
+    comment: Not used. Do not use as the Connection Point Identifier for station load

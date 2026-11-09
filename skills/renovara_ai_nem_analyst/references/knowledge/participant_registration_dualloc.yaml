@@ -4,8 +4,8 @@ PARTICIPANT_REGISTRATION_DUALLOC:
   table_comment: 'DUALLOC cross references dispatch unit identifier (DUID) to genset ID (GENSETID), effective-dated
     and versioned: for a DUID, the rows with the latest EFFECTIVEDATE on or before a date, at that date''s
     highest VERSIONNO, are the gensets in force. One DUID can map to several gensets (HVGTS -> GH01, GH02).
-    Full history back to 1998, retired units included. A single cumulative snapshot from the MMSDM 2026-08
-    archive month.'
+    Full history back to 1998, retired units included. One full copy per MMSDM archive month loaded (from
+    2026-01), so the same key repeats once per month: SELECT DISTINCT before counting.'
   primary_keys:
   - EFFECTIVEDATE
   - VERSIONNO

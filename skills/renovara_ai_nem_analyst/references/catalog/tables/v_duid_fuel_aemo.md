@@ -7,12 +7,12 @@ tags:
 - nemweb
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-10-02T03:16:58Z'
-stale_after: '2026-12-30'
+  at: '2026-11-09T07:17:13Z'
+stale_after: '2027-02-07'
 renovara_table: external_data.nemweb.v_duid_fuel_aemo
-column_count: 14
-row_count: 1018
-measured_at: '2026-10-01T07:50:09Z'
+column_count: 12
+row_count: 1020
+measured_at: '2026-11-09T03:17:59Z'
 ---
 
 # Coverage
@@ -20,12 +20,12 @@ measured_at: '2026-10-01T07:50:09Z'
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.v_duid_fuel_aemo` |
-| Rows | 1,018 |
+| Rows | 1,020 |
 | Date range | no recognised time column |
 | Size on disk | — |
-| Measured at | `2026-10-01T07:50:09Z` |
+| Measured at | `2026-11-09T03:17:59Z` |
 
-**Measured 2026-10-01T07:50:09Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-11-09T03:17:59Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 
@@ -38,10 +38,8 @@ measured_at: '2026-10-01T07:50:09Z'
 | `resolved_by` | `string` |  |
 | `side` | `string` |  |
 | `station_id` | `string` |  |
-| `region_id` | `string` |  |
+| `region_id` | `string` | Region identifier that unit is in |
 | `gensetids` | `string` |  |
 | `genset_capacity_mw` | `bigint` |  |
 | `co2e_energy_source` | `string` |  |
-| `reglist_fuel_source_primary` | `string` | The primary fuel source used by the asset. |
-| `reglist_fuel_source_descriptor` | `string` | A descriptive identifier for the fuel source. |
 | `note` | `string` |  |

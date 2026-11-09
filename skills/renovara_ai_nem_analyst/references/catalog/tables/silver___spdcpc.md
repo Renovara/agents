@@ -10,18 +10,18 @@ tags:
 - canonical:SPDCPC
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-10-02T03:16:57Z'
-stale_after: '2026-12-30'
+  at: '2026-11-09T07:17:13Z'
+stale_after: '2027-02-07'
 renovara_table: external_data.nemweb.silver___spdcpc
 canonical_report: SPDCPC
 column_count: 9
-row_count: 2244005
-measured_at: '2026-10-01T07:50:09Z'
+row_count: 2369925
+measured_at: '2026-11-09T03:17:59Z'
 coverage:
   column: EFFECTIVEDATE
   from: '2025-01-01 00:00:00'
-  to: '2026-08-31 00:00:00'
-size_bytes: 3823662
+  to: '2026-10-01 00:00:00'
+size_bytes: 4073251
 primary_key:
 - BIDTYPE
 - CONNECTIONPOINTID
@@ -40,12 +40,12 @@ SPDCONNECTIONPOINTCONSTRAINT contains the LHS factor terms applied to connection
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver___spdcpc` |
-| Rows | 2,244,005 |
-| Date range | 2025-01-01 00:00:00 to 2026-08-31 00:00:00 (by `EFFECTIVEDATE`) |
-| Size on disk | 3.6 MB |
-| Measured at | `2026-10-01T07:50:09Z` |
+| Rows | 2,369,925 |
+| Date range | 2025-01-01 00:00:00 to 2026-10-01 00:00:00 (by `EFFECTIVEDATE`) |
+| Size on disk | 3.9 MB |
+| Measured at | `2026-11-09T03:17:59Z` |
 
-**Measured 2026-10-01T07:50:09Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-11-09T03:17:59Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 

@@ -1,0 +1,131 @@
+PARTICIPANT_REGISTRATION_DUDETAIL:
+  table_name: silver___participant_registration_dudetail
+  display_name: Participant Registration Dudetail
+  table_comment: 'DUDETAIL sets out a records specific details for each unit including start type and
+    whether normally on or off load. Effective-dated and versioned per DUID: the row with the latest EFFECTIVEDATE
+    on or before a date, at that date''s highest VERSIONNO, is in force. Carries the DUID-level REGISTEREDCAPACITY
+    and MAXCAPACITY (MW; MAXCAPACITY is the figure used for bid validation, and for solar farms is usually
+    the AC limit below the registered capacity) and MAXSTORAGECAPACITY (MWh). One full copy per MMSDM
+    archive month loaded (from 2026-01), so the same key repeats once per month: SELECT DISTINCT before
+    counting. For a DUID''s current capacity, station, region and fuel in one row use the view v_duid_registration.'
+  primary_keys:
+  - EFFECTIVEDATE
+  - DUID
+  - VERSIONNO
+  indexes:
+  - LASTCHANGED
+  visibility: Public
+  update_frequency: Monthly
+  schema:
+  - column: EFFECTIVEDATE
+    data_type: string
+    comment: Effective calendar date of record (parsed to timestamp in silver). AEST.
+  - column: DUID
+    data_type: string
+    comment: Dispatchable Unit Identifier
+  - column: VERSIONNO
+    data_type: smallint
+    comment: version of Dispatchable Unit details for this effective date
+  - column: CONNECTIONPOINTID
+    data_type: string
+    comment: Country wide - Unique id of a connection point
+  - column: VOLTLEVEL
+    data_type: string
+    comment: Voltage Level
+  - column: REGISTEREDCAPACITY
+    data_type: decimal(15,5)
+    comment: Registered capacity for normal operations (MW; AEMO publishes fractions despite the model's
+      NUMBER(6,0))
+  - column: AGCCAPABILITY
+    data_type: string
+    comment: AGC Capability flag
+  - column: DISPATCHTYPE
+    data_type: string
+    comment: Identifies LOAD, GENERATOR or BIDIRECTIONAL.
+  - column: MAXCAPACITY
+    data_type: decimal(15,5)
+    comment: Maximum Capacity as used for bid validation (MW; fractional for some units)
+  - column: STARTTYPE
+    data_type: string
+    comment: Identify unit as Fast or Slow
+  - column: NORMALLYONFLAG
+    data_type: string
+    comment: For a dispatchable load indicates that the load is normally on or off.
+  - column: PHYSICALDETAILSFLAG
+    data_type: string
+    comment: Indicates that the physical details for this unit are to be recorded
+  - column: SPINNINGRESERVEFLAG
+    data_type: string
+    comment: Indicates spinning reserve capability
+  - column: AUTHORISEDBY
+    data_type: string
+    comment: User authorising record
+  - column: AUTHORISEDDATE
+    data_type: string
+    comment: Date record authorised (string, YYYY/MM/DD HH:MM:SS, AEST; not parsed in silver).
+  - column: LASTCHANGED
+    data_type: string
+    comment: Last date and time record changed (parsed to timestamp in silver). AEST.
+  - column: INTERMITTENTFLAG
+    data_type: string
+    comment: Indicate whether a unit is intermittent (e.g. a wind farm)
+  - column: SEMISCHEDULE_FLAG
+    data_type: string
+    comment: Indicates if the DUID is a Semi-Scheduled Unit
+  - column: MAXRATEOFCHANGEUP
+    data_type: int
+    comment: Maximum ramp up rate for Unit (Mw/min)
+  - column: MAXRATEOFCHANGEDOWN
+    data_type: int
+    comment: Maximum ramp down rate for Unit (Mw/min)
+  - column: DISPATCHSUBTYPE
+    data_type: string
+    comment: Additional information for DISPATCHTYPE. For DISPATCHTYPE = LOAD, subtype value is WDR for
+      wholesale demand response units. For DISPATCHTYPE = LOAD, subtype value is NULL for Scheduled Loads.
+      For DISPATCHTYPE = GENERATOR type, the subtype value is NULL.
+  - column: ADG_ID
+    data_type: string
+    comment: Aggregate Dispatch Group to which this dispatch unit belongs
+  - column: MINCAPACITY
+    data_type: int
+    comment: Minimum capacity only for load side of BDU, otherwise 0 (MW)
+  - column: REGISTEREDMINCAPACITY
+    data_type: int
+    comment: Registered minimum capacity only for load side of BDU, otherwise 0 (MW)
+  - column: MAXRATEOFCHANGEUP_LOAD
+    data_type: int
+    comment: Raise Ramp rate applied to BDU Load component (MW/min)
+  - column: MAXRATEOFCHANGEDOWN_LOAD
+    data_type: int
+    comment: Lower Ramp rate applied to BDU Load component (MW/min)
+  - column: MAXSTORAGECAPACITY
+    data_type: decimal(15,5)
+    comment: The rated storage capacity (MWh), information only
+  - column: STORAGEIMPORTEFFICIENCYFACTOR
+    data_type: decimal(15,5)
+    comment: The storage energy import conversion efficiency. Number from 0 to 1 where 1 is lossless.
+      Calculated as (increase in stored energy / increase in imported energy)
+  - column: STORAGEEXPORTEFFICIENCYFACTOR
+    data_type: decimal(15,5)
+    comment: The storage energy export conversion efficiency. Number from 0 to 1 where 1 is lossless.
+      Calculated as (decrease in exported energy / decrease in stored energy)
+  - column: MIN_RAMP_RATE_UP
+    data_type: int
+    comment: Calculated Minimum Ramp Rate Up value accepted for Energy Offers or Bids with explanation
+      for energy imports (all DUID types and BDU Generation side) (MW/min)
+  - column: MIN_RAMP_RATE_DOWN
+    data_type: int
+    comment: Calculated Minimum Ramp Rate Down value accepted for Energy Offers or Bids with explanation
+      for energy imports (all DUID types and BDU Generation side) (MW/min)
+  - column: LOAD_MIN_RAMP_RATE_UP
+    data_type: int
+    comment: Calculated Minimum Ramp Rate Up value accepted for Energy Offers or Bids on BDU Load component
+      with explanation for energy imports (MW/min)
+  - column: LOAD_MIN_RAMP_RATE_DOWN
+    data_type: int
+    comment: Calculated Minimum Ramp Rate Down value accepted for Energy Offers or Bids on BDU Load component
+      with explanation for energy imports (MW/min)
+  - column: AGGREGATED
+    data_type: int
+    comment: Identifies if a unit is aggregated. This flag was initially added in GENUNITS_UNIT table
+      which is now deprecated with IESS release.

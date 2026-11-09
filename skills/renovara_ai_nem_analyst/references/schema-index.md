@@ -68,14 +68,6 @@ If the YAML and live table differ after error-driven inspection:
   GENCONSET maps generic constraint sets (GENCONSETID) to the individual constraints (GENCONID) they contain.
   Expected live table: `external_data.nemweb.silver___genconset`
 
-- [`knowledge/nem_participant_and_scheduled_loads.yaml`](knowledge/nem_participant_and_scheduled_loads.yaml)
-  Production Units (PU) and Scheduled Loads — all registered Production Units and Scheduled Loads with their classifications and key metadata.
-  Expected live table: `external_data.nemweb.silver_nem_participant_and_scheduled_loads`
-
-- [`knowledge/nem_registration_exemption_list.yaml`](knowledge/nem_registration_exemption_list.yaml)
-  Participant and asset registration list, including DUIDs, registered capacity, fuel source, and technology type.
-  Expected live table: `external_data.nemweb.silver_nem_registration_exemption_list`
-
 - [`knowledge/openelectricity_facilities.yaml`](knowledge/openelectricity_facilities.yaml)
   Facility-level metadata sourced from openelectricity.org.au.
   Expected live table: `external_data.nemweb.silver_openelectricity_facilities`
@@ -104,6 +96,10 @@ If the YAML and live table differ after error-driven inspection:
   DUALLOC cross references dispatch unit identifier (DUID) to genset ID (GENSETID), effective-dated and versioned: for a DUID, the rows with the latest EFFECTIVEDATE on or before a date, at that date's highest VERSIONNO, are the gensets in force.
   Expected live table: `external_data.nemweb.silver___participant_registration_dualloc`
 
+- [`knowledge/participant_registration_dudetail.yaml`](knowledge/participant_registration_dudetail.yaml)
+  DUDETAIL sets out a records specific details for each unit including start type and whether normally on or off load.
+  Expected live table: `external_data.nemweb.silver___participant_registration_dudetail`
+
 - [`knowledge/participant_registration_dudetailsummary.yaml`](knowledge/participant_registration_dudetailsummary.yaml)
   DUDETAILSUMMARY sets out a single summary unit table so reducing the need for participants to use the various dispatchable unit detail and owner tables to establish generating unit specific details.
   Expected live table: `external_data.nemweb.silver___participant_registration_dudetailsummary`
@@ -115,6 +111,10 @@ If the YAML and live table differ after error-driven inspection:
 - [`knowledge/participant_registration_participant.yaml`](knowledge/participant_registration_participant.yaml)
   PARTICIPANT sets out Participant ID, name and class for all participants.
   Expected live table: `external_data.nemweb.silver___participant_registration_participant`
+
+- [`knowledge/participant_registration_station.yaml`](knowledge/participant_registration_station.yaml)
+  STATION sets out valid station identifiers: one row per station AEMO has registered, with its full name and address.
+  Expected live table: `external_data.nemweb.silver___participant_registration_station`
 
 - [`knowledge/predispatch_interconnector_soln.yaml`](knowledge/predispatch_interconnector_soln.yaml)
   PREDISPATCHINTERCONNECTORRES records interconnector flows and losses for the periods calculated in each predispatch run.

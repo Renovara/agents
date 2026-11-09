@@ -10,18 +10,18 @@ tags:
 - canonical:PARTICIPANT_REGISTRATION_DUALLOC
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-10-02T03:16:57Z'
-stale_after: '2026-12-30'
+  at: '2026-11-09T07:17:13Z'
+stale_after: '2027-02-07'
 renovara_table: external_data.nemweb.silver___participant_registration_dualloc
 canonical_report: PARTICIPANT_REGISTRATION_DUALLOC
 column_count: 7
-row_count: 3067
-measured_at: '2026-10-01T07:50:09Z'
+row_count: 27526
+measured_at: '2026-11-09T03:17:59Z'
 coverage:
   column: EFFECTIVEDATE
   from: '1998-10-25 00:00:00'
-  to: '2026-09-25 00:00:00'
-size_bytes: 29801
+  to: '2026-10-06 00:00:00'
+size_bytes: 81781
 primary_key:
 - EFFECTIVEDATE
 - VERSIONNO
@@ -31,7 +31,7 @@ aemo_table: DUALLOC
 visibility: Public
 ---
 
-DUALLOC cross references dispatch unit identifier (DUID) to genset ID (GENSETID), effective-dated and versioned: for a DUID, the rows with the latest EFFECTIVEDATE on or before a date, at that date's highest VERSIONNO, are the gensets in force. One DUID can map to several gensets (HVGTS -> GH01, GH02). Full history back to 1998, retired units included. A single cumulative snapshot from the MMSDM 2026-08 archive month.
+DUALLOC cross references dispatch unit identifier (DUID) to genset ID (GENSETID), effective-dated and versioned: for a DUID, the rows with the latest EFFECTIVEDATE on or before a date, at that date's highest VERSIONNO, are the gensets in force. One DUID can map to several gensets (HVGTS -> GH01, GH02). Full history back to 1998, retired units included. One full copy per MMSDM archive month loaded (from 2026-01), so the same key repeats once per month: SELECT DISTINCT before counting.
 
 
 # Coverage
@@ -39,12 +39,12 @@ DUALLOC cross references dispatch unit identifier (DUID) to genset ID (GENSETID)
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver___participant_registration_dualloc` |
-| Rows | 3,067 |
-| Date range | 1998-10-25 00:00:00 to 2026-09-25 00:00:00 (by `EFFECTIVEDATE`) |
-| Size on disk | 29.1 KB |
-| Measured at | `2026-10-01T07:50:09Z` |
+| Rows | 27,526 |
+| Date range | 1998-10-25 00:00:00 to 2026-10-06 00:00:00 (by `EFFECTIVEDATE`) |
+| Size on disk | 79.9 KB |
+| Measured at | `2026-11-09T03:17:59Z` |
 
-**Measured 2026-10-01T07:50:09Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-11-09T03:17:59Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 

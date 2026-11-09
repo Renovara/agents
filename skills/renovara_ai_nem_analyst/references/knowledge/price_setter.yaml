@@ -38,7 +38,7 @@ PRICE_SETTER:
     data_type: STRING
     comment: DUID of the contributing unit, or an interconnector id for inter-regional contributions (e.g.
       "T-V-MNSP1,TAS1" — exclude with NOT LIKE '%MNSP%' for unit-level analysis). Join to v_duid_fuel_aer
-      (or silver_nem_participant_and_scheduled_loads) for fuel source.
+      (AER fuel) or v_duid_fuel_aemo (AEMO fuel group, effective-dated) for fuel source.
   - column: DISPATCHEDMARKET
     data_type: STRING
     comment: Market the unit was dispatched in for this contribution. ENOF = energy offer; BDOF,GEN /

@@ -235,8 +235,8 @@ where the resource is genuinely zero.
 
 ### Fuel-mix and generation stacks
 
-**Classify fuel with `v_duid_fuel_aemo`**, not the registration list's
-descriptors. It maps every DUID AEMO has registered, retired ones included, to
+**Classify fuel with `v_duid_fuel_aemo`**, not `GENUNITS.CO2E_ENERGY_SOURCE`
+directly. It maps every DUID AEMO has registered, retired ones included, to
 AEMO's fuel groups (Black Coal, Brown Coal, Gas, Liquid Fuel, Hydro, Hydro
 Pump Load, Wind, Grid Solar, Battery, Biomass, Other), from AEMO's historical
 registration plus the cases where AEMO reports a unit differently. It is
@@ -248,9 +248,16 @@ JOIN external_data.nemweb.v_duid_fuel_aemo f
  AND s.SETTLEMENTDATE >= f.effective_from AND s.SETTLEMENTDATE < f.effective_to
 ```
 
-Join to `silver___participant_registration_dudetailsummary` for `REGIONID`,
-`SCHEDULE_TYPE` and `DISPATCHTYPE`. Using SCADA rather than dispatch targets is
-what makes non-scheduled generation appear at all.
+For a unit's region, station, dispatch and schedule type and capacity, join
+`v_duid_registration`: one current row per DUID (`region_id`, `station_id`,
+`station_name`, `dispatch_type`, `schedule_type`, `max_capacity_mw`,
+`registered_capacity_mw`, today's `fuel_group`), so it never fans out. Use
+`max_capacity_mw` for capacity factors; for solar farms registered capacity is
+the higher DC rating. For a value as it stood on a past date, go to the
+effective-dated tables instead (see
+`references/examples/what_station_and_capacity_does_a_unit_have.sql`).
+Using SCADA rather than dispatch targets is what makes non-scheduled
+generation appear at all.
 
 - **Hydro generation** totals drop the generating units of every station that
   also has a pump load — dropping only the pump is not enough. In prices by
@@ -259,17 +266,22 @@ what makes non-scheduled generation appear at all.
 
 ### Traps specific to this table
 
-- ⚠ **Both registration tables fan out. Deduplicate before joining either.**
+- ⚠ **The registration tables fan out. Use `v_duid_registration`, or
+  deduplicate before joining one.** Each holds one full copy per monthly
+  archive loaded, on top of its own effective dating:
 
-  | Table | Rows per DUID | Collapse by |
+  | Table | Rows per key | Collapse by |
   |---|---|---|
-  | `silver___participant_registration_dudetailsummary` | **~382** (effective-dated) | `ROW_NUMBER() OVER (PARTITION BY DUID ORDER BY START_DATE DESC, LASTCHANGED DESC) = 1` |
-  | `silver_nem_participant_and_scheduled_loads` | **~2** | `ROW_NUMBER() OVER (PARTITION BY DUID ORDER BY FUEL_SOURCE_PRIMARY) = 1` |
+  | `silver___participant_registration_dudetailsummary` | **~382** per DUID (effective-dated) | `ROW_NUMBER() OVER (PARTITION BY DUID ORDER BY START_DATE DESC, LASTCHANGED DESC) = 1` |
+  | `silver___participant_registration_dudetail` | ~9 per DUID and effective date | `ROW_NUMBER() OVER (PARTITION BY DUID ORDER BY EFFECTIVEDATE DESC, VERSIONNO DESC) = 1`, with `EFFECTIVEDATE <=` the date |
+  | `silver___participant_registration_station` | one per month loaded | `ROW_NUMBER() OVER (PARTITION BY STATIONID ORDER BY LASTCHANGED DESC) = 1` |
+  | `silver___participant_registration_genunits` | one per month loaded | `ROW_NUMBER() OVER (PARTITION BY GENSETID ORDER BY LASTCHANGED DESC) = 1` |
+  | `silver___participant_registration_dualloc` | one per month loaded | `SELECT DISTINCT` first; then the latest `EFFECTIVEDATE` on or before the date, at its highest `VERSIONNO` |
 
-  Joining either raw multiplies every MW and MWh total while the output still
-  looks entirely plausible in shape. The second one is easy to miss because a
-  2x error looks like a real number. **Always reconcile a total against the
-  same aggregate computed without the reference join.**
+  Joining one raw multiplies every MW and MWh total while the output still
+  looks entirely plausible in shape; a 9x error from the monthly copies looks
+  like a real number. **Always reconcile a total against the same aggregate
+  computed without the reference join.**
 - ⚠ **`dispatch_unit_solution` is T+1; this table is real-time.** SCADA runs
   ~11 hours ahead of it. Any join of the two silently truncates to the older
   table's coverage, so "today" will look short. Check both `MAX(SETTLEMENTDATE)`
@@ -435,9 +447,10 @@ schema of the held tables it would come from first.
 When the data genuinely is not held:
 
 - Say so plainly. Never invent a table or column name, and never query a table
-  that is not in `references/knowledge/` — a query against a table that does not
-  exist fails, but a query against the *wrong* table returns a confident,
-  plausible, wrong answer.
+  that is not in `references/knowledge/` or `references/catalog/tables/` (the
+  views, such as `v_duid_registration`, are only in the second) — a query
+  against a table that does not exist fails, but a query against the *wrong*
+  table returns a confident, plausible, wrong answer.
 - Name the closest thing that **is** held, and say what it can and cannot
   answer, so the user gets a partial answer rather than a dead end.
 - Tell them it can be added: **most AEMO tables can be ingested on request —
@@ -472,6 +485,7 @@ When the data genuinely is not held:
   - `how_accurate_is_aemos_rooftop_solar_forecast_and_does_the_er.sql` — How accurate is AEMO's rooftop solar forecast, and does the error grow with lead time?
   - `what_were_operational_demand_underlying_demand_and_rooftop_p.sql` — What were operational demand, underlying demand and rooftop PV in each region, half hour by half hour, yesterday?
   - `what_fuel_were_the_units_that_generated_in_nsw1_and_sa1_in_2.sql` — What fuel were the units that generated in NSW1 and SA1 in 2021, including units that have since retired?
+  - `what_station_and_capacity_does_a_unit_have.sql` — What station and capacity does a unit have?
 
 ## Example Triggers
 

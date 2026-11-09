@@ -7,12 +7,12 @@ tags:
 - nemweb
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-10-02T03:16:58Z'
-stale_after: '2026-12-30'
+  at: '2026-11-09T07:17:13Z'
+stale_after: '2027-02-07'
 renovara_table: external_data.nemweb.silver_openelectricity_facilities
 column_count: 11
-row_count: 627
-measured_at: '2026-10-01T07:50:09Z'
+row_count: 633
+measured_at: '2026-11-09T03:17:59Z'
 ---
 
 # Coverage
@@ -20,12 +20,12 @@ measured_at: '2026-10-01T07:50:09Z'
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver_openelectricity_facilities` |
-| Rows | 627 |
+| Rows | 633 |
 | Date range | no recognised time column |
 | Size on disk | — |
-| Measured at | `2026-10-01T07:50:09Z` |
+| Measured at | `2026-11-09T03:17:59Z` |
 
-**Measured 2026-10-01T07:50:09Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-11-09T03:17:59Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 

@@ -1,24 +1,24 @@
 ---
 type: Renovara Coverage
 title: Coverage against the AEMO data model
-description: 28 of 437 published AEMO MMS tables are loaded (6.4%); what is missing and why.
+description: 30 of 437 published AEMO MMS tables are loaded (6.9%); what is missing and why.
 tags:
 - renovara
 - coverage
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-10-02T03:16:58Z'
-stale_after: '2026-12-30'
-measured_at: '2026-10-01T07:50:09Z'
+  at: '2026-11-09T07:17:13Z'
+stale_after: '2027-02-07'
+measured_at: '2026-11-09T03:17:59Z'
 totals:
   aemo_live_tables: 437
   aemo_all_tables: 571
   renovara_canonicals: 46
-  mapped_to_aemo: 28
-  coverage_pct: 6.4
+  mapped_to_aemo: 30
+  coverage_pct: 6.9
 ---
 
-Renovara loads **28 of AEMO's 437 currently-published MMS tables (6.4%)**, plus 18 datasets that sit outside the MMS model entirely.
+Renovara loads **30 of AEMO's 437 currently-published MMS tables (6.9%)**, plus 16 datasets that sit outside the MMS model entirely.
 
 This is the honest answer to "what can I not see?". Anything listed as missing below is published by AEMO and simply not loaded — it is a candidate for onboarding, not a limitation of the data.
 
@@ -27,7 +27,7 @@ This is the honest answer to "what can I not see?". Anything listed as missing b
 | Package | Loaded | Published |
 |---|---|---|
 | DISPATCH | 10 | 22 |
-| PARTICIPANT_REGISTRATION | 4 | 29 |
+| PARTICIPANT_REGISTRATION | 6 | 29 |
 | GENERIC_CONSTRAINT | 4 | 12 |
 | PRE_DISPATCH | 4 | 18 |
 | DEMAND_FORECASTS | 3 | 29 |
@@ -47,8 +47,6 @@ Loaded datasets with no AEMO MMS table behind them. They are real and queryable;
 | `LINEPACK_ZONES` | AEMO Gas Bulletin Board, not an MMS table |
 | `LOCATIONS` | AEMO Gas Bulletin Board, not an MMS table |
 | `MEDIUM_TERM_CAPACITY_OUTLOOK` | AEMO Gas Bulletin Board, not an MMS table |
-| `NEM_PARTICIPANT_AND_SCHEDULED_LOADS` | NEM Registration and Exemption List worksheet, not an MMS table |
-| `NEM_REGISTRATION_EXEMPTION_LIST` | NEM Registration and Exemption List worksheet, not an MMS table |
 | `NODES_CONNECTION_POINTS` | AEMO Gas Bulletin Board, not an MMS table |
 | `NOMINATION_FORECAST` | AEMO Gas Bulletin Board, not an MMS table |
 | `OPENELECTRICITY_FACILITIES` | OpenElectricity API, not an AEMO source |
@@ -78,9 +76,9 @@ Published by AEMO, absent from Renovara. Grouped by package, largest gap first. 
 
 `DEMANDOPERATIONALFORECAST`, `INTERMITTENT_CLUSTER_AVAIL`, `INTERMITTENT_CLUSTER_AVAIL_DAY`, `INTERMITTENT_DS_PRED`, `INTERMITTENT_DS_RUN`, `INTERMITTENT_GEN_FCST`, `INTERMITTENT_GEN_FCST_DATA`, `INTERMITTENT_GEN_FCST_P5_PRED`, `INTERMITTENT_GEN_FCST_P5_RUN`, `INTERMITTENT_GEN_FCST_PRED`, `INTERMITTENT_GEN_FCST_RUN`, `INTERMITTENT_GEN_LIMIT`, `INTERMITTENT_GEN_LIMIT_DAY`, `INTERMITTENT_GEN_SCADA`, `INTERMITTENT_P5_PRED`, `INTERMITTENT_P5_RUN`, `MTPASA_INTERMITTENT_AVAIL`, `MTPASA_INTERMITTENT_LIMIT`, `PERDEMAND`, `RESDEMANDTRK`, `ROOFTOP_PV_ACTUAL_PRED`, `ROOFTOP_PV_ACTUAL_RUN`, `ROOFTOP_PV_FCST_P5_PRED`, `ROOFTOP_PV_FCST_P5_RUN`, `ROOFTOP_PV_FCST_PRED`, `ROOFTOP_PV_FCST_RUN`
 
-## PARTICIPANT_REGISTRATION — 25 of 29 not loaded
+## PARTICIPANT_REGISTRATION — 23 of 29 not loaded
 
-`ADG_DETAIL`, `AGGREGATE_DISPATCH_GROUP`, `BIDDUIDDETAILS`, `BIDDUIDDETAILSTRK`, `DISPATCHABLEUNIT`, `DUDETAIL`, `GENMETER`, `GENUNITS_UNIT`, `MNSP_INTERCONNECTOR`, `MNSP_PARTICIPANT`, `PARTICIPANTACCOUNT`, `PARTICIPANTCATEGORY`, `PARTICIPANTCATEGORYALLOC`, `PARTICIPANTCLASS`, `PARTICIPANTCREDITDETAIL`, `PASA_INTERZONAL_MAPPING`, `PASA_ZONE_REGION_MAPPING`, `PMS_GROUP`, `PMS_GROUPNMI`, `PMS_GROUPSERVICE`, `STADUALLOC`, `STATION`, `STATIONOPERATINGSTATUS`, `STATIONOWNER`, `STATIONOWNERTRK`
+`ADG_DETAIL`, `AGGREGATE_DISPATCH_GROUP`, `BIDDUIDDETAILS`, `BIDDUIDDETAILSTRK`, `DISPATCHABLEUNIT`, `GENMETER`, `GENUNITS_UNIT`, `MNSP_INTERCONNECTOR`, `MNSP_PARTICIPANT`, `PARTICIPANTACCOUNT`, `PARTICIPANTCATEGORY`, `PARTICIPANTCATEGORYALLOC`, `PARTICIPANTCLASS`, `PARTICIPANTCREDITDETAIL`, `PASA_INTERZONAL_MAPPING`, `PASA_ZONE_REGION_MAPPING`, `PMS_GROUP`, `PMS_GROUPNMI`, `PMS_GROUPSERVICE`, `STADUALLOC`, `STATIONOPERATINGSTATUS`, `STATIONOWNER`, `STATIONOWNERTRK`
 
 ## FPP — 22 of 22 not loaded
 
