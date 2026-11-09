@@ -1,10 +1,11 @@
 -- Report 4: Daily Curtailment Timeline
 WITH duid_region AS (
-  SELECT `REGIONID`
-  FROM `external_data`.`nemweb`.`silver_nem_participant_and_scheduled_loads`
-  WHERE `DUID` = :duid
-  ORDER BY `_ingest_timestamp` DESC
-  LIMIT 1
+  SELECT
+    `region_id` AS `REGIONID`
+  FROM
+    `external_data`.`nemweb`.`v_duid_registration`
+  WHERE
+    `duid` = :duid
 ),
 intervals AS (
   SELECT

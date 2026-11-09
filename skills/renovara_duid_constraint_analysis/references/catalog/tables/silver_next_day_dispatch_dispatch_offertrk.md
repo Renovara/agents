@@ -10,18 +10,18 @@ tags:
 - canonical:DISPATCH_OFFERTRK
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-22T08:00:26Z'
-stale_after: '2026-12-01'
+  at: '2026-11-09T07:19:54Z'
+stale_after: '2027-02-07'
 renovara_table: external_data.nemweb.silver_next_day_dispatch_dispatch_offertrk
 canonical_report: DISPATCH_OFFERTRK
-column_count: 9
-row_count: 1163225315
-measured_at: '2026-09-02T00:03:03Z'
+column_count: 10
+row_count: 1204605779
+measured_at: '2026-11-09T03:17:59Z'
 coverage:
   column: SETTLEMENTDATE
   from: '2019-01-01 00:05:00'
-  to: '2026-09-02 04:00:00'
-size_bytes: 3257141019
+  to: '2026-11-09 04:00:00'
+size_bytes: 51758021903
 primary_key:
 - BIDTYPE
 - DUID
@@ -37,12 +37,12 @@ DISPATCHOFFERTRK is the energy and ancillary service bid tracking table for the 
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver_next_day_dispatch_dispatch_offertrk` |
-| Rows | 1,163,225,315 |
-| Date range | 2019-01-01 00:05:00 to 2026-09-02 04:00:00 (by `SETTLEMENTDATE`) |
-| Size on disk | 3.0 GB |
-| Measured at | `2026-09-02T00:03:03Z` |
+| Rows | 1,204,605,779 |
+| Date range | 2019-01-01 00:05:00 to 2026-11-09 04:00:00 (by `SETTLEMENTDATE`) |
+| Size on disk | 48.2 GB |
+| Measured at | `2026-11-09T03:17:59Z` |
 
-**Measured 2026-09-02T00:03:03Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-11-09T03:17:59Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 
@@ -57,6 +57,7 @@ DISPATCHOFFERTRK is the energy and ancillary service bid tracking table for the 
 | `BIDOFFERDATE` | `string` | Offer date of bid applied. |
 | `LASTCHANGED` | `timestamp` | Last date and time record changed. |
 | `SETTLEMENTDATE_UTC` | `timestamp` |  |
+| `_row_payload_hash` | `bigint` | Renovara de-duplication key, not AEMO data: xxhash64 of every column except the primary key, LASTCHANGED and the source file sequence. Rows that share a primary key but differ in this hash genuinely disagree on a value, and both are kept. |
 
 # Upstream
 

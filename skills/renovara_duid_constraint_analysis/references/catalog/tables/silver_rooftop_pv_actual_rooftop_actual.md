@@ -10,18 +10,18 @@ tags:
 - canonical:ROOFTOP_ACTUAL
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-09-22T08:00:26Z'
-stale_after: '2026-12-01'
+  at: '2026-11-09T07:19:54Z'
+stale_after: '2027-02-07'
 renovara_table: external_data.nemweb.silver_rooftop_pv_actual_rooftop_actual
 canonical_report: ROOFTOP_ACTUAL
 column_count: 8
-row_count: 2619555
-measured_at: '2026-09-02T00:03:03Z'
+row_count: 2652105
+measured_at: '2026-11-09T03:17:59Z'
 coverage:
   column: INTERVAL_DATETIME
   from: '2019-01-01 00:30:00'
-  to: '2026-09-02 08:00:00'
-size_bytes: 8513932
+  to: '2026-11-09 04:30:00'
+size_bytes: 8262472
 primary_key:
 - INTERVAL_DATETIME
 - TYPE
@@ -37,12 +37,12 @@ AEMO's estimate of regional rooftop solar (distributed PV) actual generation for
 |  |  |
 |---|---|
 | Qualified name | `external_data.nemweb.silver_rooftop_pv_actual_rooftop_actual` |
-| Rows | 2,619,555 |
-| Date range | 2019-01-01 00:30:00 to 2026-09-02 08:00:00 (by `INTERVAL_DATETIME`) |
-| Size on disk | 8.1 MB |
-| Measured at | `2026-09-02T00:03:03Z` |
+| Rows | 2,652,105 |
+| Date range | 2019-01-01 00:30:00 to 2026-11-09 04:30:00 (by `INTERVAL_DATETIME`) |
+| Size on disk | 7.9 MB |
+| Measured at | `2026-11-09T03:17:59Z` |
 
-**Measured 2026-09-02T00:03:03Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
+**Measured 2026-11-09T03:17:59Z.** Row count, date range and size are a point-in-time observation of the live table, not inferred from config — and they are only as current as that timestamp. For a continuously-loading table the real end of the date range has moved on since; treat `to` as a floor, not a ceiling. A query outside the range returns nothing: an empty window, not an error. If exact currency matters, check the table directly.
 
 # Schema
 

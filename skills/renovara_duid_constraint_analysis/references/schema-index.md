@@ -36,10 +36,6 @@ If the YAML and live table differ after error-driven inspection:
   GENCONSET maps generic constraint sets (GENCONSETID) to the individual constraints (GENCONID) they contain.
   Expected live table: `external_data.nemweb.silver___genconset`
 
-- [`knowledge/nem_participant_and_scheduled_loads.yaml`](knowledge/nem_participant_and_scheduled_loads.yaml)
-  Production Units (PU) and Scheduled Loads — all registered Production Units and Scheduled Loads with their classifications and key metadata.
-  Expected live table: `external_data.nemweb.silver_nem_participant_and_scheduled_loads`
-
 - [`knowledge/participant_registration_dudetailsummary.yaml`](knowledge/participant_registration_dudetailsummary.yaml)
   DUDETAILSUMMARY sets out a single summary unit table so reducing the need for participants to use the various dispatchable unit detail and owner tables to establish generating unit specific details.
   Expected live table: `external_data.nemweb.silver___participant_registration_dudetailsummary`
