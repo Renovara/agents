@@ -7,7 +7,7 @@ tags:
 - nemweb
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-11-09T07:19:19Z'
+  at: '2026-11-10T00:24:53Z'
 stale_after: '2027-02-07'
 renovara_table: external_data.nemweb.silver_gbb_nomination_forecast
 column_count: 13
