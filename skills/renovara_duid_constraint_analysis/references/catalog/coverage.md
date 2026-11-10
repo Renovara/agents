@@ -7,18 +7,18 @@ tags:
 - coverage
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-11-09T07:19:54Z'
+  at: '2026-11-10T00:25:30Z'
 stale_after: '2027-02-07'
 measured_at: '2026-11-09T03:17:59Z'
 totals:
   aemo_live_tables: 437
   aemo_all_tables: 571
-  renovara_canonicals: 46
+  renovara_canonicals: 44
   mapped_to_aemo: 30
   coverage_pct: 6.9
 ---
 
-Renovara loads **30 of AEMO's 437 currently-published MMS tables (6.9%)**, plus 16 datasets that sit outside the MMS model entirely.
+Renovara loads **30 of AEMO's 437 currently-published MMS tables (6.9%)**, plus 14 datasets that sit outside the MMS model entirely.
 
 This is the honest answer to "what can I not see?". Anything listed as missing below is published by AEMO and simply not loaded — it is a candidate for onboarding, not a limitation of the data.
 
@@ -49,8 +49,6 @@ Loaded datasets with no AEMO MMS table behind them. They are real and queryable;
 | `MEDIUM_TERM_CAPACITY_OUTLOOK` | AEMO Gas Bulletin Board, not an MMS table |
 | `NODES_CONNECTION_POINTS` | AEMO Gas Bulletin Board, not an MMS table |
 | `NOMINATION_FORECAST` | AEMO Gas Bulletin Board, not an MMS table |
-| `OPENELECTRICITY_FACILITIES` | OpenElectricity API, not an AEMO source |
-| `OPENELECTRICITY_UNITS` | OpenElectricity API, not an AEMO source |
 | `PARTICIPANTS` | AEMO Gas Bulletin Board, not an MMS table |
 | `PIPELINE_CONNECTION_FLOW` | AEMO Gas Bulletin Board, not an MMS table |
 | `PRICE_SETTER` | NEMDE NemPriceSetter XML feed, outside the MMS model |

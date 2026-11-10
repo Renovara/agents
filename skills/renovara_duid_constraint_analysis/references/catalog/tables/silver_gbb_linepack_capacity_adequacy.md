@@ -7,7 +7,7 @@ tags:
 - nemweb
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-11-09T07:19:54Z'
+  at: '2026-11-10T00:25:30Z'
 stale_after: '2027-02-07'
 renovara_table: external_data.nemweb.silver_gbb_linepack_capacity_adequacy
 column_count: 8
