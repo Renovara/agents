@@ -10,7 +10,7 @@ tags:
 - canonical:DISPATCH_UNIT_SCADA
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-11-09T07:17:13Z'
+  at: '2026-11-10T00:22:53Z'
 stale_after: '2027-02-07'
 renovara_table: external_data.nemweb.silver_dispatch_scada_dispatch_unit_scada
 canonical_report: DISPATCH_UNIT_SCADA

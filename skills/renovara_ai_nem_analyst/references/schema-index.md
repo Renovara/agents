@@ -68,14 +68,6 @@ If the YAML and live table differ after error-driven inspection:
   GENCONSET maps generic constraint sets (GENCONSETID) to the individual constraints (GENCONID) they contain.
   Expected live table: `external_data.nemweb.silver___genconset`
 
-- [`knowledge/openelectricity_facilities.yaml`](knowledge/openelectricity_facilities.yaml)
-  Facility-level metadata sourced from openelectricity.org.au.
-  Expected live table: `external_data.nemweb.silver_openelectricity_facilities`
-
-- [`knowledge/openelectricity_units.yaml`](knowledge/openelectricity_units.yaml)
-  Unit-level metadata sourced from openelectricity.org.au.
-  Expected live table: `external_data.nemweb.silver_openelectricity_units`
-
 - [`knowledge/operational_demand_actual.yaml`](knowledge/operational_demand_actual.yaml)
   AEMO's measured actual operational demand per region, one value per half hour — the average MW over the half-hour interval ENDING at INTERVAL_DATETIME (the 21:30 row covers 21:00-21:30).
   Expected live table: `external_data.nemweb.silver_operational_demand_actual_operational_demand_actual`
