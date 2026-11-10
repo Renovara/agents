@@ -7,7 +7,7 @@ tags:
 - nemweb
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-11-09T07:17:59Z'
+  at: '2026-11-10T00:23:31Z'
 stale_after: '2027-02-07'
 renovara_table: external_data.nemweb.silver_gbb_pipeline_connection_flow
 column_count: 13

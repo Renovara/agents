@@ -33,8 +33,6 @@
 * [silver_marginal_loss_factors_daily_mlf](silver_marginal_loss_factors_daily_mlf.md) - 1,033,896 rows; 2011-07-01..2026-11-10
 * [silver_next_day_dispatch_dispatch_offertrk](silver_next_day_dispatch_dispatch_offertrk.md) - 1,204,605,779 rows; 2019-01-01..2026-11-09
 * [silver_next_day_dispatch_dispatch_unit_solution](silver_next_day_dispatch_dispatch_unit_solution.md) - 359,122,523 rows; 2019-01-01..2026-11-09
-* [silver_openelectricity_facilities](silver_openelectricity_facilities.md) - 633 rows
-* [silver_openelectricity_units](silver_openelectricity_units.md) - 1,146 rows
 * [silver_operational_demand_actual_operational_demand_actual](silver_operational_demand_actual_operational_demand_actual.md) - 199,245 rows; 2024-08-01..2026-11-09
 * [silver_p5_reports_p5min_interconnectorsoln](silver_p5_reports_p5min_interconnectorsoln.md) - 7,501,422 rows; 2025-11-19..2026-11-09
 * [silver_p5_reports_p5min_local_price](silver_p5_reports_p5min_local_price.md) - 62,904,556 rows; 2025-11-19..2026-11-09

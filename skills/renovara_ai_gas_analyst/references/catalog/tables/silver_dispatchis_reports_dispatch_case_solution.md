@@ -10,7 +10,7 @@ tags:
 - canonical:DISPATCH_CASE_SOLUTION
 generated:
   by: renovara-okf-builder/1.0
-  at: '2026-11-09T07:17:59Z'
+  at: '2026-11-10T00:23:31Z'
 stale_after: '2027-02-07'
 renovara_table: external_data.nemweb.silver_dispatchis_reports_dispatch_case_solution
 canonical_report: DISPATCH_CASE_SOLUTION
